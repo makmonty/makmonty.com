@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    block styles
+  body
+    nav.navbar.navbar-inverse.navbar-static-top
+      .navbar-header
+        a.navbar-brand(href="#") makmonty
+    
+    .content
+      .container
+        block content
+
+    footer
+      .container
+        p Follow me at #[a(href="http://twitter.com/makmonty") Twitter], #[a(href="http://github.com/makmonty") Github]
+
+    script.
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-36413273-2', 'auto');
+      ga('send', 'pageview');
+
+    block javascripts
