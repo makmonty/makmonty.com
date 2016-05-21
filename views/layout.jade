@@ -7,12 +7,16 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
   body
-    nav.navbar.navbar-inverse.navbar-static-top
-      .navbar-header
-        a.navbar-brand(href="/") makmonty
+  
+    if !hideNavbar
+      nav.navbar.navbar-static-top
+        ol.breadcrumb
+          li
+            a.navbar-link(href="/") makmonty
+          li.active= breadcrumb
     
     .content
-      .container
+      .container-fluid
         block content
 
     footer
