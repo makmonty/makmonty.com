@@ -2,13 +2,15 @@ extends layout
 
 block content
 
-  h1.main-h1 makmonty
+  h1.logo
+    a(href="/") makmonty
   
-  p.lead Welcome to my website. I'm a software developer and video game lover. I do web development and try to play and do games. Here I will publish my work. I have one game so far!
-  
-  .row
-    .game.col-sm-3
-      a(href="/games/box-rain",title="Box Rain")
-        img(src="/images/games/boxrain/box-rain-banner-1024x500.png", alt="Box Rain")
-      .platforms
-        i.icon-android
+  .main-container
+    .main-content
+      p Welcome to my website. I'm a software developer and video game lover. I do web development and try to play and do games. Here I will publish my work. I have one game so far!
+      
+      p
+        a(href="/games/box-rain",title="Box Rain")
+          img(src="/images/games/boxrain/box-rain-banner-1024x500.png", alt="Box Rain")
+        .platforms
+          i.icon-android
