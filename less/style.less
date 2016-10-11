@@ -76,8 +76,9 @@ body {
   font-weight: normal;
 
   image-rendering: -moz-crisp-edges;         /* Firefox */
-  image-rendering:   -o-crisp-edges;         /* Opera */
-  image-rendering: -webkit-optimize-contrast;/* Webkit (non-standard naming) */
+  image-rendering: -o-crisp-edges;         /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: pixelated;
   image-rendering: crisp-edges;
   -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
 
@@ -88,7 +89,7 @@ body {
   }
 }
 
-.main-container {
+.main-content {
   background-color: @light-grey;
   color: @text-color;
 }
