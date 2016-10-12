@@ -3,10 +3,11 @@ module.exports = {
     livereload: true
   },
   less: {
-    files: '<%= dir.less %>/**/*',
+    files: '<%= dir.less %>/**',
     tasks: [ 'less:dist' ]
   },
   views: {
-    files: '<%= dir.views %>/**/*'
+    files: '<%= dir.views %>/**',
+    tasks: [ 'pug' ]
   }
 };

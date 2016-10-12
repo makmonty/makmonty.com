@@ -3,14 +3,15 @@
 * {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
 }
 
 a {
   text-decoration: none;
-  color: @secondary-color;
+  color: @primary-color;
 
   &:hover {
-    color: @primary-color;
+    color: @secondary-color;
   }
 }
 
@@ -23,11 +24,19 @@ body {
 }
 
 .main-content {
-  padding: @standard-padding 0;
+  padding: @standard-padding;
 }
 
 p {
-  margin: @standard-padding 0;
+  margin: @standard-padding/2 0;
+
+  &:first-child {
+    margin-top: 0;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
 }
 
 .content {
@@ -61,13 +70,27 @@ input[type="reset"],
 
   background: @primary-color;
   color: @text-color-inverted;
-  border-bottom: 2px solid darken(@primary-color, 20%);
+  border-bottom: @button-border-width solid darken(@primary-color, 20%);
+
+  &:focus {
+    outline: 0;
+  }
+
+  &::-moz-focus-inner {
+    border: 0;
+  }
 
   &:hover {
     background: darken(@primary-color, 10%);
   }
 
-  &.button-secondary {
+  &:active {
+    border-bottom: none;
+    background-color: @primary-color;
+    margin-top: @button-border-width;
+  }
+
+  &.secondary {
     background: @secondary-color;
     color: @text-color;
 

@@ -2,10 +2,11 @@
 @import 'variables.less';
 
 body {
-  background: @dark-grey;
+  background: #333;
   color: @light-grey;
   font-family: Montserrat, sans-serif;
 }
+
 //
 // a {
 //   color: @primary-color;
@@ -69,9 +70,9 @@ body {
 
 .logo {
   width: @main-logo-width + 100;
-  background: url('/images/makmonty_logo_colors.png') center top no-repeat;
+  background: url('/assets/images/makmonty_logo_colors.png') center top no-repeat;
   background-size: @main-logo-width @main-logo-width;
-  margin: 40px auto;
+  margin: 0 auto 40px auto;
   text-align: center;
   font-weight: normal;
 
@@ -89,9 +90,27 @@ body {
   }
 }
 
-.main-content {
+.intro-personal {
+  background-color: @dark-grey;
+  color: @text-color-inverted;
+  padding: 40px 0;
+  font-size: 1.6em;
+  // text-transform: uppercase;
+  // font-family: sans-serif;
+  // letter-spacing: 1px;
+
+  .main-content {
+    padding-left: 153px;
+    background: url("/assets/images/gamepad-primary.png") left center no-repeat;
+    background-size: 100px;
+  }
+}
+
+.intro-games {
   background-color: @light-grey;
   color: @text-color;
+  // color: black;
+  padding: 40px 0;
 }
 
 .game {

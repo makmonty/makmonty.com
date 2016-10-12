@@ -5,11 +5,19 @@ block content
   h1.logo
     a(href="/") makmonty
 
-  .main-content
-    p Welcome to my website. I'm a software developer and video game lover. I do web development and try to play and do games. Here I will publish my work. I have one game so far!
+  .intro-personal
+    .main-container
+      .main-content
+        | I'm a software developer and video game lover.
+        br
+        | I do web development and try to play and do games.
+        br
+        | Checkout my games below!
 
-    p
-      a(href="/games/box-rain",title="Box Rain")
-        img(src="/images/games/boxrain/box-rain-banner-1024x500.png", alt="Box Rain")
-      .platforms
-        i.icon-android
+  .intro-games
+    .main-container
+      .main-content
+        a(href="/games/box-rain.html",title="Box Rain")
+          img(src="/assets/images/games/boxrain/box-rain-banner.png", alt="Box Rain")
+        .platforms
+          i.icon-android
