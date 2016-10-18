@@ -66,7 +66,14 @@ body {
 // }
 //
 
-@main-logo-width: 128px;
+.crisp-edges() {
+  image-rendering: -moz-crisp-edges;         /* Firefox */
+  image-rendering: -o-crisp-edges;         /* Opera */
+  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+  -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+}
 
 .logo {
   width: @main-logo-width + 100;
@@ -76,12 +83,7 @@ body {
   text-align: center;
   font-weight: normal;
 
-  image-rendering: -moz-crisp-edges;         /* Firefox */
-  image-rendering: -o-crisp-edges;         /* Opera */
-  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
+  .crisp-edges();
 
   a {
     display: block;
@@ -101,8 +103,9 @@ body {
 
   .main-content {
     padding-left: 153px;
-    background: url("/assets/images/gamepad-primary.png") left center no-repeat;
+    background: url("/assets/images/gamepad-white.png") left center no-repeat;
     background-size: 100px;
+    .crisp-edges();
   }
 }
 

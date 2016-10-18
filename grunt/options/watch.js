@@ -9,5 +9,9 @@ module.exports = {
   views: {
     files: '<%= dir.views %>/**',
     tasks: [ 'pug' ]
+  },
+  assets: {
+    files: 'assets/**',
+    tasks: [ 'copy:assets' ]
   }
 };
