@@ -7,64 +7,9 @@ body {
   font-family: Montserrat, sans-serif;
 }
 
-//
-// a {
-//   color: @primary-color;
-//
-//   &:hover {
-//     color: lighten(@primary-color, 30%);
-//   }
-//
-//   &:active {
-//     color: @secondary-color;
-//   }
-// }
-//
-// .content {
-//   background: @light-grey;
-//   color: @dark-grey;
-//   padding: 60px;
-//   padding-bottom: 20px;
-// }
-//
-// .navbar {
-//   margin-bottom: 0;
-//
-//   .navbar-brand {
-//     color: @light-grey;
-//   }
-// }
-//
-// footer {
-//   padding: 60px 0;
-// }
-//
-// footer, .navbar {
-//
-//     a {
-//       color: @secondary-color;
-//
-//       &:hover {
-//         color: lighten(@secondary-color, 30%);
-//       }
-//
-//       &:active {
-//         color: @primary-color;
-//       }
-//     }
-// }
-//
-// .breadcrumb {
-//   font-size: 1.4em;
-//   border-radius: 0;
-//   background-color: transparent;
-//   margin-bottom: 0;
-// }
-//
-// .main-h1 {
-//   margin-top: 0;
-// }
-//
+a {
+  text-shadow: 0 1px black;
+}
 
 .crisp-edges() {
   image-rendering: -moz-crisp-edges;         /* Firefox */
@@ -76,41 +21,38 @@ body {
 }
 
 .logo {
-  width: @main-logo-width + 100;
-  background: url("@{images}/makmonty_logo_colors.png") center top no-repeat;
-  background-size: @main-logo-width @main-logo-width;
-  margin: 0 auto 40px auto;
   text-align: center;
-  font-weight: normal;
-
-  .crisp-edges();
+  padding: @standard-padding 0;
 
   a {
-    display: block;
-    padding-top: @main-logo-width;
+    font-weight: normal;
     color: @text-color-inverted;
   }
 }
 
-.intro-personal {
+.main-content {
   background-color: @dark-grey;
+}
+
+.intro-personal {
+  background-color: darken(@dark-grey, 5%);
   color: @text-color-inverted;
-  padding: 40px 0;
-  font-size: 1.6em;
+  font-size: 1.4em;
+  line-height: 1.6em;
   // text-transform: uppercase;
   // font-family: sans-serif;
   // letter-spacing: 1px;
 
   .main-content {
     padding-left: 173px;
-    background: url("@{images}/gamepad-white.png") 36px center no-repeat;
+    background: url("@{images}/makmonty_logo_colors.png") 36px center no-repeat;
     background-size: 100px;
     .crisp-edges();
   }
 }
 
 .intro-games {
-  background-color: @light-grey;
+  background-color: @dark-grey;
   color: @text-color;
   // color: black;
   padding: 40px 0;
