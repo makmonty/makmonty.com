@@ -8,7 +8,12 @@ body {
 }
 
 a {
+  color: lighten(@primary-color, 10%);
   text-shadow: 0 1px black;
+}
+
+nav {
+  padding: @standard-padding 0;
 }
 
 .crisp-edges() {
@@ -32,6 +37,25 @@ a {
 
 .main-content {
   background-color: @dark-grey;
+
+  h2 {
+    color: @light-grey;
+  }
+}
+
+.intro-header {
+  display: block;
+  text-align: left;
+  padding-left: 59px;
+  padding-top: 10px;
+  margin-bottom: @standard-padding;
+  height: 44px;
+
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 44px;
+
+  .crisp-edges();
 }
 
 .intro-personal {
@@ -55,11 +79,19 @@ a {
   background-color: @dark-grey;
   color: @text-color;
   // color: black;
-  padding: 40px 0;
+
+  text-align: center;
+
+  .intro-header {
+    background-image: url('/assets/images/gamepad-white.png');
+  }
 }
 
 .game {
-  margin: 40px 0;
+  display: inline-block;
+  width: 256px;
+  height: 128px;
+
   a {
     display: block;
     max-width: 100%;
