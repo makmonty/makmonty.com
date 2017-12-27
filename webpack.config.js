@@ -1,17 +1,18 @@
+// See https://gist.github.com/fstanis/773110b12d91f42d3c3a22b71cbf6c42
 const path = require('path');
 const ExtractTextPlugin = require('extract-text-webpack-plugin');
-const HtmlPlugin = require('html-webpack-plugin');
+// const HtmlPlugin = require('html-webpack-plugin');
 
 const distDir = 'public';
-const extractCSS = new ExtractTextPlugin('[name]');
-const extractHTML = new ExtractTextPlugin('[name]');
 
-let entry = {};
-// entry['css/style.css'] = './sass/style.scss';
-entry['index.html'] = './views/index.pug';
+// let extractCSS = new ExtractTextPlugin('css/style.css');
+let extractHTML = new ExtractTextPlugin('[name]');
 
 module.exports = {
-  entry,
+  entry: {
+    // 'css/style.css': './sass/style.scss',
+    'index.html': './views/index.pug'
+  },
   output: {
     filename: '[name]',
     path: path.resolve(distDir)
@@ -23,10 +24,19 @@ module.exports = {
     rules: [
       {
         test: /\.scss$/,
-        use: extractCSS.extract([
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].css',
+              outputPath: 'css/',
+              publicPath: '/'
+            }
+          },
+          'extract-loader',
           'css-loader',
           'sass-loader'
-        ])
+        ]
       },
       {
         test: /favicons/,
@@ -36,6 +46,19 @@ module.exports = {
             options: {
               name: '[name].[ext]',
               outputPath: '/'
+            }
+          }
+        ]
+      },
+      {
+        test: /fonts/,
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].[ext]',
+              outputPath: 'fonts/',
+              publicPath: '/'
             }
           }
         ]
@@ -68,7 +91,7 @@ module.exports = {
     ]
   },
   plugins: [
-    extractCSS,
+    // extractCSS,
     extractHTML
     // new HtmlPlugin({
     //   template: './views/index.pug'

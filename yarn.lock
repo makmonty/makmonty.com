@@ -1356,6 +1356,12 @@ extglob@^0.3.1:
   dependencies:
     is-extglob "^1.0.0"
 
+extract-loader@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/extract-loader/-/extract-loader-1.0.1.tgz#f82dbb0e17f7358e8ed99efc3556f77eba03f44f"
+  dependencies:
+    loader-utils "^1.1.0"
+
 extract-text-webpack-plugin@^3.0.2:
   version "3.0.2"
   resolved "https://registry.yarnpkg.com/extract-text-webpack-plugin/-/extract-text-webpack-plugin-3.0.2.tgz#5f043eaa02f9750a9258b78c0a6e0dc1408fb2f7"
@@ -4118,6 +4124,13 @@ strip-indent@^1.0.1:
 strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
+
+style-loader@^0.19.1:
+  version "0.19.1"
+  resolved "https://registry.yarnpkg.com/style-loader/-/style-loader-0.19.1.tgz#591ffc80bcefe268b77c5d9ebc0505d772619f85"
+  dependencies:
+    loader-utils "^1.0.2"
+    schema-utils "^0.3.0"
 
 supports-color@^2.0.0:
   version "2.0.0"
