@@ -1,7 +1,6 @@
-// @import '../assets/stylesheets/icomoon/style.css';
-// @import 'test.css';
-@import 'layout/makmonty.scss';
-@import 'variables.scss';
+@import '../assets/stylesheets/icomoon/style';
+@import 'layout/makmonty';
+@import 'variables';
 
 body {
   background: #333;
@@ -71,7 +70,7 @@ nav {
 
   .main-content {
     padding-left: 173px;
-    background: url("#{$imagesPath}/makmonty_logo_colors.png") 36px center no-repeat;
+    background: url("#{$imagesPath}/makmonty_logo_colors2.png") 36px center no-repeat;
     background-size: 100px;
     @include crisp-edges();
   }

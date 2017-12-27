@@ -11,7 +11,8 @@ let extractHTML = new ExtractTextPlugin('[name]');
 module.exports = {
   entry: {
     // 'css/style.css': './sass/style.scss',
-    'index.html': './views/index.pug'
+    'index.html': './views/index.pug',
+    'games/box-rain.html': './views/games/box-rain.pug'
   },
   output: {
     filename: '[name]',
@@ -23,7 +24,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.scss$/,
+        test: /\.s?css$/,
         use: [
           {
             loader: 'file-loader',
@@ -35,6 +36,12 @@ module.exports = {
           },
           'extract-loader',
           'css-loader',
+          'sass-loader'
+        ]
+      },
+      {
+        test: /\.scss$/,
+        use: [
           'sass-loader'
         ]
       },
