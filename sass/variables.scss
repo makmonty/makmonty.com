@@ -1,5 +1,26 @@
-$primary-color: #FF1F1F;
-$secondary-color: #FBFF00;
+$red: #f01100;
+$yellow: #f0bc00;
+$green: #00b720;
+$blue: #2e86ab;
+
+
+$primary-color: $blue;
+$secondary-color: $green;
+$danger-color: $red;
+
+$text-color: #444;
+$text-color-inverted: #fff;
+
+$dark-grey: #505050;
+$light-grey: #f3f3f3;
+
+$main-container-width: 660px;
+
+
+$standard-padding: 40px;
+$nav-padding: 5px;
+
+$button-border-width: 2px;
 
 $main-logo-width: 128px;
 

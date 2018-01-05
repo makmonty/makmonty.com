@@ -1,91 +1,17 @@
 @import '../assets/stylesheets/icomoon/style';
-@import 'layout/makmonty';
+// @import 'layout/makmonty';
 @import 'variables';
+@import 'mixins';
+@import 'layout';
 
 body {
-  background: #333;
-  color: $light-grey;
-  font-family: Montserrat, sans-serif;
+  color: $dark-grey;
+  font-family: 'Source Sans Pro', sans-serif;
 }
 
 a {
-  color: lighten($primary-color, 10%);
-  text-shadow: 0 1px black;
-}
-
-nav {
-  padding: $standard-padding 0;
-}
-
-@mixin crisp-edges() {
-  image-rendering: -moz-crisp-edges;         /* Firefox */
-  image-rendering: -o-crisp-edges;         /* Opera */
-  image-rendering: -webkit-optimize-contrast; /* Webkit (non-standard naming) */
-  image-rendering: pixelated;
-  image-rendering: crisp-edges;
-  -ms-interpolation-mode: nearest-neighbor;  /* IE (non-standard property) */
-}
-
-.logo {
-  text-align: center;
-  padding: $standard-padding 0;
-
-  a {
-    font-weight: normal;
-    color: $text-color-inverted;
-  }
-}
-
-.main-content {
-  background-color: $dark-grey;
-
-  h2 {
-    color: $light-grey;
-  }
-}
-
-.intro-header {
-  display: block;
-  text-align: left;
-  padding-left: 59px;
-  padding-top: 10px;
-  margin-bottom: $standard-padding;
-  height: 44px;
-
-  background-position: left center;
-  background-repeat: no-repeat;
-  background-size: 44px;
-
-  @include crisp-edges();
-}
-
-.intro-personal {
-  background-color: darken($dark-grey, 5%);
-  color: $text-color-inverted;
-  font-size: 1.4em;
-  line-height: 1.6em;
-  // text-transform: uppercase;
-  // font-family: sans-serif;
-  // letter-spacing: 1px;
-
-  .main-content {
-    padding-left: 173px;
-    background: url("#{$imagesPath}/makmonty_logo_colors2.png") 36px center no-repeat;
-    background-size: 100px;
-    @include crisp-edges();
-  }
-}
-
-.intro-games {
-  background-color: $dark-grey;
-  color: $text-color;
-  // color: black;
-
-  text-align: center;
-
-  .intro-header {
-    background-image: url('#{$imagesPath}/gamepad-white.png');
-  }
+  text-decoration: none;
+  color: darken($primary-color, 10%);
 }
 
 .game-card {
@@ -127,3 +53,5 @@ nav {
     font-size: 1.6em;
   }
 }
+
+@import 'home';
