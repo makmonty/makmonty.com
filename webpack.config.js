@@ -1,12 +1,12 @@
 // See https://gist.github.com/fstanis/773110b12d91f42d3c3a22b71cbf6c42
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const HtmlPlugin = require('html-webpack-plugin');
 
 const distDir = 'public';
 
 // let extractCSS = new ExtractTextPlugin('css/style.css');
-let extractHTML = new ExtractTextPlugin('[name]');
+// let extractHTML = new ExtractTextPlugin('[name]');
 
 module.exports = {
   entry: {
@@ -86,21 +86,39 @@ module.exports = {
       },
       {
         test: /\.pug$/,
-        use: extractHTML.extract([
+        use: [
+          {
+            loader: 'file-loader',
+            options: {
+              name: '[name].html',
+              outputPath: '/',
+              publicPath: '/'
+            }
+          },
           {
             loader: 'html-loader',
             options: {
               attrs: ['img:src', 'link:href']
             }
           },
+          // 'extract-loader',
           'pug-html-loader'
-        ])
+        ]
+        // use: extractHTML.extract([
+        //   {
+        //     loader: 'html-loader',
+        //     options: {
+        //       attrs: ['img:src', 'link:href']
+        //     }
+        //   },
+        //   'pug-html-loader'
+        // ])
       }
     ]
   },
   plugins: [
     // extractCSS,
-    extractHTML
+    // extractHTML
     // new HtmlPlugin({
     //   template: './views/index.pug'
     // }),

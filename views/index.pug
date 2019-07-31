@@ -5,25 +5,25 @@ block vars
   - var basePath = './';
   
 block content
-  .intro-personal
-    | Hi! I do web development and try to play and make video games. Check out my work and skills here!
 
-  //- .intro-games
-  //-   .main-content
-  //- 
-  //-     h2.intro-header Games
-  //- 
-  //-     .game-card
-  //-       a(href="/games/box-rain.html",title="Box Rain")
-  //-         img(src="../assets/images/games/boxrain/box-rain-banner.png", alt="Box Rain")
-  //-       .platforms
-  //-         i.icon-android
+  aside
+    header
+      h1.logo
 
-  .skills
-    ul
-      li.unity3d(title="Unity3D") Unity3D
-      li.javascript(title="Javascript") Javascript
-      li.angularjs(title="AngularJS") AngularJS
-      li.nodejs(title="NodeJS") NodeJS
-      li.vuejs(title="VueJS") VueJS
-      li.express(title="Express") Express
+    nav
+        ul
+          li
+            a(href="/") Home
+          li
+            a(href="#about") About
+          li
+            a(href="#about") Resume
+          li
+            a(href="#projects") Projects
+          //- li
+          //-   a(href="http://blog.makmonty.com") Blog
+  
+  section
+    .main-block.intro-personal
+      .avatar
+      .intro I'm Ángel Brasero
