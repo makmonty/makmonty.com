@@ -1,0 +1,30 @@
+@import "variables";
+
+button,
+input[type="submit"],
+input[type="reset"],
+.button {
+  display: inline-block;
+  border: 1px solid $background-color;
+  background: $primary-color;
+  border-radius: 9999px;
+  color: $background-color;
+  cursor: pointer;
+  padding: 10px 20px;
+  transition-property: color, background-color;
+  transition-duration: $transition-duration;
+
+  &:hover {
+    background: lighten($primary-color, 5%);
+  }
+
+  .inverted & {
+    background: $background-color;
+    border-color: $primary-color;
+    color: $primary-color;
+
+    &:hover {
+      background: darken($background-color, 10%);
+    }
+  }
+}

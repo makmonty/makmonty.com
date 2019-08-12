@@ -1,3 +1,5 @@
+@import "variables";
+
 @mixin crisp-edges() {
   image-rendering: -moz-crisp-edges;         /* Firefox */
   image-rendering: -o-crisp-edges;         /* Opera */
@@ -9,4 +11,10 @@
 
 @mixin hide-text() {
   font-size: 0;
+}
+
+@mixin content-block() {
+  max-width: $content-width;
+  margin: 0 auto;
+  padding: 0 $primary-padding;
 }

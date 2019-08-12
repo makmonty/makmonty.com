@@ -1,57 +1,13 @@
-@import '../assets/stylesheets/icomoon/style';
-// @import 'layout/makmonty';
-@import 'variables';
-@import 'mixins';
-@import 'layout';
+@import "variables";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
+// @import "../assets/stylesheets/icomoon/style";
+// @import "layout/makmonty";
+@import "mixins";
+@import "buttons";
+@import "nav";
+// @import "fonts";
+@import "layout";
 
-body {
-  color: $dark-grey;
-  font-family: 'Lato', sans-serif;
-}
-
-a {
-  text-decoration: none;
-  color: darken($primary-color, 10%);
-}
-
-.game-card {
-  display: inline-block;
-  width: 256px;
-  height: 128px;
-
-  a {
-    display: block;
-    max-width: 100%;
-    img {
-      max-width: 100%;
-      border-radius: 5px;
-      border-bottom: 3px solid darken($dark-grey, 10%);
-      //box-shadow: 3px 0 3px 0px rgba(0,0,0,0.2);
-    }
-  }
-
-  .platforms {
-    font-size: 1.6em;
-    margin-top: 5px;
-    text-align: center;
-    color: darken($light-grey, 20%);
-  }
-}
-
-.game-big {
-  max-width: 600px;
-  margin: 0 auto;
-  img {
-    max-width: 100%;
-  }
-}
-
-.game-info {
-  ul {
-    list-style: none;
-    padding-left: 0;
-    font-size: 1.6em;
-  }
-}
-
-@import 'home';
+@import "home";
