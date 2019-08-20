@@ -1,6 +1,7 @@
 
 nav.main-nav {
   text-align: left;
+  border-bottom: 6px solid $primary-color;
 
   ul {
     @include content-block();
