@@ -1,29 +1,29 @@
 {
-  "name": "makmonty-web",
-  "version": "0.0.1",
+  "name": "makmonty",
+  "version": "1.0.0",
+  "description": "My personal website",
+  "author": "Ángel Brasero",
   "private": true,
   "scripts": {
-    "start": "parcel views/index.pug",
-    "build": "parcel build views/index.pug"
-  },
-  "staticFiles": {
-    "staticPath": ["assets/root"]
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ."
   },
   "dependencies": {
-    "@fortawesome/fontawesome-free": "^5.10.1",
-    "body-parser": "~1.19.0",
-    "cookie-parser": "~1.4.3",
-    "debug": "~4.1.1",
-    "express": "~4.17.1",
-    "jquery": "^3.4.1",
-    "morgan": "~1.9.0",
-    "parcel-plugin-static-files-copy": "^2.2.1",
-    "pug": "^2.0.0-rc.4",
-    "serve-favicon": "~2.5.0"
+    "@fortawesome/fontawesome-free": "^5.11.2",
+    "nuxt": "^2.0.0"
   },
   "devDependencies": {
+    "@nuxtjs/eslint-config": "^1.0.1",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "babel-eslint": "^10.0.1",
     "eslint": "^6.1.0",
-    "parcel-bundler": "^1.12.3",
-    "sass": "^1.22.9"
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "node-sass": "^4.12.0",
+    "pug": "^2.0.4",
+    "pug-plain-loader": "^1.0.0",
+    "sass-loader": "^8.0.0"
   }
 }
