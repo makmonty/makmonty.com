@@ -28,6 +28,9 @@ nav.main-nav {
         &:hover {
           border-bottom-width: 3px;
         }
+        &.nuxt-link-exact-active {
+          border-bottom-width: 6px;
+        }
       }
     }
   }

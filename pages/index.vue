@@ -10,7 +10,7 @@ article
         p.summary I'm a software engineer. Passionate about technology and software development.
           | <br />I spend most of my time coding.
         .call-to-action
-          a.button(href="cv.pug") Check my CV
+          nuxt-link.button(to="/cv") Check my CV
   section.i-do.main-block
     h2 In summary, I do...
     .disciplines
