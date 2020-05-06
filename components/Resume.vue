@@ -16,7 +16,7 @@ div
         li
           h4 <strong>Software Engineer</strong> at <a href="https://www.podgroup.com/">Pod Group</a>
             | <br/>2019 September - Current job
-          p Full stack design and implementation of new features of several projects.
+          p Full stack design and implementation of new features in several projects.
             | <br/>Involved in the implementation of agile methodologies to improve the quality and efficiency of the development.
           p Core technologies: Angular 2+, Typescript, NodeJS, ExpressJS, Restify.
         li
