@@ -7,7 +7,7 @@ div
         li
           nuxt-link(to="/") Home
         li
-          nuxt-link(to="cv") CV
+          nuxt-link(to="/cv") CV
         //- li
         //-   a(href="portfolio.pug") Portfolio
         //- li
