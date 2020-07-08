@@ -47,6 +47,7 @@ export default {
     injected: true
   },
   sitemap: {
+    hostname: 'https://makmonty.com',
     exclude: [
       '/blog',
       '/games'
