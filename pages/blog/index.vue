@@ -1,6 +1,6 @@
 <template>
   <section class="main-block post-list">
-    <article v-for="post in blogPosts" :key="post.slug" class="post">
+    <article v-for="post in items" :key="post.slug" class="post">
       <img :src="post.featuredImage">
       <h1>
         <nuxt-link :to="'/blog/' + post.slug">
@@ -18,11 +18,11 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
 export default {
   computed: {
-    blogPosts () {
-      return this.$store.state.blog.items
-    }
+    ...mapState('blog', ['items'])
   }
 }
 </script>
