@@ -27,7 +27,7 @@ export const mutations = {
 
 export const actions = {
   async nuxtServerInit ({ commit }) {
-    await commit('setBlogPosts', getContentFromPath('@/assets/content/blog/'))
-    await commit('setGames', getContentFromPath('@/assets/content/games/'))
+    await commit('setBlogPosts', await getContentFromPath('@/assets/content/blog/'))
+    await commit('setGames', await getContentFromPath('@/assets/content/games/'))
   }
 }
