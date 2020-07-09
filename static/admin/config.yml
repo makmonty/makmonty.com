@@ -21,6 +21,20 @@ collections:
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Featured image", name: "featuredImage", widget: "image" }
+      - {
+          label: "Categories",
+          name: "categories",
+          widget: "list",
+          field:
+            {
+              label: "Category",
+              name: "category",
+              widget: "relation",
+              collection: "categories",
+              valueField: "{{slug}}",
+              searchField: ["name"],
+            },
+        }
   - name: "games"
     label: "Games"
     format: "json"
@@ -42,3 +56,13 @@ collections:
           widget: "list",
           field: { label: "Screenshot", name: "screenshot", widget: "image" },
         }
+  - name: "categories"
+    label: "Categories"
+    format: "json"
+    folder: "assets/content/categories"
+    create: true
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - { label: "Name", name: "name", widget: "string" }

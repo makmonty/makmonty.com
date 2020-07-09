@@ -1,6 +1,7 @@
 <template>
   <section class="main-block post-list">
-    <article v-for="post in items" :key="post.slug" class="post">
+    <h1>{{ category.name }}</h1>
+    <article v-for="post in byCategory(category.slug)" :key="post.slug" class="post">
       <img :src="post.featuredImage">
       <h2>
         <nuxt-link :to="'/blog/' + post.slug">
@@ -18,11 +19,20 @@
 </template>
 
 <script>
-import { mapState } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
+  async asyncData ({ params, payload }) {
+    if (payload) {
+      return { post: payload }
+    } else {
+      return {
+        category: await require(`@/assets/content/categories/${params.category}.json`)
+      }
+    }
+  },
   computed: {
-    ...mapState('blog', ['items'])
+    ...mapGetters('blog', ['byCategory'])
   }
 }
 </script>

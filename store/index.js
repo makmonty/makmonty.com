@@ -18,5 +18,10 @@ export const actions = {
       false,
       /\.json$/
     )))
+    await commit('categories/setItems', await getContentFromFiles(await require.context(
+      '@/assets/content/categories/',
+      false,
+      /\.json$/
+    )))
   }
 }
