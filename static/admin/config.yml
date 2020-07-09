@@ -32,7 +32,7 @@ collections:
               widget: "relation",
               collection: "categories",
               valueField: "{{slug}}",
-              searchField: ["name"],
+              searchFields: ["name"],
             },
         }
   - name: "games"
