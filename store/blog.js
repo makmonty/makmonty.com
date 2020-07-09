@@ -10,7 +10,6 @@ export const mutations = {
 
 export const getters = {
   byCategory (state) {
-    console.log(state.items)
-    return category => state.items.find(i => (i.categories || []).includes(category))
+    return category => state.items.filter(i => (i.categories || []).includes(category))
   }
 }
