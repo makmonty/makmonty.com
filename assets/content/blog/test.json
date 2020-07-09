@@ -1,6 +1,13 @@
 {
   "title": "Test",
-  "date": "",
+  "date": "2020-07-09T18:44:18.696Z",
   "description": "Test post",
-  "body": "# This is a test"
+  "body": "# This is a test",
+  "categories": [
+    "raspberry-pi"
+  ],
+  "tags": [
+    "test"
+  ],
+  "featuredImage": "/cms/img/dennisnedry.gif"
 }
