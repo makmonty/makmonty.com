@@ -4,6 +4,7 @@
     <div class="game-date">
       {{ game.date }}
     </div>
+    <!-- eslint-disable-next-line -->
     <div v-html="$md.render(game.body)" />
   </article>
 </template>

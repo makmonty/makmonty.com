@@ -1,48 +1,60 @@
-<template lang="pug">
+<template>
+  <div>
+    <header>
+      <AppNav />
+    </header>
+    <div class="main-container">
+      <nuxt />
+    </div>
 
-div
-  header
-    nav.main-nav
-      ul
-        li
-          nuxt-link(to="/") Home
-        li
-          nuxt-link(to="/cv") CV
-        //- li
-        //-   a(href="portfolio.pug") Portfolio
-        //- li
-        //-   a(href="#contact") Contact
-        //- li
-        //-   a(href="http://blog.makmonty.com") Blog
-  .main-container
-    nuxt
+    <footer>
+      <div class="main-block">
+        <p>Find me at...</p>
+        <div class="social-icons">
+          <a href="http://github.com/makmonty" title="Github">
+            <i class="fab fa-github-alt" />
+          </a>
+          <a href="https://www.linkedin.com/in/angelbraseromoreno/" title="Linkedin">
+            <i class="fab fa-linkedin-in" />
+          </a>
+          <a href="https://soundcloud.com/angel-brasero-moreno" title="Soundcloud">
+            <i class="fab fa-soundcloud" />
+          </a>
+          <a href="http://twitter.com/makmonty" title="Twitter">
+            <i class="fab fa-twitter" />
+          </a>
+          <a href="https://www.instagram.com/makmonty_/" title="Instagram">
+            <i class="fab fa-instagram" />
+          </a>
+        </div>
+      </div>
+    </footer>
 
-  footer
-    .main-block
-      p Find me at...
-      .social-icons
-        a(href="http://github.com/makmonty", title="Github")
-          i.fab.fa-github-alt
-        a(href="https://www.linkedin.com/in/angelbraseromoreno/", title="Linkedin")
-          i.fab.fa-linkedin-in
-        a(href="https://soundcloud.com/angel-brasero-moreno", title="Soundcloud")
-          i.fab.fa-soundcloud
-        a(href="http://twitter.com/makmonty", title="Twitter")
-          i.fab.fa-twitter
-        a(href="https://www.instagram.com/makmonty_/", title="Instagram")
-          i.fab.fa-instagram
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
 
-  script.
-    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
-    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
-    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
-    })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-36413273-2', 'auto');
-    ga('send', 'pageview');
-
+      ga('create', 'UA-36413273-2', 'auto');
+      ga('send', 'pageview');
+    </script>
+  </div>
 </template>
 
+<script>
+import AppNav from '@/components/AppNav.vue'
+
+export default {
+  components: {
+    AppNav
+  }
+}
+</script>
+
 <style lang="scss">
-@import '../styles/style.scss';
+$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
+@import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 </style>

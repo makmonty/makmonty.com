@@ -4,6 +4,7 @@
     <div class="post-date">
       {{ post.date }}
     </div>
+    <!-- eslint-disable-next-line -->
     <div v-html="$md.render(post.body)" />
   </article>
 </template>
