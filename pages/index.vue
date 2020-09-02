@@ -1,6 +1,6 @@
 <template>
   <article class="flex flex-col space-y-12 py-12">
-    <section class="container mx-auto px-6 flex">
+    <section class="container mx-auto px-8 flex">
       <img src="../assets/images/yo-24x24.png" class="w-24 h-24 object-contain rendering-crisp-edges">
       <div class="ml-6">
         <h1 class="text-4xl font-bold">
@@ -23,18 +23,16 @@
       </div>
     </section>
     <section class="container mx-auto px-6">
-      <h2 class="">
+      <h2 class="text-2xl">
         In summary, I do...
       </h2>
-      <div class="flex text-center space-x-6 mt-6">
+      <div class="flex text-center justify-around mt-12">
         <div v-for="discipline in disciplines" :key="discipline.name">
-          <div class="frontend-development discipline">
-            <i :class="discipline.icon" class="text-4xl text-primary" />
-            <h3 class="text-2xl font-bold my-2">
-              {{ discipline.name }}
-            </h3>
-            <p>{{ discipline.description }}</p>
-          </div>
+          <i :class="discipline.icon" class="text-2xl text-primary" />
+          <h3 class="text-2xl my-1">
+            {{ discipline.name }}
+          </h3>
+          <p>{{ discipline.description }}</p>
         </div>
       </div>
     </section>
