@@ -1,6 +1,6 @@
 <template>
-  <div>
-    <header>
+  <div class="font-mono">
+    <header class="absolute w-full">
       <AppNav />
     </header>
     <div class="main-container">
