@@ -26,3 +26,17 @@ a {
 .rendering-crisp-edges {
   @include crisp-edges();
 }
+
+h1 {
+  @apply text-4xl;
+  @apply mb-12;
+}
+
+h2 {
+  @apply text-2xl;
+  @apply mb-12;
+}
+
+h4 {
+  @apply text-xl;
+}

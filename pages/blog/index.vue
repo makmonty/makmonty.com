@@ -1,5 +1,5 @@
 <template>
-  <section class="main-block post-list">
+  <section class="container mx-auto px-8 my-24">
     <article v-for="post in items" :key="post.slug" class="post">
       <img :src="post.featuredImage">
       <h2>

@@ -1,14 +1,14 @@
 <template>
-  <div class="font-mono">
-    <header class="absolute w-full">
+  <div class="font-sans">
+    <header class="w-full relative z-20">
       <AppNav />
     </header>
     <div class="main-container">
       <nuxt />
     </div>
 
-    <footer class="border-t border-primary">
-      <div class="container mx-auto p-12">
+    <footer>
+      <div class="container mx-auto p-8">
         <p>Find me at...</p>
         <div class="space-x-4">
           <a

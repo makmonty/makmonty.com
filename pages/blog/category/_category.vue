@@ -1,5 +1,5 @@
 <template>
-  <section class="main-block post-list">
+  <section class="container mx-auto px-8 my-24">
     <h1>{{ category.name }}</h1>
     <article v-for="post in byCategory(category.slug)" :key="post.slug" class="post">
       <img :src="post.featuredImage">
