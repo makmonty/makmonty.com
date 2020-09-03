@@ -40,3 +40,13 @@ h2 {
 h4 {
   @apply text-xl;
 }
+
+.route-enter-active,
+.route-leave-active {
+  transition: opacity 0.5s;
+}
+
+.route-enter,
+.route-leave-to {
+  opacity: 0;
+}
