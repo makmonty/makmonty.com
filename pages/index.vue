@@ -1,9 +1,9 @@
 <template>
-  <article class="flex flex-col space-y-24 pb-24">
+  <article class="flex flex-col pb-24">
     <section class="container mx-auto px-8 h-screen flex justify-center items-center">
-      <div class="flex text-xl">
+      <div class="flex flex-col lg:flex-row items-center text-xl lg:space-x-6 space-y-6 lg:space-y-0">
         <img src="../assets/images/yo-24x24.png" class="w-64 h-64 p-4 object-contain rendering-crisp-edges border rounded-full border-primary">
-        <div class="ml-6 flex flex-col justify-center">
+        <div class="flex flex-col justify-center">
           <h1 class="text-4xl">
             I'm <span class="text-primary">Ángel Brasero</span>
           </h1>
@@ -24,7 +24,7 @@
         </div>
       </div>
     </section>
-    <section class="container mx-auto px-6">
+    <section class="container mx-auto -mt-12 px-6">
       <h2 class="text-2xl">
         In summary, I do...
       </h2>
