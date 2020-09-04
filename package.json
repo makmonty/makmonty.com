@@ -16,7 +16,8 @@
     "@nuxtjs/markdownit": "^1.2.10",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/tailwindcss": "^3.0.2",
-    "nuxt": "^2.14.4"
+    "nuxt": "^2.14.4",
+    "three": "^0.120.1"
   },
   "devDependencies": {
     "@nuxtjs/eslint-config": "^3.1.0",

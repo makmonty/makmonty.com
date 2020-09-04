@@ -1,12 +1,15 @@
 <template>
   <div class="font-sans">
+    <AnimatedBackground class="absolute top-0 z-0" />
     <header class="w-full relative z-20">
       <AppNav />
     </header>
 
-    <transition name="route">
-      <nuxt />
-    </transition>
+    <div class="relative z-10">
+      <transition name="route">
+        <nuxt />
+      </transition>
+    </div>
 
     <footer>
       <div class="container mx-auto p-8">
@@ -39,10 +42,12 @@
 
 <script>
 import AppNav from '@/components/AppNav.vue'
+import AnimatedBackground from '@/components/AnimatedBackground.vue'
 
 export default {
   components: {
-    AppNav
+    AppNav,
+    AnimatedBackground
   },
   data () {
     return {
