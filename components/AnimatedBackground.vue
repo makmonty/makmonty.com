@@ -9,12 +9,14 @@ const vertices = [
   new THREE.Vector3(-0.5, 0, 0),
   new THREE.Vector3(0, 0.866025404, 0)
 ]
-const geometry = new THREE.Geometry()
-// geometry.vertices = vertices
-vertices.forEach(vertex => geometry.vertices.push(vertex))
-geometry.faces.push(new THREE.Face3(0, 1, 2))
-geometry.faces.push(new THREE.Face3(0, 2, 1))
-geometry.computeFaceNormals()
+const triangleGeometry = new THREE.Geometry()
+// triangleGeometry.vertices = vertices
+vertices.forEach(vertex => triangleGeometry.vertices.push(vertex))
+triangleGeometry.faces.push(new THREE.Face3(0, 1, 2))
+triangleGeometry.faces.push(new THREE.Face3(0, 2, 1))
+triangleGeometry.computeFaceNormals()
+
+const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5)
 
 const material = new THREE.MeshLambertMaterial({ color: 0xFFFFFF })
 // const material = new THREE.MeshNormalMaterial()
@@ -76,11 +78,13 @@ export default {
 
       this.setupFrame()
 
-      const angle = 135 * Math.PI / 180
+      const angle = 90 * Math.PI / 180
 
       objects.forEach((object) => {
-        object.rotateOnWorldAxis(new THREE.Vector3(0, 0, Math.sin(time)), angle * deltaTime)
-        object.rotateOnWorldAxis(new THREE.Vector3(Math.cos(time), 0, 0), angle * deltaTime)
+        object.translateOnAxis(new THREE.Vector3(1, 0, 0), deltaTime)
+        object.rotateOnAxis(new THREE.Vector3(0, 1, 0), angle * deltaTime)
+        // object.rotateOnWorldAxis(new THREE.Vector3(0, 0, Math.sin(time)), angle * deltaTime)
+        // object.rotateOnWorldAxis(new THREE.Vector3(Math.cos(time), 0, 0), angle * deltaTime)
         // object.rotateOnAxis(new THREE.Vector3(0.2, 1, 0), angle * deltaTime)
         // object.rotateOnAxis(new THREE.Vector3(0, 0.2, 1), angle * deltaTime)
         // object.rotateOnAxis(new THREE.Vector3(1, 0, 0.2), angle * deltaTime)
@@ -90,10 +94,10 @@ export default {
     },
 
     addObject () {
-      const mesh = new THREE.Mesh(geometry, material)
+      const mesh = new THREE.Mesh(icosahedronGeometry, material)
       // Set center
-      mesh.translateY(-0.288675135)
-      mesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(mesh.position.x, mesh.position.y, mesh.position.z))
+      // mesh.translateY(-0.288675135)
+      // mesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(mesh.position.x, mesh.position.y, mesh.position.z))
 
       objects.push(mesh)
       scene.add(mesh)
