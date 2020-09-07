@@ -1,8 +1,76 @@
 <template>
-  <div ref="canvasContainer" />
+  <div ref="canvasContainer" class="w-full h-full" />
 </template>
+
 <script>
 import * as THREE from 'three'
+
+class BehaviorObject {
+  behaviors = [];
+  object3d = null;
+  renderer = null;
+  mainCamera = null;
+
+  constructor (object3d, renderer, camera) {
+    this.object3d = object3d
+    this.renderer = renderer
+    this.mainCamera = camera
+  }
+
+  addBehavior (Behav) {
+    const behavior = new Behav(this)
+    this.behaviors.push(behavior)
+    return behavior
+  }
+
+  runBehaviorsUpdate () {
+    this.behaviors.forEach(bh => bh.update())
+  }
+}
+
+class Behavior {
+  object = null;
+  object3d = null;
+  renderer = null;
+  mainCamera = null;
+
+  constructor (object) {
+    this.object = object
+    this.object3d = object.object3d
+    this.renderer = object.renderer
+    this.mainCamera = object.mainCamera
+  }
+
+  start () {}
+  update () {}
+  destroy () {}
+}
+
+class FloatingThing extends Behavior {
+  angle = 90 * Math.PI / 180
+  rotation = 0
+  position = new THREE.Vector3(
+    Math.random() * this.renderer.domElement.offsetWidth - this.renderer.domElement.offsetWidth / 2,
+    this.renderer.domElement.offsetHeight / 2,
+    0
+  )
+
+  start () {
+    this.object3d.matrixAutoUpdate = false
+  }
+
+  update () {
+    this.rotation += this.angle * deltaTime
+    const quaternion = new THREE.Quaternion()
+    quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.rotation)
+    this.object3d.matrix.makeRotationFromQuaternion(quaternion)
+
+    this.position = new THREE.Vector3(this.position.x, this.position.y - deltaTime, this.position.z)
+    this.object3d.matrix.setPosition(this.position)
+  }
+}
+
+const cameraWidth = 30
 
 const vertices = [
   new THREE.Vector3(0.5, 0, 0),
@@ -31,18 +99,21 @@ const objects = []
 export default {
 
   mounted () {
+    window.addEventListener('resize', () => {
+      this.setCanvasSize()
+      this.setCameraSize()
+    })
     scene = new THREE.Scene()
 
     renderer = new THREE.WebGLRenderer({ alpha: true })
     renderer.setClearColor(0xFFFFFF, 0)
-    renderer.setSize(window.innerWidth, window.innerHeight)
+    this.setCanvasSize()
 
-    const cameraAspect = window.innerWidth / window.innerHeight
     // camera = new THREE.PerspectiveCamera(75, cameraAspect, 0.1, 1000)
-    const cameraWidth = 30
-    camera = new THREE.OrthographicCamera(-cameraWidth / 2, cameraWidth / 2, cameraWidth / (cameraAspect * 2), -cameraWidth / (cameraAspect * 2), 0.1, 1000)
-    camera.position.x = 10
-    camera.position.y = 10
+    camera = new THREE.OrthographicCamera(1, 1, 1, 1, 0.1, 1000)
+    this.setCameraSize()
+    // camera.position.x = 10
+    // camera.position.y = 10
     camera.position.z = 10
     camera.lookAt(new THREE.Vector3(0, 0, 0))
     scene.add(camera)
@@ -62,7 +133,7 @@ export default {
     light3.position.z = 5
     scene.add(light3)
 
-    this.addObject()
+    this.spawnObject()
 
     this.$refs.canvasContainer.appendChild(renderer.domElement)
 
@@ -70,6 +141,19 @@ export default {
     this.animate()
   },
   methods: {
+    setCanvasSize () {
+      renderer.setSize(this.$refs.canvasContainer.offsetWidth, this.$refs.canvasContainer.offsetHeight)
+    },
+
+    setCameraSize () {
+      const cameraAspect = this.$refs.canvasContainer.offsetWidth / this.$refs.canvasContainer.offsetHeight
+      camera.left = -cameraWidth / 2
+      camera.right = cameraWidth / 2
+      camera.top = cameraWidth / (cameraAspect * 2)
+      camera.bottom = -cameraWidth / (cameraAspect * 2)
+      camera.updateProjectionMatrix()
+    },
+
     setupFrame () {
       const currTime = new Date().getTime() / 1000
       deltaTime = currTime - time
@@ -81,27 +165,21 @@ export default {
 
       this.setupFrame()
 
+      objects.forEach(obj => obj.runBehaviorsUpdate())
+
       renderer.render(scene, camera)
     },
 
-    addObject () {
+    spawnObject () {
       const mesh = new THREE.Mesh(icosahedronGeometry, material)
-      mesh.matrixAutoUpdate = false
+      const behaviorObject = new BehaviorObject(mesh, renderer, camera)
+      const behavior = behaviorObject.addBehavior(FloatingThing)
 
-      objects.push(mesh)
-      let rotation = 0
-      let position = new THREE.Vector3(0, 0, 0)
-      mesh.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
-        const angle = 90 * Math.PI / 180
-        rotation += angle * deltaTime
-        const quaternion = new THREE.Quaternion()
-        quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rotation)
-        this.matrix.setRotationFromQuaternion(quaternion)
+      objects.push(behaviorObject)
 
-        position = new THREE.Vector3(position.x + deltaTime, position.y, position.z)
-        this.matrix.setPosition(position)
-      }
       scene.add(mesh)
+
+      behavior.start()
     }
   }
 }

@@ -1,6 +1,6 @@
 <template>
-  <div class="font-sans">
-    <AnimatedBackground class="absolute top-0 z-0" />
+  <div class="font-sans relative">
+    <AnimatedBackground class="absolute top-0 z-0 w-full h-full" />
     <header class="w-full relative z-20">
       <AppNav />
     </header>
