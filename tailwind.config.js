@@ -1,4 +1,4 @@
-const { colors } = require('tailwindcss/defaultTheme')
+const { colors } = require('tailwindcss/defaultTheme');
 
 module.exports = {
   theme: {
@@ -21,6 +21,7 @@ module.exports = {
     ]
   },
   future: {
-    removeDeprecatedGapUtilities: true
+    removeDeprecatedGapUtilities: true,
+    purgeLayersByDefault: true
   }
-}
+};

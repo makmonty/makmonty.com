@@ -29,15 +29,15 @@ export default {
       default: ''
     }
   },
-  data () {
+  data() {
     return {
       className: ['rounded-full', 'text-primary', 'border', 'border-primary', 'px-4', 'py-2']
-    }
+    };
   },
   methods: {
-    click (event) {
-      this.$emit('click', event)
+    click(event) {
+      this.$emit('click', event);
     }
   }
-}
+};
 </script>

@@ -1,5 +1,5 @@
-import Vue from 'vue'
+import Vue from 'vue';
 
-import BaseButton from '@/components/BaseButton'
+import BaseButton from '@/components/BaseButton';
 
-Vue.component('BaseButton', BaseButton)
+Vue.component('BaseButton', BaseButton);
