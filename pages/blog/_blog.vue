@@ -11,14 +11,14 @@
 
 <script>
 export default {
-  async asyncData ({ params, payload }) {
+  async asyncData({ params, payload }) {
     if (payload) {
-      return { post: payload }
+      return { post: payload };
     } else {
       return {
         post: await require(`@/assets/content/blog/${params.blog}.json`)
-      }
+      };
     }
   }
-}
+};
 </script>

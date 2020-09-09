@@ -19,20 +19,20 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters } from 'vuex';
 
 export default {
-  async asyncData ({ params, payload }) {
+  async asyncData({ params, payload }) {
     if (payload) {
-      return { post: payload }
+      return { post: payload };
     } else {
       return {
         category: await require(`@/assets/content/categories/${params.category}.json`)
-      }
+      };
     }
   },
   computed: {
     ...mapGetters('blog', ['byCategory'])
   }
-}
+};
 </script>

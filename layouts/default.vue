@@ -41,15 +41,15 @@
 </template>
 
 <script>
-import AppNav from '@/components/AppNav.vue'
-import AnimatedBackground from '@/components/AnimatedBackground.vue'
+import AppNav from '@/components/AppNav.vue';
+import AnimatedBackground from '@/components/AnimatedBackground.vue';
 
 export default {
   components: {
     AppNav,
     AnimatedBackground
   },
-  data () {
+  data() {
     return {
       socialLinks: [
         {
@@ -78,7 +78,7 @@ export default {
           icon: 'fab fa-instagram'
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
