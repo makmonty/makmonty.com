@@ -1,6 +1,9 @@
 <template>
-  <nav class="flex p-8 container mx-auto">
-    <ul class="flex space-x-8">
+  <nav class="flex container mx-auto items-center">
+    <div class="w-10 h-10 ml-8 relative">
+      <FloatingThings />
+    </div>
+    <ul class="flex p-8 space-x-8">
       <li v-for="item in menu" :key="item.to">
         <nuxt-link :to="item.to" class="hover:border-b-4">
           {{ item.name }}
@@ -17,7 +20,12 @@
 </template>
 
 <script>
+import FloatingThings from '@/components/FloatingThings';
+
 export default {
+  components: {
+    FloatingThings
+  },
   data() {
     return {
       menu: [
