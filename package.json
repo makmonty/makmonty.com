@@ -14,11 +14,13 @@
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.14.0",
     "@nuxt/typescript-runtime": "^2.0.0",
+    "@nuxtjs/color-mode": "^1.0.3",
     "@nuxtjs/markdownit": "^1.2.10",
     "@nuxtjs/sitemap": "^2.4.0",
     "@nuxtjs/tailwindcss": "^3.0.2",
     "nuxt": "^2.14.4",
     "nuxt-property-decorator": "^2.7.2",
+    "tailwindcss-dark-mode": "^1.1.6",
     "three": "^0.120.1"
   },
   "devDependencies": {

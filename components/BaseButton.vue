@@ -27,11 +27,26 @@ export default {
     href: {
       type: String,
       default: ''
+    },
+    color: {
+      type: String,
+      default: 'primary'
     }
   },
   data() {
     return {
-      className: ['rounded-full', 'text-primary', 'border', 'border-primary', 'px-4', 'py-2']
+      className: [
+        'rounded-full',
+        'hover:text-primary',
+        'text-contrast',
+        'border',
+        'border-primary',
+        'px-4',
+        'py-2',
+        `bg-${this.color}`,
+        'hover:bg-gray-300',
+        'dark-hover:bg-gray-700'
+      ]
     };
   },
   methods: {

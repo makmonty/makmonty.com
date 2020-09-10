@@ -25,6 +25,10 @@ export default {
   css: [
     'styles/style.scss'
   ],
+  pageTransition: {
+    name: 'route',
+    duration: 100
+  },
   /*
   ** Plugins to load before mounting the App
   */
@@ -38,7 +42,8 @@ export default {
     // Doc: https://github.com/nuxt-community/eslint-module
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
-    '@nuxt/typescript-build'
+    '@nuxt/typescript-build',
+    '@nuxtjs/color-mode'
   ],
   /*
   ** Nuxt.js modules
@@ -56,6 +61,9 @@ export default {
       '/blog',
       '/games'
     ]
+  },
+  colorMode: {
+    preference: 'light'
   },
   /*
   ** Build configuration

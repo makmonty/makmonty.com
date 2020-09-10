@@ -16,6 +16,10 @@
     //- li
     //-   a(href="http://blog.makmonty.com") Blog -->
     </ul>
+    <button class="w-12 h-12 p-3 rounded-full hover:bg-gray-300 dark-hover:bg-gray-700 text-primary ml-auto" @click="toggleTheme">
+      <i v-if="colorMode === 'light'" class="fas fa-moon" />
+      <i v-else class="fas fa-sun" />
+    </button>
   </nav>
 </template>
 
@@ -39,6 +43,16 @@ export default {
         }
       ]
     };
+  },
+  computed: {
+    colorMode() {
+      return this.$colorMode.value;
+    }
+  },
+  methods: {
+    toggleTheme() {
+      this.$colorMode.value = this.$colorMode.value === 'light' ? 'dark' : 'light';
+    }
   }
 };
 </script>
