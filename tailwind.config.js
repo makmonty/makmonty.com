@@ -5,8 +5,8 @@ module.exports = {
     extend: {
       colors: {
         primary: colors.teal['500'],
-        fg: colors.gray['900'],
-        contrast: colors.white
+        dark: colors.gray['900'],
+        light: colors.white
       }
     },
     darkSelector: '.dark-mode'
@@ -28,9 +28,12 @@ module.exports = {
       'plugins/**/*.js',
       'nuxt.config.js'
     ],
-    whitelist: [
-      'mode-dark'
-    ]
+    options: {
+      whitelist: [
+        'dark-mode',
+        ''
+      ]
+    }
   },
   future: {
     removeDeprecatedGapUtilities: true,
