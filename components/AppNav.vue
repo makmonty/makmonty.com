@@ -16,10 +16,10 @@
     //- li
     //-   a(href="http://blog.makmonty.com") Blog -->
     </ul>
-    <button class="w-12 h-12 p-3 rounded-full hover:bg-gray-300 dark-hover:bg-gray-700 text-primary ml-auto" @click="toggleTheme">
+    <BaseButton class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800" color="light" @click="toggleTheme">
       <i v-if="colorMode === 'light'" class="fas fa-moon" />
       <i v-else class="fas fa-sun" />
-    </button>
+    </BaseButton>
   </nav>
 </template>
 

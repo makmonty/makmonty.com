@@ -36,16 +36,18 @@ export default {
   data() {
     return {
       className: [
+        'focus:outline-none',
         'rounded-full',
         'hover:text-primary',
-        'text-light',
+        'text-' + (['primary', 'dark'].includes(this.color) ? 'light' : 'primary'), // text-primary text-light
         'border',
         'border-primary',
         'px-4',
         'py-2',
-        `bg-${this.color}`, // bg-primary
+        'bg-' + this.color, // bg-primary bg-light bg-dark
         'hover:bg-gray-300',
-        'dark-hover:bg-gray-700'
+        'transition',
+        'duration-100'
       ]
     };
   },
