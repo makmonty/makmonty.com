@@ -34,6 +34,7 @@ module.exports = {
     'space-before-function-paren': ['error', 'never'],
     'no-console': 'off',
     'no-use-before-define': 'off',
-    'no-useless-constructor': 'off'
+    'no-useless-constructor': 'off',
+    '@typescript-eslint/quotes': ['error', 'single', {"allowTemplateLiterals": true}]
   },
 };

@@ -33,22 +33,6 @@ export class ThreeBehavior {
     return this.object.mainCamera;
   }
 
-  get position() {
-    return this.object3d.position;
-  }
-
-  get rotation() {
-    return this.object3d.rotation;
-  }
-
-  get matrix() {
-    return this.object3d.matrix;
-  }
-
-  set matrix(p) {
-    this.object3d.matrix = p;
-  }
-
   constructor(public object: ThreeBehaviorObject) {}
 
   start() {}
