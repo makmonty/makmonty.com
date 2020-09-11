@@ -1,6 +1,6 @@
 <template>
-  <nav class="flex container mx-auto items-center">
-    <div class="w-10 h-10 ml-8 mr-4 relative">
+  <nav class="flex container mx-auto items-center px-8">
+    <div class="w-10 h-10 mr-4 relative">
       <FloatingThings />
     </div>
     <ul class="flex p-8 space-x-8">
