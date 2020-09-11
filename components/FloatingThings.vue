@@ -65,7 +65,7 @@ export default class FloatingThingsComponent extends Vue {
 
     scene = new THREE.Scene();
 
-    renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
     renderer.setClearColor(0xFFFFFF, 0);
     this.setCanvasSize();
 
