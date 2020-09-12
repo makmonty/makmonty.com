@@ -1,6 +1,6 @@
 <template>
   <article class="flex flex-col pb-24">
-    <section class="container mx-auto px-8 -mt-24 h-screen flex justify-center items-center">
+    <section class="container mx-auto px-8 sm:-mt-24 sm:h-screen flex sm:items-center">
       <div class="flex flex-col lg:flex-row items-center text-xl lg:space-x-6 space-y-6 lg:space-y-0">
         <img
           :src="avatar.src"
@@ -28,7 +28,7 @@
         </div>
       </div>
     </section>
-    <section class="container mx-auto -mt-12 px-8">
+    <section class="container mx-auto mt-10 sm:-mt-12 px-8">
       <h2>
         In summary, I do...
       </h2>
