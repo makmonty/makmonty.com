@@ -11,14 +11,15 @@
     <footer>
       <div class="container mx-auto p-8">
         <p>Find me at...</p>
-        <div class="space-x-8 mt-8">
+        <div class="space-x-4">
           <a
             v-for="link in socialLinks"
             :key="link.title"
             :href="link.href"
             :title="link.title"
+            class="text-xl"
           >
-            <unicon :name="link.icon" width="32" height="32" />
+            <i :class="link.icon" />
           </a>
         </div>
       </div>
@@ -52,27 +53,27 @@ export default {
         {
           href: 'http://github.com/makmonty',
           title: 'Github',
-          icon: 'github'
+          icon: 'fab fa-github-alt'
         },
         {
           href: 'https://www.linkedin.com/in/angelbraseromoreno/',
           title: 'Linkedin',
-          icon: 'linkedin'
+          icon: 'fab fa-linkedin-in'
         },
         {
           href: 'https://soundcloud.com/angel-brasero-moreno',
           title: 'Soundcloud',
-          icon: 'soundcloud'
+          icon: 'fab fa-soundcloud'
         },
         {
           href: 'http://twitter.com/makmonty',
           title: 'Twitter',
-          icon: 'twitter'
+          icon: 'fab fa-twitter'
         },
         {
           href: 'https://www.instagram.com/makmonty_/',
           title: 'Instagram',
-          icon: 'instagram'
+          icon: 'fab fa-instagram'
         }
       ]
     };

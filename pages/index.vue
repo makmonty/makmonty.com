@@ -34,7 +34,7 @@
       </h2>
       <div class="flex text-center justify-around flex-col lg:flex-row space-y-6 lg:space-y-0">
         <div v-for="discipline in disciplines" :key="discipline.name">
-          <unicon :name="discipline.icon" width="36" height="36" />
+          <i :class="discipline.icon" class="text-2xl text-primary" />
           <h3 class="text-2xl my-1">
             {{ discipline.name }}
           </h3>
@@ -64,22 +64,22 @@ export default {
       disciplines: [
         {
           name: 'Frontend',
-          icon: 'browser',
+          icon: 'fas fa-window-restore',
           description: 'Angular, AngularJS, VueJS...'
         },
         {
           name: 'Backend',
-          icon: 'server',
+          icon: 'fas fa-server',
           description: 'NodeJS, PHP, MySQL, MongoDB...'
         },
         {
           name: 'Games',
-          icon: 'basketball',
+          icon: 'fas fa-gamepad',
           description: 'Unity3D, WebGL, Game Design...'
         },
         {
           name: 'Soundtracks',
-          icon: 'music',
+          icon: 'fas fa-compact-disc',
           description: 'A, A#, B, C, C#...'
         }
       ]

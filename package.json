@@ -22,8 +22,7 @@
     "nuxt": "^2.14.5",
     "nuxt-property-decorator": "^2.7.2",
     "tailwindcss-dark-mode": "^1.1.6",
-    "three": "^0.120.1",
-    "vue-unicons": "^2.3.0"
+    "three": "^0.120.1"
   },
   "devDependencies": {
     "@nuxt/types": "^2.14.5",
