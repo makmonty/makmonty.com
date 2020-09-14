@@ -1,6 +1,6 @@
 
 export default {
-  mode: 'universal',
+  ssr: true,
   /*
   ** Headers of the page
   */
@@ -33,9 +33,9 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    'plugins/base-components',
+    '~/plugins/base-components',
     {
-      src: 'plugins/vue-unicons',
+      src: '~/plugins/vue-unicons',
       mode: 'client'
     }
   ],

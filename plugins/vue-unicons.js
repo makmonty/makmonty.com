@@ -1,5 +1,6 @@
 import Vue from 'vue';
-import Unicon from 'vue-unicons';
+// import Unicon from 'vue-unicons';
+import Unicon from 'vue-unicons/dist/vue-unicons-ssr.common.js';
 import {
   uniBrowser,
   uniServer,
