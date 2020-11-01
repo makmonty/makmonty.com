@@ -1,5 +1,10 @@
 <template>
-  <BaseButton class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800 flex flex-no-wrap items-center space-x-4 overflow-hidden" color="light" @click="toggleTheme">
+  <BaseButton
+    class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800 flex flex-no-wrap items-center space-x-4 overflow-hidden"
+    color="light"
+    aria-label="Toggle dark mode"
+    @click="toggleTheme"
+  >
     <transition name="colormode" duration="1000">
       <unicon :key="colorMode" :name="colorMode === 'light' ? 'moon' : 'sun'" width="18" height="18" />
     </transition>
