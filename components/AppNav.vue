@@ -21,8 +21,8 @@
 </template>
 
 <script>
-import FloatingThings from '@/components/FloatingThings';
-import ColorModeToggle from '@/components/ColorModeToggle';
+import FloatingThings from './FloatingThings';
+import ColorModeToggle from './ColorModeToggle';
 
 export default {
   components: {
@@ -39,6 +39,10 @@ export default {
         {
           name: 'CV',
           to: '/cv'
+        },
+        {
+          name: 'Projects',
+          to: '/projects'
         }
       ]
     };

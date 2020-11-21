@@ -6,7 +6,7 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 
 import * as THREE from 'three';
-import { ThreeBehavior, ThreeBehaviorObject } from '@/three-engine/three-engine';
+import { ThreeBehavior, ThreeBehaviorObject } from '../three-engine/three-engine';
 import { OrthographicCamera, Scene, WebGLRenderer } from 'three';
 
 class FloatingThing extends ThreeBehavior {

@@ -2,6 +2,7 @@
 export default {
   ssr: true,
   target: 'static',
+  components: true,
   /*
   ** Headers of the page
   */
@@ -37,7 +38,6 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '~/plugins/base-components',
     {
       src: '~/plugins/vue-unicons',
       mode: 'client'
