@@ -3,9 +3,3 @@
     <Resume />
   </div>
 </template>
-
-<script>
-export default {
-};
-</script>
-</template>
