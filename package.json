@@ -21,7 +21,7 @@
     "nuxt": "^2.14.7",
     "nuxt-property-decorator": "^2.8.8",
     "tailwindcss-dark-mode": "^1.1.7",
-    "three": "^0.122.0",
+    "three": "^0.123.0",
     "vue-unicons": "^2.3.0"
   },
   "devDependencies": {
@@ -30,8 +30,8 @@
     "@nuxtjs/eslint-config": "^5.0.0",
     "@nuxtjs/eslint-config-typescript": "^5.0.0",
     "@nuxtjs/eslint-module": "^3.0.1",
-    "@typescript-eslint/eslint-plugin": "^4.8.1",
-    "@typescript-eslint/parser": "^4.8.1",
+    "@typescript-eslint/eslint-plugin": "^4.8.2",
+    "@typescript-eslint/parser": "^4.8.2",
     "babel-eslint": "^10.1.0",
     "eslint": "^7.14.0",
     "eslint-plugin-nuxt": ">=2.0.0",

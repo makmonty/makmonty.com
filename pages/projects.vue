@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-8 my-24 flex space-x-8">
+  <div class="container mx-auto px-8 my-24 flex justify-center space-x-10">
     <ProjectCard
       v-for="project in projects"
       :key="project.key"
