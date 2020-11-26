@@ -16,6 +16,7 @@ export default {
         {
           key: 'hand-smash',
           name: 'Hand Smash',
+          promoImage: require('~/assets/images/handsmash-promo.jpg'),
           platforms: [
             'android'
           ]
