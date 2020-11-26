@@ -40,9 +40,6 @@
 
 <script>
 export default {
-  htmlAttrs: {
-    className: 'mode-dark'
-  },
   data() {
     return {
       socialLinks: [
