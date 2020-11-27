@@ -36,7 +36,7 @@
       <div class="flex text-center justify-around flex-col lg:flex-row space-y-6 lg:space-y-0">
         <div v-for="discipline in disciplines" :key="discipline.name">
           <client-only>
-            <unicon :name="discipline.icon" width="36" height="36" />
+            <!-- <unicon :name="discipline.icon" width="36" height="36" /> -->
           </client-only>
           <h3 class="text-2xl my-1">
             {{ discipline.name }}
