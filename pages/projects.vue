@@ -1,8 +1,9 @@
 <template>
-  <div class="container mx-auto px-8 my-24 flex justify-center space-x-10">
+  <div class="container mx-auto px-8 my-24 flex flex-wrap justify-center space-x-10">
     <ProjectCard
       v-for="project in projects"
       :key="project.key"
+      class="my-2"
       :project="project"
     />
   </div>
@@ -32,6 +33,7 @@ export default {
         {
           key: '3d-bird',
           name: '3D Bird',
+          promoImage: require('~/assets/images/3dbird-promo.jpg'),
           platforms: [
             'android'
           ]
