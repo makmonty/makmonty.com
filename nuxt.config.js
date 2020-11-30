@@ -28,6 +28,7 @@ export default {
   ** Global CSS
   */
   css: [
+    'node_modules/line-awesome/dist/line-awesome/css/line-awesome.css',
     'styles/style.scss'
   ],
   pageTransition: {
@@ -37,12 +38,7 @@ export default {
   /*
   ** Plugins to load before mounting the App
   */
-  plugins: [
-    {
-      src: '~/plugins/vue-unicons',
-      mode: 'client'
-    }
-  ],
+  plugins: [],
   /*
   ** Nuxt.js dev-modules
   */
