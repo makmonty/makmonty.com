@@ -56,7 +56,16 @@ collections:
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list", required: false }
+      - {
+          label: "Platforms",
+          name: "platforms",
+          widget: "select",
+          options: ["android", "ios", "windows"],
+          multiple: true,
+          required: true,
+        }
       - { label: "Featured image", name: "featuredImage", widget: "image" }
+      - { label: "Main image", name: "mainImage", widget: "image" }
       - {
           label: "Screenshots",
           name: "screenshots",
