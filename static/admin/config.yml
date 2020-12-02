@@ -42,8 +42,8 @@ collections:
               displayFields: ["name"],
             },
         }
-  - name: "games"
-    label: "Games"
+  - name: "game"
+    label: "Game"
     format: "json"
     folder: "assets/content/games"
     create: true
@@ -83,8 +83,8 @@ collections:
           required: false,
           field: { label: "Screenshot", name: "screenshot", widget: "image" },
         }
-  - name: "categories"
-    label: "Categories"
+  - name: "category"
+    label: "Category"
     format: "json"
     folder: "assets/content/categories"
     create: true

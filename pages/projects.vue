@@ -1,45 +1,20 @@
 <template>
   <div class="container mx-auto px-8 my-24 flex flex-wrap justify-center space-x-12">
     <ProjectCard
-      v-for="project in projects"
-      :key="project.key"
+      v-for="game in items"
+      :key="game.slug"
       class="my-2"
-      :project="project"
+      :project="game"
     />
   </div>
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
-  data() {
-    return {
-      projects: [
-        {
-          key: 'hand-smash',
-          name: 'Hand Smash',
-          promoImage: require('~/assets/images/handsmash-promo.jpg'),
-          platforms: [
-            'android'
-          ]
-        },
-        {
-          key: 'maxxima',
-          name: 'Maxxima',
-          promoImage: require('~/assets/images/maxxima-promo.jpg'),
-          platforms: [
-            'windows'
-          ]
-        },
-        {
-          key: '3d-bird',
-          name: '3D Bird',
-          promoImage: require('~/assets/images/3dbird-promo.jpg'),
-          platforms: [
-            'android'
-          ]
-        }
-      ]
-    };
-  }
+  computed: {
+    ...mapState('games', ['items'])
+  },
 };
 </script>
