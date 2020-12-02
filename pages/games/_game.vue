@@ -1,5 +1,5 @@
 <template>
-  <article class="main-block">
+  <article class="container mx-auto px-8 my-24">
     <h1>{{ game.title }}</h1>
     <div class="game-date">
       {{ game.date }}
