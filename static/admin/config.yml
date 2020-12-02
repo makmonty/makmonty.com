@@ -62,10 +62,19 @@ collections:
           widget: "select",
           options: ["android", "ios", "windows"],
           multiple: true,
-          required: true,
         }
-      - { label: "Featured image", name: "featuredImage", widget: "image" }
-      - { label: "Main image", name: "mainImage", widget: "image" }
+      - {
+          label: "Featured image",
+          name: "featuredImage",
+          widget: "image",
+          required: false,
+        }
+      - {
+          label: "Main image",
+          name: "mainImage",
+          widget: "image",
+          required: false,
+        }
       - {
           label: "Screenshots",
           name: "screenshots",
