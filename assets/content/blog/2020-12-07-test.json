@@ -1,7 +1,12 @@
 {
   "date": "2020-12-07T22:24:51.383Z",
-  "title": "Test",
-  "description": "just a test",
-  "body": "asdads",
-  "draft": true
+  "title": "How to: Build a home cloud with a Raspberry Pi and Nextcloud",
+  "description": "Get rid of Dropbox and Google Drive and build your own file-sync system hosted in a computer at home.",
+  "body": "Raspberry + Nextcloud + Bind9\nInstalar Raspberry Pi OS Lite\nInstalar Nextcloud\nInstalar bind9 y configurarlo\n\n## Introduction\n\nIt's likely that you are user of one of those file syncing services like Dropbox, Drive, OneDrive, where you can host your files and have them available on every computer or handheld you own. And you might have felt like some files you uploaded are too confidential to be read by anyone. And still you are uploading them to a service managed by people you don't know. They surely have tons security measures so that not even the employees of those companies can read them, or do they?\n\nWith this guide, you'll be able to host and control your own file syncing service at home for the price of a Raspberry (and a microSD card, an USB cable, and maybe a case and an ethernet cable)\n\n## Requirements\n\n* A Raspberry Pi.\n* A microSD card.\n* A case compatible with the Raspberry model you use.\n\nThat's it. For higher performance, I would recommend the following too:\n\n* Make it a Raspberry Pi 4, which is the first in the family to support Gigabit ethernet connection.\n* A 1000BaseT (Gigabit) ethernet cable. It can be a Cat5e, Cat6 or higher category cable.\n* A good broadband connection.\n\n## Steps\n\nThe steps we are going to take are:\n\n1. Install Raspberry Pi OS (formerly known as Raspbian) Lite on the SD card\n2. \n\n1. Instalar Raspberry Pi OS Lite.\n2. Instalar Apache y PHP con ciertas extensiones.\n3. Instalar Nextcloud. Buscar en la página oficial los pasos.\n4. Instalar y configurar Bind9. Enlazar con documentación oficial y poner archivos de configuración míos.",
+  "draft": true,
+  "tags": [
+    "raspberry-pi",
+    "how-to"
+  ],
+  "categories": []
 }
