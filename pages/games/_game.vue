@@ -14,7 +14,7 @@
             <i :class="'lab la-' + platform" :aria-label="platform" />
           </li>
         </ul>
-        <div v-if="game.links.length" class="mt-10">
+        <div v-if="game.links && game.links.length" class="mt-10">
           <h4>Links</h4>
           <ul>
             <li v-for="link in game.links" :key="link.url">

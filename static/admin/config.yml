@@ -37,7 +37,7 @@ collections:
               label: "Category",
               name: "category",
               widget: "relation",
-              collection: "categories",
+              collection: "category",
               valueField: "{{slug}}",
               searchFields: ["name"],
               displayFields: ["name"],
