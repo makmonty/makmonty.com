@@ -1,18 +1,40 @@
 <template>
-  <BaseButton
-    class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800 flex flex-no-wrap items-center space-x-4 overflow-hidden text-lg"
-    color="light"
+  <button
+    type="button"
+    :class="className"
     aria-label="Toggle dark mode"
     @click="toggleTheme"
   >
     <transition name="colormode" duration="1000">
       <i :key="colorMode" :class="['las', 'la-' + (colorMode === 'light' ? 'moon' : 'sun')]" />
     </transition>
-  </BaseButton>
+  </button>
 </template>
 
 <script>
 export default {
+  data() {
+    return {
+      className: [
+        'focus:outline-none',
+        'w-12',
+        'h-12',
+        'border-none',
+        'bg-opacity-0',
+        'hover:bg-opacity-100',
+        'text-primary',
+        'ml-auto',
+        'dark-hover:bg-gray-800',
+        'p-0',
+        'overflow-hidden',
+        'text-lg',
+        'rounded-full',
+        'hover:bg-gray-300',
+        'transition',
+        'duration-100'
+      ]
+    };
+  },
   computed: {
     colorMode() {
       return this.$colorMode.value;
@@ -27,15 +49,17 @@ export default {
 </script>
 
 <style scoped>
-.colormode-leave-active {
-  transition: margin 1s ease-in-out;
+button {
+  white-space: nowrap;
 }
 
-.colormode-leave {
-  margin-left: 100px;
+.colormode-leave-active {
+  margin-right: 12px;
+  margin-left: 15px;
 }
 
 .colormode-leave-to {
-  margin-left: -33px;
+  transition: margin 1s ease-in-out;
+  margin-left: -30px;
 }
 </style>
