@@ -1,5 +1,5 @@
 <template>
   <BaseContainer>
-    <Resume />
+    <SuperNintendoCss />
   </BaseContainer>
 </template>
