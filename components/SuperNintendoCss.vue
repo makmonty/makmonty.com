@@ -10,7 +10,6 @@
               <div class="snes-icon-left" />
               <div class="snes-icon-right" />
               <div class="snes-icon-bottom" />
-              sdf
             </div>
           </div>
           <div class="snes-slot" />
@@ -23,36 +22,50 @@
 
 <style lang="scss" scoped>
 $snes-color-light: #ddd;
-$snes-color-dark: #999;
-$groove-color: #888;
+$snes-color-grey: #939393;
+$snes-color-dark: #606060;
+$groove-color: #aaa;
 // 200mm x 72mm x 242mm
 $real-snes-width: 200; // mm
 $real-snes-height: 242; // mm
 $snes-ratio: $real-snes-height / $real-snes-width;
-$snes-width: 700px;
+$snes-width: 500px;
+$border-groove: 2px groove $groove-color;
+
 .snes {
   width: $snes-width;
   height: $snes-width * $snes-ratio;
 
   .snes-box {
     width: 100%;
-    padding: 3%;
+    padding: 2.5%;
     height: 100%;
     background: $snes-color-light;
+    background: linear-gradient(
+      180deg,
+      $snes-color-light 60%,
+      darken($snes-color-light, 13%) 80%
+    );
     border-radius: $snes-width * 0.08;
+    box-shadow:
+      inset -4px -4px 4px rgba(0,0,0,0.15),
+      inset 4px 4px 4px rgba(255,255,255,0.2);
 
     .snes-bevel {
       width: 100%;
       height: 100%;
-      border: 1px solid $groove-color;
-    border-radius: $snes-width * 0.06;
+      border: $border-groove;
+      border-radius: $snes-width * 0.06;
       display: flex;
       flex-direction: column;
       align-items: center;
+      box-shadow:
+        inset -4px -4px 4px rgba(0,0,0,0.15),
+        inset 4px 4px 4px rgba(255,255,255,0.2);
 
       .snes-plate {
         width: 70%;
-        border: 1px solid $groove-color;
+        border: $border-groove;
         border-top: none;
         border-bottom: none;
       }
@@ -64,27 +77,39 @@ $snes-width: 700px;
       .snes-center-plate {
         width: 90%;
         height: 70%;
-        background: $snes-color-dark;
-        border: 1px solid $groove-color;
+        background: $snes-color-grey;
+        border: $border-groove;
         border-radius: $snes-width * 0.05;
+        padding: 5%;
 
         .snes-icon-groove {
           position: relative;
-          width: 10%;
-          border-radius: 99999999px;
-          box-shadow: inset -1px 1px 1px 0.5px rgba(1,1,1,0.5);
+          width: 13%;
+          border-radius: 50%;
+          border: 0.2px inset #aaa;
 
           &:before {
             content: "";
             display: block;
             padding-top: 100%;
-            // background: blue;
           }
 
           .snes-icon {
             position: absolute;
             top: 0;
           }
+        }
+
+        .snes-slot {
+          margin-top: 10%;
+          background: $snes-color-dark;
+          background-clip: content-box;
+          height: 17%;
+          border: 12px inset rgba(200, 200, 200, 0.5);
+          border-radius: 20px 20px 50% 50% / 20px 20px 30px 30px;
+          // box-shadow:
+          //   inset -12px -12px 2px rgba(255, 255, 255, 0.1),
+          //   inset 12px 12px 2px rgba(255, 255, 255, 0.1),;
         }
       }
 
