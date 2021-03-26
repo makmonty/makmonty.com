@@ -15,7 +15,10 @@
           <div class="snes-slot" />
           <div class="snes-buttons">
             <div class="snes-power-button snes-button snes-border-button">
-              <span>Power</span>
+              <div class="snes-power-switch">
+                <div class="snes-power-switch-handle" />
+                <span>Power</span>
+              </div>
             </div>
             <div class="snes-eject-button snes-button">
               <span>Eject</span>
@@ -155,6 +158,40 @@ $border-groove: 2px groove $groove-color;
             background-clip: content-box;
             border-style: inset;
             border-color: rgba(200, 200, 200, 0.5);
+          }
+
+          .snes-power-button {
+            overflow-y: hidden;
+            background: $snes-color-dark;
+            box-shadow: inset 2em 2em 4em rgba(0,0,0,0.5);
+            display: flex;
+            align-items: flex-end;
+
+            .snes-power-switch {
+              width: 100%;
+              border-radius: 4em;
+              height: 80%;
+              box-shadow:
+                0em 2em 2em rgba(0,0,0,0.5),
+                inset 0.6em 0.6em 0.5em rgba(255,255,255,0.3),
+                inset -0.6em -0.6em 0.5em rgba(0,0,0,0.3);
+              background: $snes-color-dark;
+
+              .snes-power-switch-handle {
+                border-radius: 1em;
+                margin-top: 25%;
+                height: 10em;
+                box-shadow:
+                  4em 4em 4em rgba(0,0,0,0.5);
+                background: linear-gradient(
+                  180deg,
+                  rgba(255,255,255, 0.3) 0,
+                  rgba(255,255,255,0) 50%,
+                  rgba(0,0,0,0) 50%,
+                  rgba(0,0,0,0.3) 100%
+                );
+              }
+            }
           }
         }
       }
