@@ -30,6 +30,7 @@ module.exports = {
     '@typescript-eslint/no-unused-vars': 'warn',
     semi: ['error', 'always'],
     'vue/require-default-prop': 'off',
+    'vue/no-v-html': 'off',
     'comma-dangle': ['warn', 'only-multiline'],
     'space-before-function-paren': ['error', 'never'],
     'no-console': 'off',

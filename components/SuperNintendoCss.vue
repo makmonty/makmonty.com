@@ -1,6 +1,9 @@
 <template>
   <div class="snes">
     <div class="snes-box">
+      <div class="snes-back-grid">
+        <div v-for="slot in new Array(23)" :key="slot" class="snes-back-grid-slot" />
+      </div>
       <div class="snes-bevel">
         <div class="snes-top-plate snes-plate" />
         <div class="snes-center-plate">
@@ -15,16 +18,20 @@
           <div class="snes-slot" />
           <div class="snes-buttons">
             <div class="snes-power-button snes-button snes-border-button">
-              <div class="snes-power-switch">
+              <div class="snes-power-switch snes-dark-button">
                 <div class="snes-power-switch-handle" />
                 <span>Power</span>
               </div>
             </div>
-            <div class="snes-eject-button snes-button">
-              <span>Eject</span>
+            <div class="snes-eject-button-slot snes-button">
+              <div class="snes-eject-button">
+                <span>Eject</span>
+              </div>
             </div>
-            <div class="snes-reset-button snes-button snes-border-button">
-              <span>Reset</span>
+            <div class="snes-reset-button-slot snes-button snes-border-button">
+              <div class="snes-reset-button snes-dark-button">
+                <span>Reset</span>
+              </div>
             </div>
           </div>
         </div>
@@ -53,7 +60,8 @@ $border-groove: 2px groove $groove-color;
 
   .snes-box {
     width: 100%;
-    padding: 2.5%;
+    padding: 12em;
+    padding-top: 0;
     height: 100%;
     background: $snes-color-light;
     background: linear-gradient(
@@ -63,20 +71,37 @@ $border-groove: 2px groove $groove-color;
     );
     border-radius: $snes-width * 0.08;
     box-shadow:
-      inset -4em -4em 4em rgba(0,0,0,0.15),
+      inset -4em -4em 4em rgba(0,0,0,0.3),
       inset 4em 4em 4em rgba(255,255,255,0.3);
+
+    .snes-back-grid {
+      width: 68%;
+      height: 12em;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+
+      .snes-back-grid-slot {
+        background: white;
+        box-shadow:
+          inset 0 -1em rgba(255,255,255,0.5),
+          inset 0 -4em 1em rgba(0,0,0,0.5);
+        width: 7em;
+      }
+    }
 
     .snes-bevel {
       width: 100%;
-      height: 100%;
+      height: calc(100% - 12em);
       border: $border-groove;
       border-radius: $snes-width * 0.06;
       display: flex;
       flex-direction: column;
       align-items: center;
       box-shadow:
-        inset -4em -4em 4em rgba(0,0,0,0.15),
-        inset 4em 4em 4em rgba(255,255,255,0.3);
+        inset -4em -4em 4em rgba(0,0,0,0.3),
+        inset 4em 4em 4em rgba(255,255,255,0.3),
+        4em 4em 4em rgba(0,0,0,0.3);
 
       .snes-plate {
         width: 70%;
@@ -140,10 +165,21 @@ $border-groove: 2px groove $groove-color;
             display:flex;
             text-align: center;
             color: $snes-color-light;
+            text-transform: uppercase;
 
             span {
-              font-size: 14em;
+              font-size: 12em;
             }
+          }
+
+          .snes-dark-button {
+            width: 100%;
+            border-radius: 4em;
+            box-shadow:
+              0em 2em 2em rgba(0,0,0,0.5),
+              inset 0.6em 0.6em 0.5em rgba(255,255,255,0.3),
+              inset -0.6em -0.6em 0.5em rgba(0,0,0,0.3);
+            background: $snes-color-dark;
           }
 
           .snes-border-button {
@@ -151,31 +187,45 @@ $border-groove: 2px groove $groove-color;
             border-style: solid;
             border-color: $snes-color-light;
             background: $snes-color-dark;
+            overflow-y: hidden;
           }
 
-          .snes-eject-button {
+          .snes-eject-button-slot {
             width: 160em;
             background-clip: content-box;
             border-style: inset;
             border-color: rgba(200, 200, 200, 0.5);
+
+            .snes-eject-button {
+              width: 100%;
+              border-radius: 4em;
+              border: 1.5em solid #777;
+              box-shadow:
+                inset 1em 1em 1em rgba(255,255,255,0.3),
+                inset -1em -1em 1em rgba(0,0,0,0.2),
+                1em 0 2em rgba(0,0,0,0.3);
+              background: linear-gradient(
+                180deg,
+                rgba(255,255,255, 0.2) 0,
+                rgba(255,255,255, 0) 50%,
+                rgba(0,0,0,0) 50%,
+                rgba(0,0,0,0.2) 100%
+              );
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              padding-bottom: 4em;
+            }
           }
 
           .snes-power-button {
-            overflow-y: hidden;
             background: $snes-color-dark;
             box-shadow: inset 2em 2em 4em rgba(0,0,0,0.5);
             display: flex;
             align-items: flex-end;
 
             .snes-power-switch {
-              width: 100%;
-              border-radius: 4em;
               height: 80%;
-              box-shadow:
-                0em 2em 2em rgba(0,0,0,0.5),
-                inset 0.6em 0.6em 0.5em rgba(255,255,255,0.3),
-                inset -0.6em -0.6em 0.5em rgba(0,0,0,0.3);
-              background: $snes-color-dark;
 
               .snes-power-switch-handle {
                 border-radius: 1em;
@@ -191,6 +241,15 @@ $border-groove: 2px groove $groove-color;
                   rgba(0,0,0,0.3) 100%
                 );
               }
+            }
+          }
+
+          .snes-reset-button-slot {
+            .snes-reset-button {
+              display: flex;
+              flex-direction: column;
+              justify-content: flex-end;
+              padding-bottom: 4em;
             }
           }
         }
