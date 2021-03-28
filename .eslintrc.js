@@ -33,6 +33,7 @@ module.exports = {
     'semi': ['error', 'always'],
     'quotes': ['error', 'single', {"allowTemplateLiterals": true}],
     'vue/require-default-prop': 'off',
+    'vue/no-v-html': 'off',
     'comma-dangle': ['warn', 'only-multiline'],
     'space-before-function-paren': ['error', 'never'],
     'no-console': 'off',
