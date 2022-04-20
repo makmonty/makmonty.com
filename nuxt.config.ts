@@ -52,14 +52,14 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  generate: {
-    async routes() {
-      return [
-        ...generatePages('./assets/content/blog', '/blog'),
-        ...generatePages('./assets/content/games', '/games'),
-      ];
-    }
-  },
+  //generate: {
+    //async routes() {
+      //return [
+        //...generatePages('./assets/content/blog', '/blog'),
+        //...generatePages('./assets/content/games', '/games'),
+      //];
+    //}
+  //},
   routes: {
     '*': { static: true }
   }
