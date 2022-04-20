@@ -15,4 +15,8 @@
   # Default build command.
   command = "yarn install && yarn generate"
 
-  environment = { NODE_VERSION = "16.14.2" }
+[build.environment]
+
+  NODE_VERSION = "16.14.2"
+  YARN_ENABLE_GLOBAL_CACHE = "true"
+  YARN_GLOBAL_FOLDER = "/opt/buildhome/.yarn_cache"
