@@ -53,11 +53,11 @@ export default {
   data() {
     const avatares = {
       pod: {
-        src: require('~/assets/images/angel-pod-512x512.jpg'),
+        src: '/assets/images/angel-pod-512x512.jpg',
         className: ''
       },
       pixel: {
-        src: require('~/assets/images/yo-24x24.png'),
+        src: '/assets/images/yo-24x24.png',
         className: 'rendering-crisp-edges p-4 border-primary'
       }
     };

@@ -1,21 +1,23 @@
 <template>
   <nav class="flex container mx-auto items-center px-8">
-    <div class="w-10 h-10 mr-4 relative">
-      <FloatingThings />
-    </div>
-    <ul class="flex p-8 space-x-8">
+    <ul class="flex p-8 space-x-8 justify-center w-full">
       <li v-for="item in menu" :key="item.to">
-        <Component
-          :is="item.to ? 'NuxtLink' : 'a'"
+        <NuxtLink
+          v-if="item.to"
           :to="item.to"
+          class="hover:border-b-4"
+        >
+          {{ item.name }}
+        </NuxtLink>
+        <a
+          v-else
           :href="item.href"
           class="hover:border-b-4"
         >
           {{ item.name }}
-        </Component>
+        </a>
       </li>
     </ul>
-    <ColorModeToggle />
   </nav>
 </template>
 

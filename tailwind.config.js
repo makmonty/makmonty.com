@@ -1,6 +1,14 @@
-const { colors } = require('tailwindcss/defaultTheme');
+const colors = require('tailwindcss/colors');
 
 module.exports = {
+  content: [
+    "./components/**/*.{js,vue,ts}",
+    "./layouts/**/*.vue",
+    "./pages/**/*.vue",
+    "./plugins/**/*.{js,ts}",
+    //"./nuxt.config.{js,ts}",
+    "./app.vue"
+  ],
   theme: {
     extend: {
       colors: {
@@ -19,23 +27,23 @@ module.exports = {
   experimental: {
     darkModeVariant: true
   },
-  dark: 'class',
-  purge: {
-    enabled: process.env.NODE_ENV === 'production',
-    content: [
-      'components/**/*.vue',
-      'layouts/**/*.vue',
-      'pages/**/*.vue',
-      'plugins/**/*.js',
-      'nuxt.config.js'
-    ],
-    options: {
-      whitelist: [
-        'dark-mode',
-        ''
-      ]
-    }
-  },
+  darkMode: 'class',
+  //purge: {
+    //enabled: process.env.NODE_ENV === 'production',
+    //content: [
+      //'components/**/*.vue',
+      //'layouts/**/*.vue',
+      //'pages/**/*.vue',
+      //'plugins/**/*.js',
+      //'nuxt.config.js'
+    //],
+    //options: {
+      //whitelist: [
+        //'dark-mode',
+        //''
+      //]
+    //}
+  //},
   future: {
     removeDeprecatedGapUtilities: true,
     purgeLayersByDefault: true
