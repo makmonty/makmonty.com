@@ -68,7 +68,7 @@ export default {
         {
           name: 'Frontend',
           icon: 'las la-desktop',
-          description: 'Angular, AngularJS, VueJS...'
+          description: 'Vue, Angular, React, Ember...'
         },
         {
           name: 'Backend',
