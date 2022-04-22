@@ -23,12 +23,17 @@ h4 {
   @apply text-xl;
 }
 
-.route-enter-active,
-.route-leave-active {
-  transition: opacity 0.1s ease-in-out;
+/* "page" is hardcoded in nuxt3 page transitions atm */
+.page-enter-from{
+  opacity: 0;
+  transform: translateY(-10px);
 }
 
-.route-enter,
-.route-leave-to {
+.page-enter-active,
+.page-leave-active {
+  transition: all 0.2s;
+}
+.page-enter,
+.page-leave-to {
   opacity: 0;
 }
