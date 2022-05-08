@@ -20,5 +20,5 @@
   #YARN_ENABLE_GLOBAL_CACHE = "true"
   #YARN_GLOBAL_FOLDER = "/opt/buildhome/.yarn_cache"
 
-#[[plugins]]
-#  package = "netlify-plugin-cache-yarn2"
+[[plugins]]
+  package = "netlify-plugin-cache-yarn2"
