@@ -25,7 +25,7 @@ const DirectionOposites = {
   [Direction.LEFT]: Direction.RIGHT,
 };
 
-export class Maze {
+export class MazeGenerator {
 
   cells: MazeCell[][] = null;
 
