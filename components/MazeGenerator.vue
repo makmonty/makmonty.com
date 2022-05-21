@@ -3,16 +3,22 @@ import { MazeGenerator } from '~/lib/maze';
 const props = defineProps<{
   cols: number,
   rows: number,
+  cellSize: number,
 }>();
-const maze = new MazeGenerator(props.cols, props.rows);
-maze.generate();
+let maze = ref(null);
+watch(props, () => {
+  if (props.cols > 0 && props.rows > 0) {
+    maze.value = new MazeGenerator(props.cols, props.rows);
+    maze.value.generate();
+  }
+}, { immediate: true});
 </script>
 
 <template>
-  <table>
+  <table v-if="maze">
     <tbody>
-      <tr v-for="y in maze.cells[0].length">
-        <MazeCell v-for="x in maze.cells.length" :cell="maze.cells[x-1][y-1]" />
+      <tr v-for="y in props.rows">
+        <MazeCell v-for="x in props.cols" :cell="maze.cells[x-1][y-1]" :size="props.cellSize" />
       </tr>
     </tbody>
   </table>
