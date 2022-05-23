@@ -56,6 +56,7 @@ describe('MazeGenerator', () => {
     test('it creates a C, with one wall, in a 2x2 maze', () => {
       const maze = new MazeGenerator(2, 2);
       maze.generate();
+      console.log(maze.toString());
 
       expect(maze.cells[0][0].right || maze.cells[0][0].down).toBeTruthy();
       expect(maze.cells[1][0].left || maze.cells[0][0].down).toBeTruthy();
@@ -67,7 +68,7 @@ describe('MazeGenerator', () => {
 
   describe('#getAvailableDirections', () => {
     test('it returns an empty array if the maze is 1x1', () => {
-      const maze = new MazeGenerator(1,1);
+      const maze = new MazeGenerator(1, 1);
       expect(maze.getAvailableDirections(0, 0)).toEqual([]);
     });
 
