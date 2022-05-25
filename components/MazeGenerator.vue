@@ -4,21 +4,25 @@ const props = defineProps<{
   cols: number,
   rows: number,
   cellSize: number,
+  seed: string
 }>();
-let maze = ref(null);
-watch(props, () => {
-  if (props.cols > 0 && props.rows > 0) {
-    maze.value = new MazeGenerator(props.cols, props.rows);
-    maze.value.generate();
+const { cols, rows, cellSize, seed } = toRefs(props);
+
+const maze = ref(null);
+const mazeGenerator = new MazeGenerator();
+
+watch([ cols, rows, seed ], () => {
+  if (cols.value > 0 && rows.value > 0) {
+    maze.value = mazeGenerator.generate({ width: cols.value, height: rows.value, seed: seed.value });
   }
-}, { immediate: true});
+}, { immediate: true });
 </script>
 
 <template>
   <table v-if="maze">
     <tbody>
-      <tr v-for="y in props.rows">
-        <MazeCell v-for="x in props.cols" :cell="maze.cells[x-1][y-1]" :size="props.cellSize" />
+      <tr v-for="y in rows" :key="y">
+        <MazeCell v-for="x in cols" :key="x" :cell="maze.cells[x-1][y-1]" :size="cellSize" />
       </tr>
     </tbody>
   </table>
