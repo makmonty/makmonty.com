@@ -1,24 +1,33 @@
 <script lang="ts" setup>
-const cols = ref('20');
-const rows = ref('20');
+const router = useRouter();
+const route = useRoute();
+
+const cols = ref(route.query.cols || '20');
+const rows = ref(route.query.rows || '20');
 const cellSize = ref('20');
-const seed = ref('');
+const seed = ref(route.query.seed || '');
+
+watch([ cols, rows, seed ], () => {
+  router.replace({ query: { cols: cols.value, rows: rows.value, seed: seed.value } });
+});
 </script>
 
 <template>
   <article class="container mx-auto">
-    <FormGroup label="Cols" inline>
-      <FormInput v-model="cols" type="number" />
-    </FormGroup>
-    <FormGroup label="Rows" inline>
-      <FormInput v-model="rows" type="number" />
-    </FormGroup>
-    <FormGroup label="Cell size" inline>
-      <FormInput v-model="cellSize" type="number" />
-    </FormGroup>
-    <FormGroup label="Seed" inline>
-      <FormInput v-model="seed" type="number" />
-    </FormGroup>
+    <section class="maze-config">
+      <FormGroup label="Cols" label-class="maze-label" inline>
+        <FormInput v-model="cols" type="number" />
+      </FormGroup>
+      <FormGroup label="Rows" label-class="maze-label" inline>
+        <FormInput v-model="rows" type="number" />
+      </FormGroup>
+      <FormGroup label="Cell size" label-class="maze-label" inline>
+        <FormInput v-model="cellSize" type="number" />
+      </FormGroup>
+      <FormGroup label="Seed" label-class="maze-label" inline>
+        <FormInput v-model="seed" type="text" />
+      </FormGroup>
+    </section>
 
     <MazeGenerator
       class="mx-auto"
@@ -29,3 +38,22 @@ const seed = ref('');
     />
   </article>
 </template>
+
+<style lang="scss">
+.maze-config {
+  padding-bottom: 32px;
+
+  .form-group {
+    width: 300px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .maze-label {
+      > span {
+        flex-grow: 0;
+        width: 100px;
+      }
+    }
+  }
+}
+</style>

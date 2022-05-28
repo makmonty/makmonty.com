@@ -13,15 +13,26 @@ input:is([type="text"],[type="number"],[type="email"]) {
   margin: 15px 0;
 
 
-  > label span:first-child {
+  > label {
     display: block;
+
+    span:first-child {
+      display: block;
+    }
   }
 
   &.inline {
-    > label span:first-child {
-      display: inline-block;
-      padding-right: 15px;
-      width: 100px;
+    > label {
+      display: flex;
+      flex-direction: row;
+
+      > * {
+        flex-grow: 1;
+      }
+
+      span:first-child {
+        padding-right: 15px;
+      }
     }
   }
 
