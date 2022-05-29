@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const props = withDefaults(defineProps<{
   type: string,
-  modelValue: string,
+  modelValue: string | number,
 }>(), {
   type: 'text',
   modelValue: '',
