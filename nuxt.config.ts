@@ -36,6 +36,17 @@ export default defineNuxtConfig({
       commons: false
     }
   },
+  app: {
+    head: {
+      script: [
+        {
+          'data-goatcounter': 'https://makmonty.goatcounter.com/count',
+          src: '//gc.zgo.at/count.js',
+          async: true
+        }
+      ]
+    },
+  },
   meta: {
     htmlAttrs: {
       lang: 'en'
