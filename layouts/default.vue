@@ -17,6 +17,7 @@
             :key="link.title"
             :href="link.href"
             :title="link.title"
+            :rel="link.rel"
           >
             <client-only>
               <i :class="['lab', 'la-' + link.icon]" />
@@ -59,7 +60,13 @@ export default {
           href: 'https://www.instagram.com/makmonty_/',
           title: 'Instagram',
           icon: 'instagram'
-        }
+        },
+        {
+          href: 'https://octodon.social/@makmonty',
+          title: 'Mastodon',
+          icon: 'mastodon',
+          rel: 'me'
+        },
       ]
     };
   },
