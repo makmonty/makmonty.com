@@ -37,6 +37,9 @@ export default defineNuxtConfig({
           'data-goatcounter': 'https://makmonty.goatcounter.com/count',
           src: '//gc.zgo.at/count.js',
           async: true
+        },
+        {
+          src: 'https://identity.netlify.com/v1/netlify-identity-widget.js'
         }
       ]
     },
