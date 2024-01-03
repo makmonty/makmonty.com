@@ -1,11 +1,46 @@
 ---
+import '../../styles/style.scss';
+
 interface Props {
 	title: string;
 }
 
 const { title } = Astro.props;
----
 
+const socialLinks = [
+  {
+    href: 'http://github.com/makmonty',
+    title: 'Github',
+    icon: 'github'
+  },
+  {
+    href: 'https://www.linkedin.com/in/angelbraseromoreno/',
+    title: 'Linkedin',
+    icon: 'linkedin'
+  },
+  {
+    href: 'https://soundcloud.com/angel-brasero-moreno',
+    title: 'Soundcloud',
+    icon: 'soundcloud'
+  },
+  {
+    href: 'http://twitter.com/makmonty',
+    title: 'Twitter',
+    icon: 'twitter'
+  },
+  {
+    href: 'https://www.instagram.com/makmonty_/',
+    title: 'Instagram',
+    icon: 'instagram'
+  },
+  {
+    href: 'https://octodon.social/@makmonty',
+    title: 'Mastodon',
+    icon: 'mastodon',
+    rel: 'me'
+  },
+];
+---
 <!doctype html>
 <html lang="en">
 	<head>
@@ -19,7 +54,7 @@ const { title } = Astro.props;
 	<body>
     <div>
       <header class="w-full relative z-20">
-        <AppNav />
+        <!-- <AppNav /> -->
       </header>
 
       <div class="relative z-10">
@@ -30,28 +65,28 @@ const { title } = Astro.props;
         <div class="container mx-auto p-8">
           <p>Find me at...</p>
           <div class="space-x-8 mt-8 text-3xl">
-            <a
-              v-for="link in socialLinks"
-              :key="link.title"
-              :href="link.href"
-              :title="link.title"
-              :rel="link.rel"
-            >
-              <i :class="['lab', 'la-' + link.icon]" />
-            </a>
+            {socialLinks.map(link => (
+              <a
+                href={link.href}
+                title={link.title}
+                rel={link.rel}
+              >
+                <i class:list={['lab', 'la-' + link.icon]} />
+              </a>
+            ))}
           </div>
         </div>
       </footer>
     </div>
     <script>
       if (window.netlifyIdentity) {
-      window.netlifyIdentity.on("init", user => {
-      if (!user) {
-      window.netlifyIdentity.on("login", () => {
-      document.location.href = "/admin/";
-      });
-      }
-      });
+        window.netlifyIdentity.on("init", user => {
+          if (!user) {
+            window.netlifyIdentity.on("login", () => {
+              document.location.href = "/admin/";
+            });
+          }
+        });
       }
     </script>
 	</body>
