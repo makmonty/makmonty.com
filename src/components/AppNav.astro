@@ -1,0 +1,42 @@
+---
+const menu = [
+  {
+    name: 'Home',
+    href: '/'
+  },
+  {
+    name: 'CV',
+    href: '/cv'
+  },
+  {
+    name: 'Projects',
+    href: '/projects'
+  },
+  // {
+  //   name: 'Portfolio',
+  //   to: '/portfolio'
+  // },
+  // {
+  //   name: 'Contact',
+  //   to: '/contact'
+  // },
+  // {
+  //   name: 'Blog',
+  //   href: 'http://blog.makmonty.com'
+  // }
+];
+---
+<nav class="flex container mx-auto items-center px-8">
+  <ul class="flex p-8 space-x-8 justify-center w-full">
+    {menu.map(item => (
+      <li>
+        <a
+          href={item.href}
+          class="hover:border-b-4"
+        >
+          {item.name}
+        </a>
+      </li>
+    ))}
+  </ul>
+</nav>
