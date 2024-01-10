@@ -156,6 +156,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@astropub/md@npm:^0.3.0":
+  version: 0.3.0
+  resolution: "@astropub/md@npm:0.3.0"
+  peerDependencies:
+    "@astrojs/markdown-remark": ^3
+  checksum: f6fa43a88494cf9704a4db6962aa66852825f7c627b57524365a98430ac01d35e49b80b22f449008c07969124ded68cf96ae72c3c7eb6a078d95ba4dfa4bea89
+  languageName: node
+  linkType: hard
+
 "@babel/code-frame@npm:^7.22.13, @babel/code-frame@npm:^7.23.5":
   version: 7.23.5
   resolution: "@babel/code-frame@npm:7.23.5"
@@ -6340,6 +6349,7 @@ __metadata:
   dependencies:
     "@astrojs/check": ^0.3.4
     "@astrojs/tailwind": ^5.1.0
+    "@astropub/md": ^0.3.0
     "@types/seedrandom": ^3.0.8
     "@typescript-eslint/parser": ^6.17.0
     astro: ^4.0.9
