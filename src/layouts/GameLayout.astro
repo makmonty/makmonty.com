@@ -1,16 +1,7 @@
 ---
-import Layout from '../../layouts/Layout.astro';
-import { getContentFromFiles } from '../../utils/content';
-import { markdown } from '@astropub/md'
+import Layout from './Layout.astro';
 
-export async function getStaticPaths() {
-  const games = await getContentFromFiles(() => import.meta.glob(`../../../assets/content/games/**/*.json`));
-
-  return games.map(game => ({params: {game: game.slug}}))
-}
-
-const games = await getContentFromFiles(() => import.meta.glob(`../../../assets/content/games/**/*.json`));
-const game = games.find(game => game.slug === Astro.params.game)
+const { frontmatter: game } = Astro.props;
 ---
 <Layout title={game.title}>
   <article class="container mx-auto px-8 my-24">
@@ -22,7 +13,9 @@ const game = games.find(game => game.slug === Astro.params.game)
     <h1>{game.title}</h1>
     <div class="flex space-x-10">
       <!-- eslint-disable-next-line -->
-      <div class="flex-grow"><Fragment set:html={game.body} /></div>
+      <div class="flex-grow">
+        <slot />
+      </div>
       <aside class="flex-shrink-0 mt-16">
         <h4>Available for</h4>
         <ul class="flex">
