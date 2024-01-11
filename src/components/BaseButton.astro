@@ -1,5 +1,5 @@
 ---
-const { type, disabled, href, color } = Astro.props;
+const { type, disabled, href, color } = Astro.props as { type: string, disabled: boolean, href: string, color: string };
 const className = [
   'button',
   'focus:outline-none',

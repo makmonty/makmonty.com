@@ -1,7 +1,8 @@
 ---
 import Layout from './Layout.astro';
+import { type Game } from '../types/content';
 
-const { frontmatter: game } = Astro.props;
+const { frontmatter: game } = Astro.props as { frontmatter: Game };
 ---
 <Layout title={game.title}>
   <article class="container mx-auto px-8 my-24">

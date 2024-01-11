@@ -1,4 +1,4 @@
-import { Object3D, Renderer, Camera } from 'three';
+import { Object3D, type Renderer, Camera } from 'three';
 
 export class ThreeBehaviorObject {
   behaviors: ThreeBehavior[] = [];
