@@ -27,12 +27,10 @@ collections:
       - label: "Publish Date"
         name: "date"
         widget: "datetime"
-      - label: "Draft"
-        name: "draft"
-        widget: "boolean"
       - label: "Description"
         name: "description"
         widget: "string"
+        required: false
       - label: "Body"
         name: "body"
         widget: "markdown"
@@ -52,7 +50,7 @@ collections:
           label: "Category"
           name: "category"
           widget: "relation"
-          collection: "category"
+          collection: "categories"
           valueField: "{{slug}}"
           searchFields: ["name"]
           displayFields: ["name"]
