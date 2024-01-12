@@ -12,7 +12,7 @@ slug:
 collections:
   - name: "blog"
     label: "Blog"
-    format: "json"
+    format: "markdown"
     folder: "assets/content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -49,8 +49,8 @@ collections:
         }
   - name: "game"
     label: "Game"
-    format: "json"
-    folder: "assets/content/games"
+    format: "markdown"
+    folder: "src/pages/games"
     create: true
     slug: "{{slug}}"
     editor:
