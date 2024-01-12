@@ -2,12 +2,14 @@ backend:
   name: git-gateway
   branch: master
 
-media_folder: cms/img
-public_folder: /cms/img
+media_folder: public/images/cms
+public_folder: /images/cms
 publish_mode: editorial_workflow
+display_url: https://makmonty.com
 slug:
   encoding: "ascii"
   clean_accents: true
+  sanitize_replacement: "-"
 
 collections:
   - name: "blog"
@@ -54,8 +56,9 @@ collections:
           valueField: "{{slug}}"
           searchFields: ["name"]
           displayFields: ["name"]
-  - name: "game"
-    label: "Game"
+  - name: "games"
+    label: "Games"
+    label_singular: "Game"
     format: "yaml-frontmatter"
     folder: "src/pages/games"
     create: true
