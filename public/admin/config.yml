@@ -71,7 +71,7 @@ collections:
         widget: "string"
       - label: "Release Date"
         name: "date"
-        widget: "date"
+        widget: "datetime"
       - label: "Description"
         name: "description"
         widget: "string"
