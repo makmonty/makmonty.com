@@ -19,34 +19,41 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Draft", name: "draft", widget: "boolean" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - {
-          label: "Featured image",
-          name: "featuredImage",
-          widget: "image",
-          required: false,
-        }
-      - {
-          label: "Categories",
-          name: "categories",
-          widget: "list",
-          required: false,
-          field:
-            {
-              label: "Category",
-              name: "category",
-              widget: "relation",
-              collection: "category",
-              valueField: "{{slug}}",
-              searchFields: ["name"],
-              displayFields: ["name"],
-            },
-        }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Draft"
+        name: "draft"
+        widget: "boolean"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Featured image"
+        name: "featuredImage"
+        widget: "image"
+        required: false
+      - label: "Categories"
+        name: "categories"
+        widget: "list"
+        required: false
+        field:
+          label: "Category"
+          name: "category"
+          widget: "relation"
+          collection: "category"
+          valueField: "{{slug}}"
+          searchFields: ["name"]
+          displayFields: ["name"]
   - name: "game"
     label: "Game"
     format: "yaml-frontmatter"
@@ -56,50 +63,59 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Title", name: "title", widget: "string" }
-      - { label: "Release Date", name: "date", widget: "date" }
-      - { label: "Description", name: "description", widget: "string" }
-      - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Tags", name: "tags", widget: "list", required: false }
-      - { label: "Demo", name: "demo", widget: "boolean", required: false }
-      - {
-          label: "Platforms",
-          name: "platforms",
-          widget: "select",
-          options: ["android", "ios", "windows"],
-          multiple: true,
-        }
-      - {
-          label: "Links",
-          label_singular: "Link",
-          name: "links",
-          widget: "list",
-          required: false,
-          fields:
-            [
-              { label: "URL", name: "url", widget: "string" },
-              { label: "Label", name: "label", widget: "string" },
-            ],
-        }
-      - {
-          label: "Featured image",
-          name: "featuredImage",
-          widget: "image",
-          required: false,
-        }
-      - {
-          label: "Main image",
-          name: "mainImage",
-          widget: "image",
-          required: false,
-        }
-      - {
-          label: "Screenshots",
-          name: "screenshots",
-          widget: "list",
-          required: false,
-          field: { label: "Screenshot", name: "screenshot", widget: "image" },
-        }
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Release Date"
+        name: "date"
+        widget: "date"
+      - label: "Description"
+        name: "description"
+        widget: "string"
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+      - label: "Tags"
+        name: "tags"
+        widget: "list"
+        required: false
+      - label: "Demo"
+        name: "demo"
+        widget: "boolean"
+        required: false
+      - label: "Platforms"
+        name: "platforms"
+        widget: "select"
+        options: ["android", "ios", "windows"]
+        multiple: true
+      - label: "Links"
+        label_singular: "Link"
+        name: "links"
+        widget: "list"
+        required: false
+        fields:
+          - label: "URL"
+            name: "url"
+            widget: "string"
+          - label: "Label"
+            name: "label"
+            widget: "string"
+      - label: "Featured image"
+        name: "featuredImage"
+        widget: "image"
+        required: false
+      - label: "Main image"
+        name: "mainImage"
+        widget: "image"
+        required: false
+      - label: "Screenshots"
+        name: "screenshots"
+        widget: "list"
+        required: false
+        field:
+          label: "Screenshot"
+          name: "screenshot"
+          widget: "image"
   - name: "category"
     label: "Category"
     format: "json"
@@ -109,4 +125,6 @@ collections:
     editor:
       preview: false
     fields:
-      - { label: "Name", name: "name", widget: "string" }
+      - label: "Name"
+        name: "name"
+        widget: "string"
