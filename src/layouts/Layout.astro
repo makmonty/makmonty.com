@@ -86,9 +86,6 @@ const socialLinks = [
       </footer>
     </div>
     <script>
-    declare global {
-    interface Window { netlifyIdentity: any; }
-}
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on("init", (user: object) => {
           if (!user) {
