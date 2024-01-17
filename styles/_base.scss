@@ -1,39 +1,16 @@
 @import "mixins";
 
-a {
-  @apply text-primary;
+:root {
+  --bg-color: $bg-color;
+  --fg-color: $fg-color;
+  --primary-color: $primary-color;
+  --secondary-color: $secondary-color;
+}
+
+body {
+  background: var(--bg-color);
 }
 
 .rendering-crisp-edges {
   @include crisp-edges();
-}
-
-h1 {
-  @apply text-4xl;
-  @apply mb-12;
-}
-
-h2 {
-  @apply text-2xl;
-  @apply mt-16;
-  @apply mb-8;
-}
-
-h4 {
-  @apply text-xl;
-}
-
-/* "page" is hardcoded in nuxt3 page transitions atm */
-.page-enter-from{
-  opacity: 0;
-  transform: translateY(-10px);
-}
-
-.page-enter-active,
-.page-leave-active {
-  transition: all 0.2s;
-}
-.page-enter,
-.page-leave-to {
-  opacity: 0;
 }
