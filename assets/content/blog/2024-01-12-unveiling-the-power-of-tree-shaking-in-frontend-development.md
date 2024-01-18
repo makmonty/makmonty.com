@@ -92,6 +92,19 @@ const result = add(5, 3);
 console.log('Result:', result);
 ```
 
+Vite needs an `index.html` file as entrypoint, so we'll add the simplest one:
+
+```html
+<html>
+  <head>
+    <script type="module" src="./index"></script>
+  </head>
+  <body>
+    <h1>Treeshaking example</h1>
+  </body>
+</html>
+```
+
 For this example we'll use Vite to minimize our code. Our config file looks like this:
 
 ```javascript
@@ -116,6 +129,15 @@ And run it
 $ npx vite build
 ```
 
+Unless configured otherwise, our output file will be in the `dist/assets` directory. Let's see the result:
+
+```bash
+$ cat dist/assets/index-XXXXXX.js
+function l(o,n){return console.log("Adding:",o,n),o+n}const e=l(5,3);console.log("Result:",e);
+```
+
+As you can see, the resulting file doesn't contain any mention to the unused methods of the `math` module.
+
 ## Impact on Performance
 
 The impact of tree shaking on performance is substantial. By removing unused code, the size of your JavaScript bundle is reduced, leading to faster download times and improved execution speed. Smaller bundles also contribute to quicker parsing and compilation times in the browser, resulting in a more responsive application.
@@ -125,13 +147,9 @@ Moreover, reducing the amount of code that needs to be loaded and executed can p
 ## Best Practices for Effective Tree Shaking
 
 1. Use ES6 Modules: Ensure that your code and dependencies are written using ES6 module syntax. This static nature allows tree shaking tools to accurately determine unused code.
-
 2. Check Bundler Configuration: Verify that your bundler is configured correctly to enable tree shaking. In webpack, for example, setting the \`mode\` to 'production' and enabling the \`usedExports\` optimization are essential steps.
-
 3. Regularly Update Dependencies: Keep your project dependencies up to date, as newer versions of libraries may have improved tree shaking support and performance optimizations.
-
 4. Avoid Dynamic Imports: While dynamic imports have their use cases, they can limit the effectiveness of tree shaking. Minimize the use of dynamic imports if possible.
-
 5. Analyze Bundle Size: Use tools like webpack-bundle-analyzer to visualize your bundle size and identify opportunities for further optimization.
 
 ## Conclusion
