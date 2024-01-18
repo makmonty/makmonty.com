@@ -5,6 +5,7 @@ tags:
   - javascript
   - frontend
   - coding
+featuredImage: /images/cms/treeshaking.webp
 categories: []
 ---
 ## Introduction
