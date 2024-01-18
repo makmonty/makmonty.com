@@ -3,6 +3,7 @@ import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import BaseButton from '../components/BaseButton.astro';
 import AvatarAngelPod from '../../public/images/angel-pod-512x512.jpg';
+import FloatingThing from '../components/FloatingThing.astro';
 
 const avatares = {
   pod: {
@@ -38,48 +39,57 @@ const disciplines = [
     description: 'A, A#, B, C, C#...'
   }
 ];
+let blogPosts = [];
+try {
+  blogPosts = Astro.glob('../../assets/content/blog/*.md');
+} catch {
+  console.log('No blog posts')
+}
 ---
-<Layout title="Welcome to Astro.">
-  <article class="flex flex-col pb-24">
-    <section class="container mx-auto px-8 sm:-mt-24 sm:h-screen flex sm:items-center">
-      <div class="flex flex-col lg:flex-row items-center text-xl lg:space-x-6 space-y-6 lg:space-y-0">
-        <Image
-          src={avatar.src}
-          class={'w-64 h-64 object-cover rounded-full ' + avatar.className}
-          alt="My beautiful face"
-        />
-        <div class="flex flex-col justify-center space-y-6">
-          <h1 class="text-4xl mb-0 leading-none">
-            I'm <span class="text-primary">Ángel Brasero</span>
-          </h1>
-          <p class="summary">
-            I'm a software engineer. Passionate about technology and software development.<br>
-            I spend most of my time coding.
-          </p>
-          <div class="mt-4">
-            <BaseButton href="/cv" color="primary">
-              Check my CV
-            </BaseButton>
-          </div>
+<Layout title="Welcome to .">
+  <article>
+    <section class="intro">
+      <FloatingThing width="128px" height="128px" />
+      <div>
+        <h2>
+          I'm <strong>Ángel Brasero</strong>
+        </h2>
+        <p class="summary">
+          I'm a software engineer. Passionate about technology and software development.<br>
+          I spend most of my time coding.
+        </p>
+        <div>
+          <BaseButton href="/cv" accent="secondary">
+            Check my CV
+          </BaseButton>
         </div>
       </div>
     </section>
-    <section class="container mx-auto mt-10 sm:-mt-12 px-8">
-      <h2 class="mt-0 mb-12">
-        In summary, I do...
-      </h2>
-      <div class="flex text-center justify-around flex-col lg:flex-row space-y-6 lg:space-y-0">
-        {disciplines.map(discipline => (
-          <div>
-            <i class={'text-4xl text-primary ' + discipline.icon} />
-            <h3 class="text-2xl my-1">
-              {discipline.name}
-            </h3>
-            <p>{discipline.description}</p>
-          </div>
+    {blogPosts && (
+      <section>
+        {blogPosts.map(post => (
+          <article>
+            <h2>{post.title}</h2>
+          </article>
         ))}
-      </div>
-    </section>
+      </section>
+    )}
   </article>
 </Layout>
 
+<style>
+.intro {
+  display: flex;
+  gap: 40px;
+  margin: 80px 0;
+  align-items: center;
+}
+.intro h2 {
+  margin: 0;
+  font-size: 32px;
+  line-height: 32px;
+}
+.intro p {
+  margin: 24px 0;
+}
+</style>

@@ -1,4 +1,7 @@
 ---
+import { Image } from 'astro:assets';
+import logo from '../images/logo-fat-sm.png';
+
 const menu = [
   {
     name: 'Home',
@@ -26,13 +29,32 @@ const menu = [
   // }
 ];
 ---
-<nav class="flex container mx-auto items-center px-8">
-  <ul class="flex p-8 space-x-8 justify-center w-full">
+<style>
+nav {
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+  align-items: center;
+}
+ul {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  gap: 16px;
+}
+
+a {
+  text-decoration: none;
+}
+</style>
+
+<nav>
+  <Image src={logo} alt="Logo with the shape of an A" height="24" />
+  <ul>
     {menu.map(item => (
       <li>
         <a
           href={item.href}
-          class="hover:border-b-4"
         >
           {item.name}
         </a>
