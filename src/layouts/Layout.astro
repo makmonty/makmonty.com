@@ -59,9 +59,18 @@ i span {
   font-size: 0;
 }
 
+footer {
+  margin: 64px 0;
+}
+
 .main-layout {
   width: 800px;
   margin: 0 auto;
+}
+
+.social-links a {
+  font-size: 2em;
+  text-decoration: none;
 }
 </style>
 	<body>
@@ -76,8 +85,8 @@ i span {
 
       <footer>
         <div>
-          <p>Find me at...</p>
-          <div>
+          <h2>Find me at...</h2>
+          <div class="social-links">
             {socialLinks.map(link => (
               <a
                 href={link.href}

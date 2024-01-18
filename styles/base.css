@@ -2,6 +2,7 @@ body {
   background: var(--bg-color);
   color: var(--fg-color);
   font-family: "Roboto Slab";
+  font-size: 18px;
   margin: 0;
   padding: 0;
 }

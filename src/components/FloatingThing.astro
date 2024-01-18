@@ -26,7 +26,7 @@ import {
 import { ThreeBehavior, ThreeBehaviorObject } from '../three-engine/three-engine';
 
 class FloatingThing extends ThreeBehavior {
-  angle = (90 * Math.PI) / 180;
+  angle = (30 * Math.PI) / 180;
   floatRotation = 0;
 
   start() {
@@ -143,15 +143,15 @@ window.onload = () => {
   const ambLight = new AmbientLight(0xFFFFFF, 0.25);
   scene.add(ambLight);
 
-  const light1 = new DirectionalLight(0xFF0000, 1);
+  const light1 = new DirectionalLight(0xFF0000, 2);
   light1.position.x = 3;
   scene.add(light1);
 
-  const light2 = new DirectionalLight(0x00FF00, 1);
+  const light2 = new DirectionalLight(0x00FF00, 2);
   light2.position.y = 3;
   scene.add(light2);
 
-  const light3 = new DirectionalLight(0x0000FF, 1);
+  const light3 = new DirectionalLight(0x0000FF, 2);
   light3.position.z = 3;
   scene.add(light3);
 

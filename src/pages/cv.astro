@@ -17,11 +17,22 @@ const skills = [
 ];
 const jobs = [
   {
-    title: 'Frontend Engineer',
+    title: 'Software Engineer',
+    company: 'Atani',
+    url: 'https://atani.com/',
+    from: '2024 January',
+    to: 'Current position',
+    description: [
+      'Development and improvement of the different clients (web, desktop and mobile) of the core application.',
+      'Core technologies: ReactJS, Electron.'
+    ]
+  },
+  {
+    title: 'Software Engineer',
     company: 'Qonto',
     url: 'https://www.qonto.com/',
     from: '2021 October',
-    to: 'Current position',
+    to: '2023 December',
     description: [
       'Development of the frontend side of the core application of a banking business.',
       'Core technologies: EmberJS.'
@@ -135,7 +146,7 @@ const studies = [
             {jobs.map(job => (
               <li>
                 <h4>
-                  <strong>{job.title}</strong> at <a :href="job.url">{job.company}</a>
+                  <strong>{job.title}</strong> at <a href={job.url}>{job.company}</a>
                   <br>{job.from} - {job.to ? job.to : 'Current job'}
                 </h4>
                   {job.description.map(paragraph => (

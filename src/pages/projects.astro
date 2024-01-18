@@ -14,17 +14,14 @@ const webExperiments: Array<WebExperiment> = [
 ];
 ---
 <Layout title="Projects">
-  <article class="container mx-auto px-8 my-24 ">
+  <article>
     {!!webExperiments.length &&
       <section>
         <h2>Web experiments</h2>
-        <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+        <div class="project-list">
           {webExperiments.map(item => (
             <a href={`/${item.slug}`}>
-              <ProjectCard
-                class="my-2"
-                project={item}
-              />
+              <ProjectCard project={item} />
             </a>
           ))}
         </div>
@@ -34,15 +31,10 @@ const webExperiments: Array<WebExperiment> = [
     {!!games.length &&
       <section>
         <h2>Games</h2>
-        <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+        <div class="project-list">
           {games.map(item => (
-            <a
-              href={item.url}
-            >
-              <ProjectCard
-                class="my-2"
-                project={item.frontmatter}
-              />
+            <a href={item.url}>
+              <ProjectCard project={item.frontmatter} />
             </a>
           ))}
         </div>
@@ -50,3 +42,15 @@ const webExperiments: Array<WebExperiment> = [
     }
   </article>
 </Layout>
+
+<style>
+.project-list {
+  display: flex;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+a {
+  text-decoration: none;
+}
+</style>

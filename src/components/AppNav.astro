@@ -4,10 +4,6 @@ import logo from '../images/logo-fat-sm.png';
 
 const menu = [
   {
-    name: 'Home',
-    href: '/'
-  },
-  {
     name: 'CV',
     href: '/cv'
   },
@@ -15,18 +11,6 @@ const menu = [
     name: 'Projects',
     href: '/projects'
   },
-  // {
-  //   name: 'Portfolio',
-  //   to: '/portfolio'
-  // },
-  // {
-  //   name: 'Contact',
-  //   to: '/contact'
-  // },
-  // {
-  //   name: 'Blog',
-  //   href: 'http://blog.makmonty.com'
-  // }
 ];
 ---
 <style>
@@ -49,7 +33,9 @@ a {
 </style>
 
 <nav>
-  <Image src={logo} alt="Logo with the shape of an A" height="24" />
+  <a href="/">
+    <Image src={logo} alt="Logo with the shape of an A" height="24" />
+  </a>
   <ul>
     {menu.map(item => (
       <li>
