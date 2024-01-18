@@ -1,6 +1,9 @@
 ---
-title: Unveiling the Power of Tree Shaking in Frontend Development
+title: The Power of Tree Shaking in Frontend Development by example
 date: 2024-01-12T12:10:28.549Z
+description: The primary goal of tree shaking is to reduce the size of the final
+  JavaScript bundle that is delivered to the browser. Smaller bundles mean
+  faster load times, improved performance, and a better user experience.
 tags:
   - javascript
   - frontend
