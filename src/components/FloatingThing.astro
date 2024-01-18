@@ -105,7 +105,7 @@ const icosahedronGeometry = new IcosahedronGeometry(14);
 
 const material = new MeshLambertMaterial({ color: 0xFFFFFF });
 
-let canvas;
+let canvas: HTMLElement;
 let scene: Scene;
 let renderer: WebGLRenderer;
 let camera: OrthographicCamera;
@@ -128,7 +128,7 @@ window.addEventListener('mousemove', (event) => {
 });
 
 window.onload = () => {
-  canvas = document.getElementById('floating-thing-canvas');
+  canvas = document.getElementById('floating-thing-canvas') as HTMLElement;
   scene = new Scene();
 
   renderer = new WebGLRenderer({ alpha: true, antialias: true });
