@@ -6,6 +6,7 @@ import BaseButton from '../components/BaseButton.astro';
 import AvatarAngelPod from '../../public/images/angel-pod-512x512.jpg';
 import FloatingThing from '../components/FloatingThing.astro';
 import { type BlogPost } from '../types/content';
+import BlogPostItem from '../components/BlogPostItem.astro';
 
 const avatares = {
   pod: {
@@ -71,11 +72,7 @@ try {
       <section>
         <h2>My blog</h2>
         {blogPosts.map(post => (
-          <article>
-            <h3>{post.frontmatter.title}</h3>
-            <p>{post.frontmatter.description}</p>
-            <footer><a href={post.url}>Read more</a></footer>
-          </article>
+          <BlogPostItem post={post} />
         ))}
       </section>
     )}
