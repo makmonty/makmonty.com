@@ -5,6 +5,19 @@ const { post } = Astro.props;
   <h3>{post.frontmatter.title}</h3>
   <p>{post.frontmatter.description}</p>
   <footer>
-    <a href={post.url}>Read more</a>
+    <a class="read-more" href={post.url}>Read more</a>
+    <span class="posted-on">Posted on <span class="posted-on-date">{new Date(post.frontmatter.pubDate).toUTCString()}</span></span>
   </footer>
 </article>
+
+<style>
+.posted-on {
+  display: inline-block;
+  margin-left: 16px;
+  font-size: 0.8em;
+}
+
+.posted-on-date {
+  font-style: italic;
+}
+</style>

@@ -6,6 +6,7 @@ const posts = await Astro.glob('./*.md');
 ---
 <Layout title="Blog">
   <h1>My blog</h1>
+  <a href="/blog/rss.xml">RSS Feed</a>
 
   {posts.map(post => (
     <BlogPostItem post={post} />
