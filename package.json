@@ -28,5 +28,6 @@
     "eslint-plugin-astro": "^0.31.3",
     "netlify-plugin-cache-yarn2": "^1.0.0",
     "sass": "^1.70.0"
-  }
+  },
+  "packageManager": "yarn@4.5.1"
 }
