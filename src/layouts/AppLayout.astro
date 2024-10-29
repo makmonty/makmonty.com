@@ -1,0 +1,36 @@
+---
+import Layout from './Layout.astro';
+import { type App } from '../types/content';
+
+const { frontmatter: app } = Astro.props as { frontmatter: App };
+---
+<Layout title={app.title}>
+  <article class="container mx-auto px-8 my-24">
+    {app.featuredImage &&
+      <div class="text-center">
+        <img class="inline-block rounded-lg w-64" src={app.featuredImage}>
+      </div>
+    }
+    <h1>{app.title}</h1>
+    <div class="flex space-x-10">
+      <!-- eslint-disable-next-line -->
+      <div class="flex-grow">
+        <slot />
+      </div>
+      <aside class="flex-shrink-0 mt-16">
+        {app.links?.length &&
+          <div class="mt-10">
+            <h4>Links</h4>
+            <ul>
+              {app.links.map(link => (
+                <li>
+                  <a href={link.url}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        }
+      </aside>
+    </div>
+  </article>
+</Layout>

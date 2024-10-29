@@ -4,6 +4,15 @@ export interface WebExperiment {
   featuredImage: string,
 }
 
+export interface App {
+  date: string,
+  title: string,
+  description: string,
+  tags: Array<string>
+  featuredImage: string
+  links: Array<{url: string, label: string}>
+}
+
 export interface Game {
   date: string,
   title: string,
