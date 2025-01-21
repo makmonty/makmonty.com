@@ -1,10 +1,11 @@
 ---
+import BlueskyIcon from '../images/bluesky.svg?raw'
 import AppNav from '../components/AppNav.astro';
 import 'line-awesome/dist/line-awesome/css/line-awesome.css';
 import '../../styles/style.css';
 
 interface Props {
-	title: string;
+  title: string;
 }
 
 const { title } = Astro.props;
@@ -22,6 +23,11 @@ const socialLinks = [
     rel: 'me'
   },
   {
+    href: 'https://bsky.app/profile/makmonty.itch.io',
+    title: 'Bluesky',
+    icon: BlueskyIcon
+  },
+  {
     href: 'https://www.linkedin.com/in/angelbraseromoreno/',
     title: 'Linkedin',
     icon: 'linkedin'
@@ -31,33 +37,37 @@ const socialLinks = [
     title: 'Soundcloud',
     icon: 'soundcloud'
   },
-  {
-    href: 'http://twitter.com/makmonty',
-    title: 'Twitter',
-    icon: 'twitter'
-  },
-  {
-    href: 'https://www.instagram.com/makmonty_/',
-    title: 'Instagram',
-    icon: 'instagram'
-  },
+  //{
+  //  href: 'http://twitter.com/makmonty',
+  //  title: 'Twitter',
+  //  icon: 'twitter'
+  //},
+  //{
+  //  href: 'https://www.instagram.com/makmonty_/',
+  //  title: 'Instagram',
+  //  icon: 'instagram'
+  //},
 ];
+console.log(BlueskyIcon)
 ---
 <!doctype html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="description" content="Astro description" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="Astro description" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="generator" content={Astro.generator} />
 
-		<title>{title}</title>
+    <title>{title}</title>
     <script
       is:inline
       src="https://identity.netlify.com/v1/netlify-identity-widget.js"
     ></script>
-	</head>
+  </head>
 <style>
 i span {
   font-size: 0;
@@ -73,20 +83,30 @@ footer {
   padding: 0 32px;
 }
 
-.social-links a {
-  font-size: 2em;
-  text-decoration: none;
+.social-links {
+  display: flex;
+  gap: 16px;
+
+  a {
+    font-size: 2em;
+    text-decoration: none;
+  }
+
+  svg {
+    width: 1em;
+    height: auto;
+  }
 }
 </style>
-	<body>
+  <body>
     <div class="main-layout">
       <header>
         <AppNav />
       </header>
 
-      <div>
+      <section>
         <slot />
-      </div>
+      </section>
 
       <footer>
         <div>
@@ -98,7 +118,11 @@ footer {
                 title={link.title}
                 rel={link.rel}
               >
-                <i class:list={['lab', 'la-' + link.icon]}><span>{link.title}</span></i>
+              {link.icon.includes('<svg') ? (
+                  <Fragment set:html={BlueskyIcon} />
+                ) : (
+                  <i class:list={['lab', 'la-' + link.icon]}><span>{link.title}</span></i>
+                )}
               </a>
             ))}
           </div>
@@ -107,14 +131,14 @@ footer {
     </div>
     <script is:inline>
       if (window.netlifyIdentity) {
-        window.netlifyIdentity.on("init", (user) => {
+        window.netlifyIdentity.on('init', (user) => {
           if (!user) {
-            window.netlifyIdentity.on("login", () => {
-              document.location.href = "/admin/";
+            window.netlifyIdentity.on('login', () => {
+              document.location.href = '/admin/';
             });
           }
         });
       }
     </script>
-	</body>
+  </body>
 </html>

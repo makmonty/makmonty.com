@@ -14,7 +14,7 @@ categories: []
 ---
 ## Introduction
 
-Frontend development has witnessed significant advancements in recent years, and one of the key techniques that has revolutionized the way we build and optimize JavaScript applications is tree shaking. This process has become an essential tool in the toolkit of web developers, enabling them to create faster and more efficient applications by eliminating unused code. In this article, we'll delve into the concept of tree shaking, understand how it works, and explore its impact on frontend development.
+Frontend development has witnessed significant advancements in recent years, and one of the key techniques that has revolutionized the way we build and optimize JavaScript applications is tree shaking. This process has become an essential tool in the toolkit of web developers, enabling them to create faster and more efficient applications by eliminating unused code. In this article, we'll dive into the concept of tree shaking, understand how it works, and explore its impact on frontend development.
 
 ## Understanding Tree Shaking
 
@@ -77,12 +77,10 @@ Let's do a simple case. The following code will be a `math` module that exports 
 ```javascript
 // math.js
 export function add(a, b) {
-  console.log('Adding:', a, b);
   return a + b;
 }
 
 export function subtract(a, b) {
-  console.log('Subtracting:', a, b);
   return a - b;
 }
 ```
@@ -94,7 +92,6 @@ Our main file will import that module and just use one of them:
 import { add } from './math';
 
 const result = add(5, 3);
-console.log('Result:', result);
 ```
 
 Vite needs an `index.html` file as entrypoint, so we'll add the simplest one:
@@ -138,7 +135,7 @@ Unless configured otherwise, our output file will be in the `dist/assets` direct
 
 ```bash
 $ cat dist/assets/index-XXXXXX.js
-function l(o,n){return console.log("Adding:",o,n),o+n}const e=l(5,3);console.log("Result:",e);
+function l(o,n){return o+n}const e=l(5,3);
 ```
 
 As you can see, the resulting file doesn't contain any mention to the unused methods of the `math` module.
@@ -159,4 +156,6 @@ Moreover, reducing the amount of code that needs to be loaded and executed can p
 
 ## Conclusion
 
-Tree shaking has become a crucial optimization technique for frontend developers, allowing them to create leaner and more efficient JavaScript applications. By removing dead code during the bundling process, developers can significantly improve the performance of their web applications, leading to faster load times and enhanced user experiences. As the web development landscape continues to evolve, integrating tree shaking into your workflow is a valuable practice to ensure that your applications stay fast, responsive, and competitive.
+Tree shaking has become a crucial optimization technique for frontend developers, allowing them to create leaner and more efficient JavaScript applications. By removing dead code during the bundling process, developers can significantly improve the performance of their web applications, leading to faster load times and enhanced user experiences.
+
+As the web development landscape continues to evolve, integrating tree shaking into your workflow is a valuable practice to ensure that your applications stay fast, responsive, and competitive.
