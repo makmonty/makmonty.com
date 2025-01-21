@@ -5,6 +5,7 @@ nuxt.d.ts
 .output
 dist
 .env
+.astro
 
 # Yarn
 .pnp.*

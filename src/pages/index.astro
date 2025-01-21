@@ -1,52 +1,16 @@
 ---
 import { type MarkdownInstance } from 'astro';
-import { Image } from 'astro:assets';
 import Layout from '../layouts/Layout.astro';
 import BaseButton from '../components/BaseButton.astro';
-import AvatarAngelPod from '../../public/images/angel-pod-512x512.jpg';
 import FloatingThing from '../components/FloatingThing.astro';
 import { type BlogPost } from '../types/content';
 import BlogPostItem from '../components/BlogPostItem.astro';
 
-const avatares = {
-  pod: {
-    src: AvatarAngelPod,
-    className: ''
-  },
-  pixel: {
-    src: '/images/yo-24x24.png',
-    className: 'rendering-crisp-edges p-4 border-primary'
-  }
-};
-
-const avatar = avatares.pod;
-const disciplines = [
-  {
-    name: 'Frontend',
-    icon: 'las la-desktop',
-    description: 'Vue, Angular, React, Ember...'
-  },
-  {
-    name: 'Backend',
-    icon: 'las la-server',
-    description: 'NodeJS, PHP, MySQL, MongoDB...'
-  },
-  {
-    name: 'Games',
-    icon: 'las la-gamepad',
-    description: 'Unity3D, WebGL, Game Design...'
-  },
-  {
-    name: 'Soundtracks',
-    icon: 'las la-music',
-    description: 'A, A#, B, C, C#...'
-  }
-];
 let blogPosts: Array<MarkdownInstance<BlogPost>> = [];
 try {
   blogPosts = await Astro.glob('./blog/*.md');
 } catch {
-  console.log('No blog posts')
+  console.log('No blog posts');
 }
 ---
 <Layout title="makmonty">
