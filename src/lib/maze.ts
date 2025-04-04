@@ -34,7 +34,7 @@ const DirectionOposites = {
 };
 
 export class Maze {
-  cells: MazeCell[][] = null;
+  cells: MazeCell[][];
 
   constructor(public width: number, public height: number) {
     this.cells = Array.from(Array(width), (_v, x) =>

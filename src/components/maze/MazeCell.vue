@@ -1,5 +1,6 @@
 <script lang="ts" setup>
-import { MazeCell } from '~~/lib/maze';
+import { toRefs } from 'vue';
+import { MazeCell } from '@/lib/maze';
 
 const props = defineProps<{
   cell: MazeCell,
