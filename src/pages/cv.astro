@@ -24,7 +24,7 @@ const jobs = [
     from: '2024 January',
     to: 'Current position',
     description: [
-      'Development and improvement of the different clients (web, desktop and mobile) of the core application. Enforcing the usage of good practices like Clean Code, SOLID and TDD.',
+      'Development and improvement of the different clients (web, desktop and mobile) of the core application. Enforcing good development practices like Clean Code, SOLID and TDD.',
       'Core technologies: ReactJS, Electron.'
     ]
   },
@@ -46,7 +46,7 @@ const jobs = [
     from: '2021 January',
     to: '2021 September',
     description: [
-      'Leading the development of frontend applications',
+      'Lead the development of frontend applications',
       'Core technologies: React.'
     ]
   },
@@ -57,7 +57,8 @@ const jobs = [
     from: '2019 September',
     to: '2020 December',
     description: [
-      'Full stack design and implementation of new features in several projects.<br/>Involved in the implementation of agile methodologies to improve the quality and efficiency of the development.',
+      'Full stack design and implementation of new features in several projects.',
+      'Involved in the implementation of agile methodologies to improve the quality and efficiency of the development.',
       'Core technologies: Angular, Typescript, NodeJS, ExpressJS, Restify.'
     ]
   },
@@ -68,7 +69,7 @@ const jobs = [
     from: '2018 July',
     to: '2019 July',
     description: [
-      'Leading a back office app development in an agile team.',
+      'Lead a back office app development in an agile team.',
       'Core technologies: Angular, Typescript, Material Design.'
     ]
   },
@@ -120,7 +121,7 @@ const jobs = [
 
 const studies = [
   {
-    title: 'Computer and Software Engineering',
+    title: 'Ingeniería Informática',
     institute: 'Universidad de Sevilla',
     url: 'http://www.us.es/'
   }
@@ -138,20 +139,44 @@ const studies = [
     gap: 24px;
   }
 
+  ul {
+    padding: 0;
+    list-style: none;
+  }
+
+
   @media print {
     body {
       background: white;
       color: #666;
       font-family: sans;
-      font-size: 10px;
+      font-size: 11px;
+    }
+
+    :global(footer) {
+      display: none;
     }
 
     a {
       text-decoration: none;
     }
 
-    h1, h2, h3, h4, h5 {
+    h1, h2, h3, h4, h5, .title {
       font-family: "Roboto Slab";
+      color: black;
+      margin: 0;
+    }
+
+    h1 {
+      font-size: 4em;
+    }
+
+    h2 {
+      font-size: 2em;
+    }
+
+    .title {
+      font-size: 2em;
     }
 
     strong {
@@ -162,59 +187,61 @@ const studies = [
       h3, h4 {
         margin: 0;
       }
-    }
 
-    ul {
-      padding: 0;
-      list-style: none;
+      h3 {
+        font-size: 1.4em;
+      }
+
+      h4 {
+        margin-bottom: 6px;
+      }
+
+      p {
+        margin: 0;
+      }
     }
 
     article {
       display: grid;
-      grid-template-columns: 40%;
-      grid-template-rows: 100px;
-
-      section {
-      }
+      grid-template-columns: 25%;
+      column-gap: 60px;
 
       header {
         grid-area: header;
-        grid-column-start: 1;
-        grid-column-end: 3;
-        grid-row-start: 1;
-        grid-row-end: 2;
+        grid-row: 1;
+        grid-column: 1 / span 2;
+        margin-bottom: 12px;
       }
 
       .about-me {
         grid-area: about-me;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 2;
-        grid-row-end: 3;
+        grid-row: 2;
+        grid-column: 1;
       }
 
       .skills {
         grid-area: skills;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 3;
-        grid-row-end: 4;
+        grid-row: 3;
+        grid-column: 1;
       }
 
       .work-experience {
         grid-area: work-experience;
-        grid-column-start: 2;
-        grid-column-end: 3;
-        grid-row-start: 2;
-        grid-row-end: 7;
+        grid-row: 2 / span 4;
+        grid-column: 2;
+
+        ul {
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+        }
       }
 
       .education {
         grid-area: education;
-        grid-column-start: 1;
-        grid-column-end: 2;
-        grid-row-start: 4;
-        grid-row-end: 5;
+        grid-row: 4;
+        grid-column: 1;
       }
     }
   }
@@ -224,15 +251,13 @@ const studies = [
   <article>
     <header>
       <h1>Ángel Brasero Moreno</h1>
-      <div><strong>Software Engineer</strong></div>
+      <div class="title"><strong>Software Engineer</strong></div>
     </header>
 
     <section class="about-me">
       <h2>About me</h2>
       <p>
-Hi there! I’m a software engineer in love with music and video games.
-My career is focused on creativity, proactivity and adding value to the faced projects.
-Fearless of learning new technologies and absorb what each generation has to offer.
+I'm a software engineer passionate about web technologies and creating video games, Clean Code, and Software Craftsmanship. I value principles like SOLID, TDD, and CI/CD to build reliable, maintainable systems. Outside of work, I enjoy playing musical instruments and working on personal coding projects.
       </p>
     </section>
 
@@ -278,7 +303,7 @@ Fearless of learning new technologies and absorb what each generation has to off
         <ul>
           {studies.map(study => (
             <li>
-              <h4><strong>{study.title}</strong> at <a href={study.url}>{study.institute}</a></h4>
+              <h3><strong>{study.title}</strong> at <a href={study.url}>{study.institute}</a></h3>
             </li>
           ))}
         </ul>
