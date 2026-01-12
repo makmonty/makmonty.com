@@ -1,11 +1,11 @@
-import { Object3D, type Renderer, Camera } from 'three';
+import { Object3D, WebGLRenderer, Camera } from 'three';
 
 export class ThreeBehaviorObject {
   behaviors: ThreeBehavior[] = [];
 
   constructor(
     public object3d: Object3D,
-    public renderer: Renderer,
+    public renderer: WebGLRenderer,
     public mainCamera: Camera
   ) {}
 
