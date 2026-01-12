@@ -13,6 +13,6 @@
   publish = ".output/public/"
 
   # Default build command.
-  command = "yarn generate"
+  command = "yarn install && yarn generate"
 
   environment = { NODE_VERSION = "16.14.2" }
