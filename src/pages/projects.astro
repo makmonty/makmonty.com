@@ -1,0 +1,56 @@
+---
+import Layout from '../layouts/Layout.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+
+const getContentFromFiles = function(imports: ContentImport) {
+  return Promise.all(Object.entries(imports)
+    .map(([ key, imp ]) => {
+      const slug = key.split('/').pop()?.slice(0, -5);
+      return imp().then(item => ({
+        ...item,
+        slug
+      }));
+    }));
+};
+const games = await getContentFromFiles(() => import.meta.glob(`../../assets/content/games/**/*.json`));
+const webExperiments = [
+  {
+    title: 'Maze',
+    slug: 'maze',
+    featuredImage: '/cms/img/maze-promo.jpg',
+  }
+];
+---
+<Layout title="Projects">
+  <article class="container mx-auto px-8 my-24 ">
+    <section>
+      <h2>Web experiments</h2>
+      <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+        {webExperiments.map(item => (
+          <a href={`/${item.slug}`}>
+            <ProjectCard
+              class="my-2"
+              project={item}
+            />
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <section>
+      <h2>Games</h2>
+      <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+        {games.map(item => (
+          <a
+            href={`/games/${item.slug}`}
+          >
+            <ProjectCard
+              class="my-2"
+              project={item}
+            />
+          </a>
+        ))}
+      </div>
+    </section>
+  </article>
+</Layout>

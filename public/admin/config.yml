@@ -5,6 +5,9 @@ backend:
 media_folder: cms/img
 public_folder: /cms/img
 publish_mode: editorial_workflow
+slug:
+  encoding: "ascii"
+  clean_accents: true
 
 collections:
   - name: "blog"
