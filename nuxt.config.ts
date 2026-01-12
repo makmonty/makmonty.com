@@ -52,9 +52,6 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  pageTransition: {
-    'page-fade': true
-  },
   //generate: {
     //async routes() {
       //return [
