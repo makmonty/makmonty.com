@@ -22,7 +22,7 @@ export default {
 
 <style lang="scss" scoped>
 .card-image {
-  background-image: url('~assets/images/gamepad.png');
+  background-image: url('/images/gamepad.png');
   background-size: 20%;
   // image-rendering: crisp-edges;
 }
