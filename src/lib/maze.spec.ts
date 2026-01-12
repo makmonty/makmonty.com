@@ -2,32 +2,26 @@ import { describe, test, expect } from 'vitest';
 import { MazeGenerator } from './maze';
 
 describe('MazeGenerator', () => {
-  describe('constructor', () => {
+
+  describe('#generate', () => {
     test('it creates a MxN maze', () => {
-      const maze = new MazeGenerator(2, 3);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 2,
+        height: 3,
+        seed: ''
+      });
       expect(maze.cells.length).toBe(2);
       expect(maze.cells[0].length).toBe(3);
     });
-  });
 
-  describe('#generate', () => {
     test('it links the left cell to the right cell in a 2x1 maze', () => {
-      const maze = new MazeGenerator(2, 1);
-      maze.generate();
-
-      expect(maze.cells[0][0].right).toBeTruthy();
-      expect(maze.cells[0][0].left).toBeFalsy();
-      expect(maze.cells[0][0].up).toBeFalsy();
-      expect(maze.cells[0][0].down).toBeFalsy();
-      expect(maze.cells[1][0].left).toBeTruthy();
-      expect(maze.cells[1][0].right).toBeFalsy();
-      expect(maze.cells[1][0].up).toBeFalsy();
-      expect(maze.cells[1][0].down).toBeFalsy();
-    });
-
-    test('it links the left cell to the right cell in a 2x1 maze when starting from the right edge', () => {
-      const maze = new MazeGenerator(2, 1);
-      maze.generate(1, 0);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 2,
+        height: 1,
+        seed: ''
+      });
 
       expect(maze.cells[0][0].right).toBeTruthy();
       expect(maze.cells[0][0].left).toBeFalsy();
@@ -40,8 +34,12 @@ describe('MazeGenerator', () => {
     });
 
     test('it links the top cell to the bottom cell in a 1x2 maze', () => {
-      const maze = new MazeGenerator(1, 2);
-      maze.generate();
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 1,
+        height: 2,
+        seed: ''
+      });
 
       expect(maze.cells[0][0].right).toBeFalsy();
       expect(maze.cells[0][0].left).toBeFalsy();
@@ -54,9 +52,12 @@ describe('MazeGenerator', () => {
     });
 
     test('it creates a C, with one wall, in a 2x2 maze', () => {
-      const maze = new MazeGenerator(2, 2);
-      maze.generate();
-      console.log(maze.toString());
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 2,
+        height: 2,
+        seed: ''
+      });
 
       expect(maze.cells[0][0].right || maze.cells[0][0].down).toBeTruthy();
       expect(maze.cells[1][0].left || maze.cells[0][0].down).toBeTruthy();
@@ -68,12 +69,24 @@ describe('MazeGenerator', () => {
 
   describe('#getAvailableDirections', () => {
     test('it returns an empty array if the maze is 1x1', () => {
-      const maze = new MazeGenerator(1, 1);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 1,
+        height: 1,
+        seed: ''
+      });
+
       expect(maze.getAvailableDirections(0, 0)).toEqual([]);
     });
 
     test('it does not return left if the cell is in the left edge', () => {
-      const maze = new MazeGenerator(3, 3);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 3,
+        height: 3,
+        seed: ''
+      });
+
       const neighbours = maze.getAvailableDirections(0, 1);
       expect(neighbours).toContain('right');
       expect(neighbours).toContain('up');
@@ -83,7 +96,13 @@ describe('MazeGenerator', () => {
     });
 
     test('it does not return right if the cell is in the right edge', () => {
-      const maze = new MazeGenerator(3, 3);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 3,
+        height: 3,
+        seed: ''
+      });
+
       const neighbours = maze.getAvailableDirections(2, 1);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('up');
@@ -93,7 +112,13 @@ describe('MazeGenerator', () => {
     });
 
     test('it does not return up if the cell is in the top edge', () => {
-      const maze = new MazeGenerator(3, 3);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 3,
+        height: 3,
+        seed: ''
+      });
+
       const neighbours = maze.getAvailableDirections(1, 0);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('right');
@@ -103,7 +128,13 @@ describe('MazeGenerator', () => {
     });
 
     test('it does not return down if the cell is in the bottom edge', () => {
-      const maze = new MazeGenerator(3, 3);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 3,
+        height: 3,
+        seed: ''
+      });
+
       const neighbours = maze.getAvailableDirections(1, 2);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('right');
@@ -113,7 +144,13 @@ describe('MazeGenerator', () => {
     });
 
     test('it returns all sides if the cell is not in an edge', () => {
-      const maze = new MazeGenerator(3, 3);
+      const generator = new MazeGenerator();
+      const maze = generator.generate({
+        width: 3,
+        height: 3,
+        seed: ''
+      });
+
       const neighbours = maze.getAvailableDirections(1, 1);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('right');

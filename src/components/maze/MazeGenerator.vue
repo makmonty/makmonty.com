@@ -1,5 +1,8 @@
 <script lang="ts" setup>
-import { MazeGenerator } from '~/lib/maze';
+import { ref, watch, toRefs } from 'vue';
+import { Maze, MazeGenerator } from '@/lib/maze';
+import MazeCell from './MazeCell.vue';
+
 const props = defineProps<{
   cols: number,
   rows: number,
@@ -8,7 +11,7 @@ const props = defineProps<{
 }>();
 const { cols, rows, cellSize, seed } = toRefs(props);
 
-const maze = ref(null);
+const maze = ref<Maze>();
 const mazeGenerator = new MazeGenerator();
 
 watch([ cols, rows, seed ], () => {
@@ -22,8 +25,15 @@ watch([ cols, rows, seed ], () => {
   <table v-if="maze" class="maze">
     <tbody>
       <tr v-for="y in rows" :key="y">
-        <MazeCell v-for="x in cols" :key="x" :cell="maze.cells[x-1][y-1]" :size="cellSize" />
+        <MazeCell v-for="x in cols" :key="x" :cell="maze?.cells[x-1][y-1]" :size="cellSize" />
       </tr>
     </tbody>
   </table>
 </template>
+
+<style scoped>
+.maze {
+  background: white;
+  border-collapse: collapse;
+}
+</style>
