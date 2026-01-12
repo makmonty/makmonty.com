@@ -39,10 +39,13 @@ module.exports = {
     'no-use-before-define': 'off',
     'no-useless-constructor': 'off',
     '@typescript-eslint/quotes': ['error', 'single', {"allowTemplateLiterals": true}],
-    'space-in-brackets': ['warn', 'always', {
+    'object-curly-spacing': ['warn', 'always'],
+    'array-bracket-spacing': ['warn', 'always', {
       'objectsInArrays': false,
       'arraysInArrays': false,
-      'propertyName': false,
+    }],
+    'array-bracket-newline': ['warn', {
+      'multiline': true
     }]
   },
 };

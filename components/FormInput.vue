@@ -13,5 +13,5 @@ const emit = defineEmits<{
 </script>
 
 <template>
-  <input :type="props.type" :value="modelValue" @input="emit('update:modelValue', $event.target.value)" />
+  <input :type="props.type" :value="modelValue" @input="emit('update:modelValue', $event.target.value)">
 </template>

@@ -2,25 +2,30 @@
 const cols = ref('20');
 const rows = ref('20');
 const cellSize = ref('20');
+const seed = ref('');
 </script>
 
 <template>
   <article class="container mx-auto">
     <div>
-      Cols <FormInput type="number" v-model="cols" />
+      Cols <FormInput v-model="cols" type="number" />
     </div>
     <div>
-      Rows <FormInput type="number" v-model="rows" />
+      Rows <FormInput v-model="rows" type="number" />
     </div>
     <div>
-      Cell size <FormInput type="number" v-model="cellSize" />
+      Cell size <FormInput v-model="cellSize" type="number" />
+    </div>
+    <div>
+      Seed <FormInput v-model="seed" type="number" />
     </div>
 
     <MazeGenerator
       class="mx-auto"
       :cols="parseInt(cols)"
       :rows="parseInt(rows)"
-      :cellSize="parseInt(cellSize)"
+      :cell-size="parseInt(cellSize)"
+      :seed="seed"
     />
   </article>
 </template>
