@@ -1,7 +1,7 @@
 <template>
   <section class="main-block post-list">
     <article v-for="post in blogPosts" :key="post.slug" class="post">
-      <img :src="post['featured-image']">
+      <img :src="post.featuredImage">
       <h1>
         <nuxt-link :to="'/blog/' + post.slug">
           {{ post.title }}
