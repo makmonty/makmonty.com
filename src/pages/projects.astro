@@ -1,48 +1,51 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { getContentFromFiles } from '../utils/content'
 
-const games = await getContentFromFiles(() => import.meta.glob(`../../assets/content/games/**/*.json`));
+const games = await Astro.glob('./games/*.md');
 
 const webExperiments = [
-  {
-    title: 'Maze',
-    slug: 'maze',
-    featuredImage: '/cms/img/maze-promo.jpg',
-  }
+  // {
+  //   title: 'Maze',
+  //   slug: 'maze',
+  //   featuredImage: '/cms/img/maze-promo.jpg',
+  // }
 ];
 ---
 <Layout title="Projects">
   <article class="container mx-auto px-8 my-24 ">
-    <section>
-      <h2>Web experiments</h2>
-      <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
-        {webExperiments.map(item => (
-          <a href={`/${item.slug}`}>
-            <ProjectCard
-              class="my-2"
-              project={item}
-            />
-          </a>
-        ))}
-      </div>
-    </section>
+    {!!webExperiments.length &&
+      <section>
+        <h2>Web experiments</h2>
+        <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+          {webExperiments.map(item => (
+            <a href={`/${item.slug}`}>
+              <ProjectCard
+                class="my-2"
+                project={item}
+              />
+            </a>
+          ))}
+        </div>
+      </section>
+    }
 
-    <section>
-      <h2>Games</h2>
-      <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
-        {games.map(item => (
-          <a
-            href={`/games/${item.slug}`}
-          >
-            <ProjectCard
-              class="my-2"
-              project={item}
-            />
-          </a>
-        ))}
-      </div>
-    </section>
+    {!!games.length &&
+      <section>
+        <h2>Games</h2>
+        <div class="flex flex-col items-center lg:flex-row flex-wrap justify-center space-y-8 lg:space-y-0 lg:space-x-12">
+          {games.map(item => (
+            <a
+              href={item.url}
+            >
+              <ProjectCard
+                class="my-2"
+                project={item.frontmatter}
+              />
+            </a>
+          ))}
+        </div>
+      </section>
+    }
   </article>
 </Layout>
