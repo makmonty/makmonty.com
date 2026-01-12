@@ -20,7 +20,7 @@ export default {
   },
   methods: {
     toggleTheme() {
-      this.$colorMode.value = this.$colorMode.value === 'light' ? 'dark' : 'light';
+      this.$colorMode.preference = this.$colorMode.value === 'light' ? 'dark' : 'light';
     }
   }
 };

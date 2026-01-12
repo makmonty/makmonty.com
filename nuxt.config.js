@@ -71,7 +71,8 @@ export default {
     ]
   },
   colorMode: {
-    preference: 'light'
+    preference: 'light',
+    classSuffix: ''
   },
   /*
   ** Build configuration

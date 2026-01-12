@@ -21,14 +21,7 @@
 </template>
 
 <script>
-import FloatingThings from './FloatingThings';
-import ColorModeToggle from './ColorModeToggle';
-
 export default {
-  components: {
-    FloatingThings,
-    ColorModeToggle
-  },
   data() {
     return {
       menu: [
@@ -40,10 +33,10 @@ export default {
           name: 'CV',
           to: '/cv'
         },
-        {
-          name: 'Projects',
-          to: '/projects'
-        }
+        // {
+        //   name: 'Projects',
+        //   to: '/projects'
+        // }
       ]
     };
   }

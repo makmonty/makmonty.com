@@ -12,13 +12,14 @@ module.exports = {
     darkSelector: '.dark-mode'
   },
   variants: {
-    backgroundColor: ['hover', 'dark', 'dark-hover', 'dark-group-hover', 'dark-even', 'dark-odd'],
-    borderColor: ['hover', 'dark', 'dark-disabled', 'dark-focus', 'dark-focus-within'],
-    textColor: ['hover', 'dark', 'dark-hover', 'dark-active', 'dark-placeholder']
+    backgroundColor: ['hover', 'dark'],
+    borderColor: ['hover', 'dark'],
+    textColor: ['hover', 'dark']
   },
-  plugins: [
-    require('tailwindcss-dark-mode')()
-  ],
+  experimental: {
+    darkModeVariant: true
+  },
+  dark: 'class',
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: [
