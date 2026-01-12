@@ -1,0 +1,14 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import BlogPostItem from '../../components/BlogPostItem.astro';
+
+const posts = await Astro.glob('./*.md');
+---
+<Layout title="Blog">
+  <h1>My blog</h1>
+
+  {posts.map(post => (
+    <BlogPostItem post={post} />
+  ))}
+</Layout>
+
