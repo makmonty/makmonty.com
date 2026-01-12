@@ -1,10 +1,12 @@
 const path = require('path');
-const ExtractTextPlugin = require('extract-text-webpack-plugin')
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const HtmlPlugin = require('html-webpack-plugin');
 
 const distDir = 'public';
 
 let entry = {};
 entry['css/style.css'] = './sass/style.scss';
+// entry['index.html'] = './views/index.pug';
 
 module.exports = {
   entry,
@@ -31,14 +33,29 @@ module.exports = {
             loader: 'file-loader',
             options: {
               name: '[name].[ext]',
-              outputPath: 'images/'
+              outputPath: 'images/',
+              publicPath: '/'
             }
           }
+        ]
+      },
+      {
+        test: /\.pug$/,
+        use: [
+          // 'html-loader',
+          'pug-loader'
         ]
       }
     ]
   },
   plugins: [
-    new ExtractTextPlugin('[name]')
+    new ExtractTextPlugin('[name]'),
+    new HtmlPlugin({
+      template: './views/index.pug'
+    }),
+    new HtmlPlugin({
+      template: './views/games/box-rain.pug',
+      filename: 'games/box-rain.html'
+    })
   ]
 };
