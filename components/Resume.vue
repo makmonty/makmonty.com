@@ -14,9 +14,10 @@ div
     .resume-block
       ul
         li
-          h4 <strong>Frontend Lead</strong> at <a href="https://www.podgroup.com/">Pod Group</a>
+          h4 <strong>Software Engineer</strong> at <a href="https://www.podgroup.com/">Pod Group</a>
             | <br/>2019 September - Current job
-          p Lead all the frontend development in several projects, with added backend development.
+          p Full stack design and implementation of new features of several projects.
+            | <br/>Involved in the implementation of agile methodologies to improve the quality and efficiency of the development.
           p Core technologies: Angular 2+, Typescript, NodeJS, ExpressJS, Restify.
         li
           h4 <strong>Frontend Lead</strong> at <a href="https://www.easypaymentgateway.com">Easy Payment Gateway</a>
