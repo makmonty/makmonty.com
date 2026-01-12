@@ -41,7 +41,7 @@ const disciplines = [
 ];
 let blogPosts = [];
 try {
-  blogPosts = Astro.glob('../../assets/content/blog/*.md');
+  blogPosts = await Astro.glob('./blog/*.md');
 } catch {
   console.log('No blog posts')
 }
@@ -65,11 +65,14 @@ try {
         </div>
       </div>
     </section>
-    {blogPosts && (
+    {!!blogPosts?.length && (
       <section>
+        <h2>My blog</h2>
         {blogPosts.map(post => (
           <article>
-            <h2>{post.title}</h2>
+            <h3>{post.frontmatter.title}</h3>
+            <p>{post.frontmatter.description}</p>
+            <footer><a href={post.url}>Read more</a></footer>
           </article>
         ))}
       </section>
@@ -91,5 +94,13 @@ try {
 }
 .intro p {
   margin: 24px 0;
+}
+
+.blog-posts {
+  margin-bottom: 32px;
+}
+
+section:not(:first-child) {
+  margin-bottom: 42px;
 }
 </style>

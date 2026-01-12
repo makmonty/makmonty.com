@@ -24,10 +24,16 @@
   --light-red: #ff757f;
   --red: #ff007c;
   --dark-red: #c53b53;
+  --black: #000000;
+  --white: #ffffff;
 
   --bg-color: var(--gray1);
+  --bg-secondary-color: var(--gray3);
   --fg-color: var(--gray10);
+  --fg-secondary-color: var(--gray8);
   --primary-color: var(--red);
+  --primary-active-color: var(--light-red);
   --secondary-color: var(--blue);
+  --secondary-active-color: var(--light-blue);
 }
 

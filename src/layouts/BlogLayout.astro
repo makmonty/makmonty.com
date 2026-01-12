@@ -1,0 +1,17 @@
+---
+import { Image } from 'astro:assets';
+import Layout from './Layout.astro';
+
+const { frontmatter: post } = Astro.props;
+---
+<Layout title={post.title}>
+  <img src={post.featuredImage} alt={post.title} />
+  <h1>{post.title}</h1>
+  <slot/>
+</Layout>
+
+<style>
+img {
+  width: 100%;
+}
+</style>

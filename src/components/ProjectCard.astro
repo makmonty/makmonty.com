@@ -1,21 +1,35 @@
 ---
 const { project } = Astro.props;
 ---
-<div class="w-64 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 duration-1000">
-  <div class="card-image bg-gray-300 bg-center bg-no-repeat w-full h-64">
-    <img class="h-full" src={project.featuredImage} alt={project.featuredImage ? project.title : ''}>
+<div class="project-card">
+  <div class="card-image">
+    <img src={project.featuredImage} alt={project.title}>
   </div>
-  <div class="p-4">
-    <h6 class="text-lg text-dark dark:text-light duration-1000">
+  <div>
+    <h3>
       {project.title}
-    </h6>
-    <p />
+    </h3>
   </div>
 </div>
 
 <style>
+.project-card {
+  width: 200px;
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--bg-secondary-color);
+}
 .card-image {
   background-image: url('/images/gamepad.png');
   background-size: 20%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+img {
+  width: 100%;
+}
+
+h3 {
+  padding: 0 16px;
 }
 </style>
