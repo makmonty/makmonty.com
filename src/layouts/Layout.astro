@@ -37,18 +37,7 @@ const socialLinks = [
     title: 'Soundcloud',
     icon: 'soundcloud'
   },
-  //{
-  //  href: 'http://twitter.com/makmonty',
-  //  title: 'Twitter',
-  //  icon: 'twitter'
-  //},
-  //{
-  //  href: 'https://www.instagram.com/makmonty_/',
-  //  title: 'Instagram',
-  //  icon: 'instagram'
-  //},
 ];
-console.log(BlueskyIcon)
 ---
 <!doctype html>
 <html lang="en">
@@ -63,10 +52,13 @@ console.log(BlueskyIcon)
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
+
     <script
       is:inline
       src="https://identity.netlify.com/v1/netlify-identity-widget.js"
     ></script>
+
+    <slot name="head" />
   </head>
 <style>
 i span {
