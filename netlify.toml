@@ -13,11 +13,12 @@
   publish = ".output/public/"
 
   # Default build command.
-  command = "yarn install && yarn generate"
+  command = "yarn generate"
 
 [build.environment]
 
   NODE_VERSION = "16.14.2"
+  YARN_VERSION = "1.22.18"
   #YARN_ENABLE_GLOBAL_CACHE = "true"
   #YARN_GLOBAL_FOLDER = "/opt/buildhome/.yarn_cache"
 
