@@ -11,7 +11,7 @@
     <footer>
       <div class="container mx-auto p-8">
         <p>Find me at...</p>
-        <div class="space-x-8 mt-8">
+        <div class="space-x-8 mt-8 text-3xl">
           <a
             v-for="link in socialLinks"
             :key="link.title"
@@ -19,7 +19,7 @@
             :title="link.title"
           >
             <client-only>
-              <i :class="['las', 'la-' + link.icon]" />
+              <i :class="['lab', 'la-' + link.icon]" />
               <!-- <unicon :name="link.icon" width="32" height="32" /> -->
             </client-only>
           </a>

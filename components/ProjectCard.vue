@@ -1,12 +1,13 @@
 <template>
   <div class="w-64 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700 duration-1000">
     <div class="card-image bg-gray-300 bg-center bg-no-repeat w-full h-64">
-      <img class="h-full" :src="project.promoImage" :alt="project.promoImage ? project.name + ' Promo Image' : ''">
+      <img class="h-full" :src="project.featuredImage" :alt="project.featuredImage ? project.name + ' Promo Image' : ''">
     </div>
     <div class="p-4">
       <h6 class="text-lg">
-        {{ project.name }}
+        {{ project.title }}
       </h6>
+      <p />
     </div>
   </div>
 </template>
