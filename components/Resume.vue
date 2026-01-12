@@ -3,9 +3,9 @@
   section
     h2 Skills
     ul
-      li <strong>Frontend</strong>: AngularJS, Angular 2+, VueJS, TailwindCSS, Backbone, SASS, Bootstrap
+      li <strong>Frontend</strong>: AngularJS, Angular 2+, VueJS, NuxtJS, TailwindCSS, SASS, Bootstrap, Backbone
       li <strong>Backend</strong>: NestJS, ExpressJS, NodeJS, PHP, MongoDB, MySQL
-      li <strong>Video games</strong>: Unity3D, WebGL
+      li <strong>Video games</strong>: Unity3D, WebGL, ThreeJS
 
   section
     h2 Work Experience

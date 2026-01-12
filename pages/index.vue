@@ -7,8 +7,8 @@
           class="w-64 h-64 object-contain border rounded-full"
           :class="avatar.className"
         >
-        <div class="flex flex-col justify-center">
-          <h1 class="text-4xl">
+        <div class="flex flex-col justify-center space-y-6">
+          <h1 class="text-4xl mb-0 leading-none">
             I'm <span class="text-primary">Ángel Brasero</span>
           </h1>
           <p class="summary">
