@@ -4,6 +4,27 @@
 body {
   background: @light-grey;
   color: @dark-grey;
+  font-family: Montserrat, sans-serif;
+}
+
+a {
+  color: @primary-color;
+
+  &:link {
+    color: @primary-color;
+  }
+
+  &:hover {
+    color: lighten(@primary-color, 30%);
+  }
+
+  &:active {
+    color: @secondary-color;
+  }
+
+  &:visited {
+    color: @primary-color;
+  }
 }
 
 .content {
@@ -14,8 +35,44 @@ body {
 
 .navbar {
   margin-bottom: 0;
+
+  .navbar-brand {
+    color: @light-grey;
+  }
 }
 
 footer {
-  padding-top: 40px;
+  padding: 40px 0;
+}
+
+.game {
+  margin: 40px 0;
+  a {
+    display: block;
+    max-width: 100%;
+    img {
+      max-width: 100%;
+    }
+  }
+
+  .platforms {
+    font-size: 1.6em;
+    margin-top: 5px;
+    text-align: center;
+    color: darken(@light-grey, 20%);
+  }
+}
+
+.game-big {
+  img {
+    max-width: 600px;
+  }
+}
+
+.game-card {
+  ul {
+    list-style: none;
+    padding-left: 0;
+    font-size: 1.6em;
+  }
 }
