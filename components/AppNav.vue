@@ -5,16 +5,15 @@
     </div>
     <ul class="flex p-8 space-x-8">
       <li v-for="item in menu" :key="item.to">
-        <nuxt-link :to="item.to" class="hover:border-b-4">
+        <Component
+          :is="item.to ? 'NuxtLink' : 'a'"
+          :to="item.to"
+          :href="item.href"
+          class="hover:border-b-4"
+        >
           {{ item.name }}
-        </nuxt-link>
+        </Component>
       </li>
-    <!-- //- li
-    //-   a(href="portfolio.pug") Portfolio
-    //- li
-    //-   a(href="#contact") Contact
-    //- li
-    //-   a(href="http://blog.makmonty.com") Blog -->
     </ul>
     <ColorModeToggle />
   </nav>
@@ -33,9 +32,21 @@ export default {
           name: 'CV',
           to: '/cv'
         },
+        {
+          name: 'Projects',
+          to: '/projects'
+        },
         // {
-        //   name: 'Projects',
-        //   to: '/projects'
+        //   name: 'Portfolio',
+        //   to: '/portfolio'
+        // },
+        // {
+        //   name: 'Contact',
+        //   to: '/contact'
+        // },
+        // {
+        //   name: 'Blog',
+        //   href: 'http://blog.makmonty.com'
         // }
       ]
     };

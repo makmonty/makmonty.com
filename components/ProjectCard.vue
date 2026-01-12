@@ -1,7 +1,7 @@
 <template>
   <div class="w-64 shadow-lg rounded-lg overflow-hidden">
     <div class="card-image bg-gray-300 bg-center bg-no-repeat w-full h-64">
-      <img>
+      <img :src="project.promoImage" :alt="project.name + ' Promo Image'">
     </div>
     <div class="p-4">
       <h6 class="text-lg">
