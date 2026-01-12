@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans relative text-dark bg-light dark:bg-dark dark:text-light duration-1000">
+  <div>
     <header class="w-full relative z-20">
       <AppNav />
     </header>
@@ -19,7 +19,8 @@
             :title="link.title"
           >
             <client-only>
-              <unicon :name="link.icon" width="32" height="32" />
+              <i :class="['las', 'la-' + link.icon]" />
+              <!-- <unicon :name="link.icon" width="32" height="32" /> -->
             </client-only>
           </a>
         </div>
@@ -69,6 +70,13 @@ export default {
           icon: 'instagram'
         }
       ]
+    };
+  },
+  head() {
+    return {
+      bodyAttrs: {
+        class: 'font-sans relative text-dark bg-light dark:bg-dark dark:text-light duration-1000'
+      }
     };
   }
 };

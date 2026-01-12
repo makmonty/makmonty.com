@@ -6,7 +6,8 @@
     @click="toggleTheme"
   >
     <transition name="colormode" duration="1000">
-      <unicon :key="colorMode" :name="colorMode === 'light' ? 'moon' : 'sun'" width="18" height="18" />
+      <i :key="colorMode" :class="['las', 'la-' + (colorMode === 'light' ? 'moon' : 'sun')]" />
+      <!-- <unicon :key="colorMode" :name="colorMode === 'light' ? 'moon' : 'sun'" width="18" height="18" /> -->
     </transition>
   </BaseButton>
 </template>
