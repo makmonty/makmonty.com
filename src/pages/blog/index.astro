@@ -1,8 +1,9 @@
 ---
+import { getContent } from '@/lib/content';
 import Layout from '../../layouts/Layout.astro';
 import BlogPostItem from '../../components/BlogPostItem.astro';
 
-const posts = await Astro.glob('./*.md');
+const posts = await getContent(import.meta.glob('./*.md'));
 ---
 <Layout title="Blog">
   <h1>My blog</h1>
@@ -12,4 +13,3 @@ const posts = await Astro.glob('./*.md');
     <BlogPostItem post={post} />
   ))}
 </Layout>
-
