@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-import { defineNuxtConfig } from 'nuxt';
 
 interface RoutePayload {
   route: string;
@@ -20,20 +19,15 @@ const generatePages = function(
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   target: 'static',
+  ssr: true,
   buildModule: [ '@nuxtjs/tailwindcss' ],
-  build: {
-    postcss: {
-      postcssOptions: {
-        plugins: {
-          tailwindcss: {},
-          autoprefixer: {},
-        },
-      },
-    },
-    splitChunks: {
-      layouts: false,
-      pages: false,
-      commons: false
+  webpack: {
+    optimization: {
+      splitChunks: {
+        layouts: false,
+        pages: false,
+        commons: false
+      }
     }
   },
   app: {
@@ -63,6 +57,12 @@ export default defineNuxtConfig({
     '@/node_modules/line-awesome/dist/line-awesome/css/line-awesome.css',
     '@/styles/style.scss'
   ],
+  postcss: {
+    plugins: {
+      tailwindcss: {},
+      autoprefixer: {},
+    },
+  },
   colorMode: {
     classSuffix: ''
   },
