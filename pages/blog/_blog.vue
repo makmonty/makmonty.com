@@ -1,19 +1,21 @@
 <template>
   <article class="main-block">
-    <h1>{{ blogPost.title }}</h1>
+    <h1>{{ post.title }}</h1>
     <div class="post-date">
       {{ post.date }}
     </div>
-    <div v-html="$md.render(blogPost.body)" />
+    <div v-html="$md.render(post.body)" />
   </article>
 </template>
 
 <script>
 export default {
   async asyncData ({ params, payload }) {
-    if (payload) { return { blogPost: payload } } else {
+    if (payload) {
+      return { post: payload }
+    } else {
       return {
-        blogPost: await require(`@/assets/content/blog/${params.blog}.json`)
+        post: await require(`@/assets/content/blog/${params.blog}.json`)
       }
     }
   }
