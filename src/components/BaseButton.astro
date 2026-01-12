@@ -1,27 +1,15 @@
 ---
-const { type, disabled: disabled, href, color } = Astro.props as {
+const { type, disabled: disabled, href, accent } = Astro.props as {
   type: 'button' | 'submit' | 'reset' | undefined,
   disabled: boolean,
   href: string,
-  color: string
+  accent: string
 };
 
 const className = [
   'button',
-  'focus:outline-none',
-  'rounded-full',
-  'hover:text-primary',
-  'text-' + (['primary', 'dark'].includes(color) ? 'light' : 'primary'), // text-primary text-light
-  'border',
-  'border-primary',
-  'text-center',
-  'px-4',
-  'py-2',
-  'bg-' + color, // bg-primary bg-light bg-dark
-  'hover:bg-gray-300',
-  'transition',
-  'duration-100',
-  ...('disabled' ? ['disabled'] : [])
+  ...(disabled ? ['disabled'] : []),
+  ...(accent ? [accent] : ['default'])
 ];
 ---
 {
@@ -46,5 +34,25 @@ const className = [
 <style>
 .button {
   display: inline-block;
+  text-decoration: none;
+  border: 1px solid var(--fg-color);
+  color: var(--fg-color);
+  border-radius: 9999px;
+  padding: 10px 12px;
+}
+
+.primary {
+  background: var(--primary-color);
+  border-color: var(--primary-color);
+}
+
+.secondary {
+  background: var(--secondary-color);
+  border-color: var(--secondary-color);
+}
+
+.primary, .secondary {
+  color: var(--bg-color);
+  border: none;
 }
 </style>

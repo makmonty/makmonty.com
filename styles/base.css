@@ -1,0 +1,15 @@
+body {
+  background: var(--bg-color);
+  color: var(--fg-color);
+  font-family: "Roboto Slab";
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  color: var(--secondary-color);
+}
+
+strong {
+  color: var(--primary-color);
+}

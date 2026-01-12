@@ -1,0 +1,165 @@
+---
+const { width, height } = Astro.props;
+---
+<div id="floating-thing-canvas" class="floating-thing"></div>
+
+<style define:vars={{width, height}}>
+.floating-thing {
+  width: var(--width);
+  height: var(--height);
+}
+</style>
+
+<script>
+import {
+  OrthographicCamera,
+  Scene,
+  WebGLRenderer,
+  Quaternion,
+  Vector3,
+  IcosahedronGeometry,
+  MeshLambertMaterial,
+  AmbientLight,
+  DirectionalLight,
+  Mesh
+} from 'three';
+import { ThreeBehavior, ThreeBehaviorObject } from '../three-engine/three-engine';
+
+class FloatingThing extends ThreeBehavior {
+  angle = (90 * Math.PI) / 180;
+  floatRotation = 0;
+
+  start() {
+    this.object3d.matrixAutoUpdate = false;
+  }
+
+  update() {
+    this.floatRotation += this.angle * deltaTime;
+    const quaternion = new Quaternion();
+    quaternion.setFromAxisAngle(new Vector3(0, 1, 0), this.floatRotation);
+    this.object3d.matrix.makeRotationFromQuaternion(quaternion);
+  }
+}
+
+function lerp(from: number, to: number, t: number) {
+  return from * (1 - t) + to * t;
+}
+
+function setCanvasSize() {
+  renderer.setSize(canvas.offsetWidth, canvas.offsetHeight);
+}
+
+function setCameraSize() {
+  const cameraAspect = canvas.offsetWidth / canvas.offsetHeight;
+  camera.left = -cameraWidth / 2;
+  camera.right = cameraWidth / 2;
+  camera.top = cameraWidth / (cameraAspect * 2);
+  camera.bottom = -cameraWidth / (cameraAspect * 2);
+  camera.updateProjectionMatrix();
+}
+
+function setCameraPosition() {
+  cameraTilt = lerp(cameraTilt, cameraTiltTo, 0.1);
+  const tiltRad = cameraTilt * Math.PI / 180;
+  const jawRad = cameraJaw * Math.PI / 180;
+  camera.position.x = Math.cos(jawRad) * Math.cos(tiltRad) * cameraDistance;
+  camera.position.y = Math.sin(tiltRad) * cameraDistance;
+  camera.position.z = Math.sin(jawRad) * Math.cos(tiltRad) * cameraDistance;
+
+  camera.lookAt(new Vector3(0, 0, 0));
+}
+
+function setupFrame() {
+  const currTime = new Date().getTime() / 1000;
+  deltaTime = currTime - time;
+  time = currTime;
+}
+
+function animate() {
+  requestAnimationFrame(() => { animate(); });
+
+  setupFrame();
+
+  objects.forEach(obj => obj.runBehaviorsUpdate());
+
+  setCameraPosition();
+
+  renderer.render(scene, camera);
+}
+
+function spawnObject() {
+  const mesh = new Mesh(icosahedronGeometry, material);
+  const behaviorObject = new ThreeBehaviorObject(mesh, renderer, camera);
+  const behavior = behaviorObject.addBehavior(FloatingThing);
+
+  objects.push(behaviorObject);
+
+  scene.add(mesh);
+
+  behavior.start();
+}
+
+const cameraWidth = 30;
+
+const icosahedronGeometry = new IcosahedronGeometry(14);
+
+const material = new MeshLambertMaterial({ color: 0xFFFFFF });
+
+let canvas;
+let scene: Scene;
+let renderer: WebGLRenderer;
+let camera: OrthographicCamera;
+let time: number;
+let deltaTime: number;
+const objects: ThreeBehaviorObject[] = [];
+
+let cameraTilt = 30;
+let cameraTiltTo = cameraTilt;
+const cameraJaw = 45;
+const cameraDistance = 50;
+
+window.addEventListener('resize', () => {
+  setCanvasSize();
+  setCameraSize();
+});
+
+window.addEventListener('mousemove', (event) => {
+  cameraTiltTo = 90 * (window.innerHeight - event.clientY) / window.innerHeight;
+});
+
+window.onload = () => {
+  canvas = document.getElementById('floating-thing-canvas');
+  scene = new Scene();
+
+  renderer = new WebGLRenderer({ alpha: true, antialias: true });
+  renderer.setClearColor(0xFFFFFF, 0);
+  setCanvasSize();
+
+  camera = new OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
+  setCameraSize();
+  setCameraPosition();
+  scene.add(camera);
+
+  const ambLight = new AmbientLight(0xFFFFFF, 0.25);
+  scene.add(ambLight);
+
+  const light1 = new DirectionalLight(0xFF0000, 1);
+  light1.position.x = 3;
+  scene.add(light1);
+
+  const light2 = new DirectionalLight(0x00FF00, 1);
+  light2.position.y = 3;
+  scene.add(light2);
+
+  const light3 = new DirectionalLight(0x0000FF, 1);
+  light3.position.z = 3;
+  scene.add(light3);
+
+  spawnObject();
+
+  canvas.appendChild(renderer.domElement);
+
+  time = new Date().getTime() / 1000;
+  animate();
+}
+</script>

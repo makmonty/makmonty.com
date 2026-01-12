@@ -1,7 +1,7 @@
 ---
 import AppNav from '../components/AppNav.astro';
 import 'line-awesome/dist/line-awesome/css/line-awesome.css';
-import '../../styles/style.scss';
+import '../../styles/style.css';
 
 interface Props {
 	title: string;
@@ -53,26 +53,31 @@ const socialLinks = [
 		<meta name="generator" content={Astro.generator} />
 		<title>{title}</title>
     <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"></script>
-    <style>
-    i span {
-      font-size: 0;
-    }
-    </style>
 	</head>
+<style>
+i span {
+  font-size: 0;
+}
+
+.main-layout {
+  width: 800px;
+  margin: 0 auto;
+}
+</style>
 	<body>
-    <div>
-      <header class="w-full relative z-20">
+    <div class="main-layout">
+      <header>
         <AppNav />
       </header>
 
-      <div class="relative z-10">
+      <div>
         <slot />
       </div>
 
       <footer>
-        <div class="container mx-auto p-8">
+        <div>
           <p>Find me at...</p>
-          <div class="space-x-8 mt-8 text-3xl">
+          <div>
             {socialLinks.map(link => (
               <a
                 href={link.href}
