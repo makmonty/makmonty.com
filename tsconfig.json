@@ -28,6 +28,11 @@
       "@nuxt/types"
     ]
   },
+  "include": [
+    "**/*.vue",
+    "**/*.js",
+    "**/*.ts"
+  ],
   "exclude": [
     "node_modules",
     ".nuxt",
