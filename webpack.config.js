@@ -12,6 +12,7 @@ module.exports = {
   entry: {
     // 'css/style.css': './sass/style.scss',
     'index.html': './views/index.pug',
+    'games.html': './views/games.pug',
     'games/box-rain.html': './views/games/box-rain.pug'
   },
   output: {

@@ -1,0 +1,55 @@
+.intro-personal {
+  // font-size: 1.4em;
+  // line-height: 1.6em;
+  // text-transform: uppercase;
+  // font-family: sans-serif;
+  // letter-spacing: 1px;
+
+  // .main-content {
+  //   padding-left: 173px;
+  //   background: url("#{$imagesPath}/makmonty_logo_colors2.png") 36px center no-repeat;
+  //   background-size: 100px;
+  //   @include crisp-edges();
+  // }
+}
+
+$skill-logo-size: 64px;
+
+.skills {
+  padding-top: $standard-padding;
+  
+  ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+
+    li {
+      @include hide-text();
+      display: inline-block;
+      width: $skill-logo-size;
+      height: $skill-logo-size;
+      background-repeat: no-repeat;
+      background-size: $skill-logo-size;
+      margin: $standard-padding/3;
+
+      &.javascript {
+        background-image: url('#{$imagesPath}/javascript.png');
+      }
+      &.angularjs {
+        background-image: url('#{$imagesPath}/angularjs.png');
+      }
+      &.nodejs {
+        background-image: url('#{$imagesPath}/nodejs.png');
+      }
+      &.unity3d {
+        background-image: url('#{$imagesPath}/unity3d.png');
+      }
+      &.express {
+        background-image: url('#{$imagesPath}/express.png');
+      }
+      &.vuejs {
+        background-image: url('#{$imagesPath}/vuejs.png');
+      }
+    }
+  }
+}

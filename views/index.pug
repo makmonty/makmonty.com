@@ -4,27 +4,26 @@ block vars
   - var title = 'makmonty';
   - var basePath = './';
   
-block body
-  .main-container
+block content
+  .intro-personal
+    | Hi! I do web development and try to play and make video games. Check out my work and skills here!
 
-    h1.logo
-      a(href="/") makmonty
+  //- .intro-games
+  //-   .main-content
+  //- 
+  //-     h2.intro-header Games
+  //- 
+  //-     .game-card
+  //-       a(href="/games/box-rain.html",title="Box Rain")
+  //-         img(src="../assets/images/games/boxrain/box-rain-banner.png", alt="Box Rain")
+  //-       .platforms
+  //-         i.icon-android
 
-    .intro-personal
-      .main-content
-        | Hi!
-        br
-        | I do web development and try to play and make video games.
-        br
-        | Check out my work below!
-
-    .intro-games
-      .main-content
-
-        h2.intro-header Games
-
-        .game-card
-          a(href="/games/box-rain.html",title="Box Rain")
-            img(src="../assets/images/games/boxrain/box-rain-banner.png", alt="Box Rain")
-          .platforms
-            i.icon-android
+  .skills
+    ul
+      li.unity3d(title="Unity3D") Unity3D
+      li.javascript(title="Javascript") Javascript
+      li.angularjs(title="AngularJS") AngularJS
+      li.nodejs(title="NodeJS") NodeJS
+      li.vuejs(title="VueJS") VueJS
+      li.express(title="Express") Express
