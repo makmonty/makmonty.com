@@ -2,9 +2,10 @@
   "date": "2020-06-28T13:19:19.821Z",
   "title": "Another test",
   "description": "Some description",
-  "body": "![aliens](/img/ancient-aliens-meme-600x338.jpg \"It's aliens!\")\n\nThis is the body",
+  "body": "This is the body",
   "tags": [
     "test",
     "tost"
-  ]
+  ],
+  "featured-image": "/img/ancient-aliens-meme-600x338.jpg"
 }
