@@ -40,10 +40,17 @@ export default {
   ** Nuxt.js modules
   */
   modules: [
-    '@nuxtjs/markdownit'
+    '@nuxtjs/markdownit',
+    '@nuxtjs/sitemap'
   ],
   markdownit: {
     injected: true
+  },
+  sitemap: {
+    exclude: [
+      '/blog',
+      '/games'
+    ]
   },
   /*
   ** Build configuration
