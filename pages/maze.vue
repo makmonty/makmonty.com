@@ -2,14 +2,14 @@
 const router = useRouter();
 const route = useRoute();
 
-const cols = ref(route.query.cols || '20');
-const rows = ref(route.query.rows || '20');
+const cols = ref(parseInt(route.query.cols as string) || 20);
+const rows = ref(parseInt(route.query.rows as string) || 20);
+const seed = ref((route.query.seed as string) || '');
 const cellSize = ref('20');
-const seed = ref(route.query.seed || '');
 
 watch([ cols, rows, seed ], () => {
   router.replace({ query: { cols: cols.value, rows: rows.value, seed: seed.value } });
-});
+}, { immediate: true });
 </script>
 
 <template>
@@ -21,11 +21,11 @@ watch([ cols, rows, seed ], () => {
       <FormGroup label="Rows" label-class="maze-label" inline>
         <FormInput v-model="rows" type="number" />
       </FormGroup>
-      <FormGroup label="Cell size" label-class="maze-label" inline>
-        <FormInput v-model="cellSize" type="number" />
-      </FormGroup>
       <FormGroup label="Seed" label-class="maze-label" inline>
         <FormInput v-model="seed" type="text" />
+      </FormGroup>
+      <FormGroup label="Cell size" label-class="maze-label" inline>
+        <FormInput v-model="cellSize" type="number" />
       </FormGroup>
     </section>
 
