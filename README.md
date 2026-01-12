@@ -5,21 +5,30 @@
 
 This is the code of the [makmonty.com](http://makmonty.com) site.
 
-Built with [NuxtJS](https://nuxtjs.org/)
+Built with [NuxtJS](https://v3.nuxtjs.org/)
 
-## Build Setup
+## Setup
 
-``` bash
-# install dependencies
-$ yarn install
+Make sure to install the dependencies
 
-# serve with hot reload at localhost:3000
-$ yarn dev
-
-# build for production and launch server
-$ yarn build
-$ yarn start
-
-# generate static project
-$ yarn generate
+```bash
+yarn install
 ```
+
+## Development
+
+Start the development server on http://localhost:3000
+
+```bash
+yarn dev
+```
+
+## Production
+
+Build the application for production:
+
+```bash
+yarn build
+```
+
+Checkout the [deployment documentation](https://v3.nuxtjs.org/docs/deployment).

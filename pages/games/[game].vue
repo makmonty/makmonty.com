@@ -6,7 +6,7 @@
     <h1>{{ game.title }}</h1>
     <div class="flex space-x-10">
       <!-- eslint-disable-next-line -->
-      <div v-html="$md.render(game.body)" class="flex-grow" />
+      <div v-html="$mdit.render(game.body)" class="flex-grow" />
       <aside class="flex-shrink-0 mt-16">
         <h4>Available for</h4>
         <ul class="flex">
@@ -27,18 +27,10 @@
   </article>
 </template>
 
-<script>
-export default {
-  async asyncData({ params, payload }) {
-    if (payload) {
-      return { game: payload };
-    } else {
-      return {
-        game: await require(`@/assets/content/games/${params.game}.json`)
-      };
-    }
-  }
-};
+<script setup>
+const route = useRoute();
+const games = await useGames();
+const game = games.value.find(g => g.slug === route.params.game);
 </script>
 
 <style scoped>
