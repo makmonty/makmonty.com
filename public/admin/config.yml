@@ -12,7 +12,7 @@ slug:
 collections:
   - name: "blog"
     label: "Blog"
-    format: "markdown"
+    format: "yaml-frontmatter"
     folder: "assets/content/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -49,7 +49,7 @@ collections:
         }
   - name: "game"
     label: "Game"
-    format: "markdown"
+    format: "yaml-frontmatter"
     folder: "src/pages/games"
     create: true
     slug: "{{slug}}"
