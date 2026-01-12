@@ -1,16 +1,12 @@
 ---
 import Layout from '../../layouts/Layout.astro';
 import { getContentFromFiles } from '../../utils/content';
+import { markdown } from '@astropub/md'
 
 export async function getStaticPaths() {
   const games = await getContentFromFiles(() => import.meta.glob(`../../../assets/content/games/**/*.json`));
 
   return games.map(game => ({params: {game: game.slug}}))
-  // return [
-  //   {params: {dog: 'clifford'}},
-  //   {params: {dog: 'rover'}},
-  //   {params: {dog: 'spot'}},
-  // ];
 }
 
 const games = await getContentFromFiles(() => import.meta.glob(`../../../assets/content/games/**/*.json`));
@@ -26,7 +22,7 @@ const game = games.find(game => game.slug === Astro.params.game)
     <h1>{game.title}</h1>
     <div class="flex space-x-10">
       <!-- eslint-disable-next-line -->
-      <div v-html="$mdit.render(game.body)" class="flex-grow" />
+      <div class="flex-grow"><Fragment set:html={game.body} /></div>
       <aside class="flex-shrink-0 mt-16">
         <h4>Available for</h4>
         <ul class="flex">
