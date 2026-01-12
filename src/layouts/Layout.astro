@@ -1,0 +1,87 @@
+---
+interface Props {
+	title: string;
+}
+
+const { title } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content="Astro description" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>{title}</title>
+	</head>
+	<body>
+    <div>
+      <header class="w-full relative z-20">
+        <AppNav />
+      </header>
+
+      <div class="relative z-10">
+        <slot />
+      </div>
+
+      <footer>
+        <div class="container mx-auto p-8">
+          <p>Find me at...</p>
+          <div class="space-x-8 mt-8 text-3xl">
+            <a
+              v-for="link in socialLinks"
+              :key="link.title"
+              :href="link.href"
+              :title="link.title"
+              :rel="link.rel"
+            >
+              <i :class="['lab', 'la-' + link.icon]" />
+            </a>
+          </div>
+        </div>
+      </footer>
+    </div>
+    <script>
+      if (window.netlifyIdentity) {
+      window.netlifyIdentity.on("init", user => {
+      if (!user) {
+      window.netlifyIdentity.on("login", () => {
+      document.location.href = "/admin/";
+      });
+      }
+      });
+      }
+    </script>
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 136, 58, 234;
+		--accent-light: 224, 204, 250;
+		--accent-dark: 49, 10, 101;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: system-ui, sans-serif;
+		background: #13151a;
+		background-size: 224px;
+	}
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+</style>
