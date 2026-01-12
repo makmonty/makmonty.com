@@ -6,17 +6,18 @@ html
     link(rel='stylesheet', href='/stylesheets/icomoon/style.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
     block styles
-  
+
   body
-  
+
     if !hideNavbar
       nav
         ol.breadcrumb
           li
             a(href="/") makmonty
           li.active= breadcrumb
-    
-    block content
+
+    .main-container
+      block content
 
     footer
       .container
@@ -30,5 +31,7 @@ html
 
       ga('create', 'UA-36413273-2', 'auto');
       ga('send', 'pageview');
+    
+    script(src="//localhost:35729/livereload.js")
 
     block javascripts

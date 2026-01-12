@@ -18,12 +18,11 @@ body {
 }
 
 .main-container {
-  width: 100%;
+  width: @main-container-width;
+  margin: 0 auto;
 }
 
 .main-content {
-  width: @main-container-width;
-  margin: 0 auto;
   padding: @standard-padding 0;
 }
 
@@ -48,4 +47,32 @@ nav {
 footer {
   padding: @standard-padding*2 0;
   text-align: center;
+}
+
+button,
+input[type="submit"],
+input[type="reset"],
+.button {
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 3px;
+  font-size: 14px;
+
+  background: @primary-color;
+  color: @text-color-inverted;
+  border-bottom: 2px solid darken(@primary-color, 20%);
+
+  &:hover {
+    background: darken(@primary-color, 10%);
+  }
+
+  &.button-secondary {
+    background: @secondary-color;
+    color: @text-color;
+
+    &:hover {
+      background: darken(@secondary-color, 10%);
+    }
+  }
 }
