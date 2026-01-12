@@ -1,5 +1,5 @@
 <template>
-  <div class="font-sans relative text-fg bg-contrast dark:bg-fg dark:text-contrast">
+  <div class="font-sans relative text-dark bg-light dark:bg-dark dark:text-light">
     <header class="w-full relative z-20">
       <AppNav />
     </header>

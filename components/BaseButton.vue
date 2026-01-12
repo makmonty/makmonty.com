@@ -38,12 +38,12 @@ export default {
       className: [
         'rounded-full',
         'hover:text-primary',
-        'text-contrast',
+        'text-light',
         'border',
         'border-primary',
         'px-4',
         'py-2',
-        `bg-${this.color}`,
+        `bg-${this.color}`, // bg-primary
         'hover:bg-gray-300',
         'dark-hover:bg-gray-700'
       ]
