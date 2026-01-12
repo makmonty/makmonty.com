@@ -17,8 +17,9 @@
     //-   a(href="http://blog.makmonty.com") Blog -->
     </ul>
     <BaseButton class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800" color="light" @click="toggleTheme">
-      <i v-if="colorMode === 'light'" class="fas fa-moon" />
-      <i v-else class="fas fa-sun" />
+      <transition name="colormode" mode="in-out" duration="1000">
+        <i :key="colorMode" class="fas" :class="colorMode === 'light' ? 'fa-moon' : 'fa-sun'" />
+      </transition>
     </BaseButton>
   </nav>
 </template>
