@@ -25,6 +25,20 @@ describe('Maze', () => {
       expect(maze.cells[1][0].down).toBeFalsy();
     });
 
+    test('it links the left cell to the right cell in a 2x1 maze when starting from the right edge', () => {
+      const maze = new Maze(2, 1);
+      maze.generate(1, 0);
+
+      expect(maze.cells[0][0].right).toBeTruthy();
+      expect(maze.cells[0][0].left).toBeFalsy();
+      expect(maze.cells[0][0].up).toBeFalsy();
+      expect(maze.cells[0][0].down).toBeFalsy();
+      expect(maze.cells[1][0].left).toBeTruthy();
+      expect(maze.cells[1][0].right).toBeFalsy();
+      expect(maze.cells[1][0].up).toBeFalsy();
+      expect(maze.cells[1][0].down).toBeFalsy();
+    });
+
     test('it links the top cell to the bottom cell in a 1x2 maze', () => {
       const maze = new Maze(1, 2);
       maze.generate();
@@ -47,19 +61,19 @@ describe('Maze', () => {
       expect(maze.cells[1][0].left || maze.cells[0][0].down).toBeTruthy();
       expect(maze.cells[0][1].right || maze.cells[0][0].up).toBeTruthy();
       expect(maze.cells[1][1].left || maze.cells[0][0].up).toBeTruthy();
-      expect(maze.cells[0][0].right || maze.cells[0][0].down || maze.cells[1][1].left || maze.cells[1][1].up).toBeFalsy();
+      expect(!maze.cells[0][0].right || !maze.cells[0][0].down || !maze.cells[1][1].left || !maze.cells[1][1].up).toBeTruthy();
     });
   });
 
-  describe('#getNeighbours', () => {
+  describe('#getAvailableDirections', () => {
     test('it returns an empty array if the maze is 1x1', () => {
       const maze = new Maze(1,1);
-      expect(maze.getNeighbours(0, 0)).toEqual([]);
+      expect(maze.getAvailableDirections(0, 0)).toEqual([]);
     });
 
     test('it does not return left if the cell is in the left edge', () => {
       const maze = new Maze(3, 3);
-      const neighbours = maze.getNeighbours(0, 1);
+      const neighbours = maze.getAvailableDirections(0, 1);
       expect(neighbours).toContain('right');
       expect(neighbours).toContain('up');
       expect(neighbours).toContain('down');
@@ -69,7 +83,7 @@ describe('Maze', () => {
 
     test('it does not return right if the cell is in the right edge', () => {
       const maze = new Maze(3, 3);
-      const neighbours = maze.getNeighbours(2, 1);
+      const neighbours = maze.getAvailableDirections(2, 1);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('up');
       expect(neighbours).toContain('down');
@@ -79,7 +93,7 @@ describe('Maze', () => {
 
     test('it does not return up if the cell is in the top edge', () => {
       const maze = new Maze(3, 3);
-      const neighbours = maze.getNeighbours(1, 0);
+      const neighbours = maze.getAvailableDirections(1, 0);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('right');
       expect(neighbours).toContain('down');
@@ -89,7 +103,7 @@ describe('Maze', () => {
 
     test('it does not return down if the cell is in the bottom edge', () => {
       const maze = new Maze(3, 3);
-      const neighbours = maze.getNeighbours(1, 2);
+      const neighbours = maze.getAvailableDirections(1, 2);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('right');
       expect(neighbours).toContain('up');
@@ -99,7 +113,7 @@ describe('Maze', () => {
 
     test('it returns all sides if the cell is not in an edge', () => {
       const maze = new Maze(3, 3);
-      const neighbours = maze.getNeighbours(1, 1);
+      const neighbours = maze.getAvailableDirections(1, 1);
       expect(neighbours).toContain('left');
       expect(neighbours).toContain('right');
       expect(neighbours).toContain('up');

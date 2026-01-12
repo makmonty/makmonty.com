@@ -4,7 +4,8 @@
     "dev": "nuxi dev",
     "build": "nuxi build",
     "generate": "nuxi generate",
-    "start": "node .output/server/index.mjs"
+    "start": "node .output/server/index.mjs",
+    "test": "vitest"
   },
   "devDependencies": {
     "@nuxt/test-utils-edge": "^3.0.0-rc.3-27545866.cd37a21",
