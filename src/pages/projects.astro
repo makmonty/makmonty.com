@@ -1,10 +1,11 @@
 ---
+import { type MarkdownInstance } from 'astro';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import { type Game, type WebExperiment } from '../types/content';
 
-const games = await Astro.glob('./games/*.md');
-
-const webExperiments = [
+const games: Array<MarkdownInstance<Game>> = await Astro.glob('./games/*.md');
+const webExperiments: Array<WebExperiment> = [
   // {
   //   title: 'Maze',
   //   slug: 'maze',
