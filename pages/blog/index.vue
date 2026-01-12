@@ -1,6 +1,6 @@
 <template>
   <section class="container mx-auto px-8 my-24">
-    <article v-for="post in items" :key="post.slug" class="post">
+    <article v-for="post in publishedItems" :key="post.slug" class="post">
       <img :src="post.featuredImage">
       <h2>
         <nuxt-link :to="'/blog/' + post.slug">
@@ -18,11 +18,11 @@
 </template>
 
 <script>
-import { mapState } from 'vuex';
+import { mapGetters } from 'vuex';
 
 export default {
   computed: {
-    ...mapState('blog', ['items'])
+    ...mapGetters('blog', ['publishedItems'])
   }
 };
 </script>

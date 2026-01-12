@@ -62,8 +62,7 @@ export default {
   sitemap: {
     hostname: 'https://makmonty.com',
     exclude: [
-      '/blog',
-      '/games'
+      '/blog'
     ]
   },
   colorMode: {
