@@ -1,15 +1,41 @@
 <template>
-  <p>projects</p>
+  <div class="container mx-auto px-8 my-24 flex space-x-8">
+    <ProjectCard
+      v-for="project in projects"
+      :key="project.key"
+      :project="project"
+    />
+  </div>
 </template>
 
 <script>
 export default {
   data() {
-    return [
-      {
-
-      }
-    ];
+    return {
+      projects: [
+        {
+          key: 'hand-smash',
+          name: 'Hand Smash',
+          platforms: [
+            'android'
+          ]
+        },
+        {
+          key: 'maxxima',
+          name: 'Maxxima',
+          platforms: [
+            'windows'
+          ]
+        },
+        {
+          key: '3d-bird',
+          name: '3D Bird',
+          platforms: [
+            'android'
+          ]
+        }
+      ]
+    };
   }
 };
 </script>
