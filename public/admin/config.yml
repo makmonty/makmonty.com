@@ -119,8 +119,9 @@ collections:
           label: "Screenshot"
           name: "screenshot"
           widget: "image"
-  - name: "category"
-    label: "Category"
+  - name: "categories"
+    label: "Categories"
+    label_singular: "Category"
     format: "json"
     folder: "assets/content/categories"
     create: true
