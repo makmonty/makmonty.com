@@ -1,7 +1,7 @@
 <template>
-  <div class="w-64 rounded-lg overflow-hidden bg-primary text-light">
+  <div class="w-64 rounded-lg overflow-hidden bg-gray-200 dark:bg-gray-700">
     <div class="card-image bg-gray-300 bg-center bg-no-repeat w-full h-64">
-      <img :src="project.promoImage" :alt="project.promoImage ? project.name + ' Promo Image' : ''">
+      <img class="h-full" :src="project.promoImage" :alt="project.promoImage ? project.name + ' Promo Image' : ''">
     </div>
     <div class="p-4">
       <h6 class="text-lg">
