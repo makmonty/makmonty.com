@@ -24,6 +24,7 @@ export default {
         {
           key: 'maxxima',
           name: 'Maxxima',
+          promoImage: require('~/assets/images/maxxima-promo.jpg'),
           platforms: [
             'windows'
           ]
