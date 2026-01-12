@@ -1,7 +1,7 @@
 ---
 const { width, height } = Astro.props;
 ---
-<div id="floating-thing-canvas" class="floating-thing"></div>
+<div data-floating-thing-canvas class="floating-thing"></div>
 
 <style define:vars={{width, height}}>
 .floating-thing {
@@ -128,7 +128,7 @@ window.addEventListener('mousemove', (event) => {
 });
 
 window.onload = () => {
-  canvas = document.getElementById('floating-thing-canvas') as HTMLElement;
+  canvas = document.querySelector('[data-floating-thing-canvas]') as HTMLElement;
   scene = new Scene();
 
   renderer = new WebGLRenderer({ alpha: true, antialias: true });
