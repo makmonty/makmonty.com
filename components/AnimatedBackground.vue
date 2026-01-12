@@ -38,6 +38,8 @@ export default {
     camera.position.x = 5
     camera.position.y = 5
     camera.position.z = 5
+    const lookAtVector = new THREE.Vector3(0, 0, 0)
+    camera.lookAt(lookAtVector)
     this.addObject()
     this.animate()
   },
