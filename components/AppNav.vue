@@ -32,10 +32,10 @@ export default {
           name: 'CV',
           to: '/cv'
         },
-        // {
-        //   name: 'Projects',
-        //   to: '/projects'
-        // },
+        {
+          name: 'Projects',
+          to: '/projects'
+        },
         // {
         //   name: 'Portfolio',
         //   to: '/portfolio'

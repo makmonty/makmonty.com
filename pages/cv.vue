@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto px-8 my-24">
+  <article class="container mx-auto px-8 my-24">
     <Resume />
-  </div>
+  </article>
 </template>

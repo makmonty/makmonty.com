@@ -30,7 +30,7 @@
       </div>
     </section>
     <section class="container mx-auto mt-10 sm:-mt-12 px-8">
-      <h2>
+      <h2 class="mb-12">
         In summary, I do...
       </h2>
       <div class="flex text-center justify-around flex-col lg:flex-row space-y-6 lg:space-y-0">
