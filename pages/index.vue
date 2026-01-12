@@ -4,7 +4,7 @@
       <div class="flex flex-col lg:flex-row items-center text-xl lg:space-x-6 space-y-6 lg:space-y-0">
         <img
           :src="avatar.src"
-          class="w-64 h-64 object-cover border rounded-full"
+          class="w-64 h-64 object-cover rounded-full"
           :class="avatar.className"
         >
         <div class="flex flex-col justify-center space-y-6">

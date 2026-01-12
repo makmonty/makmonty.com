@@ -1,0 +1,33 @@
+@import "mixins";
+
+a {
+  @apply text-primary;
+}
+
+.rendering-crisp-edges {
+  @include crisp-edges();
+}
+
+h1 {
+  @apply text-4xl;
+  @apply mb-12;
+}
+
+h2 {
+  @apply text-2xl;
+  @apply mb-12;
+}
+
+h4 {
+  @apply text-xl;
+}
+
+.route-enter-active,
+.route-leave-active {
+  transition: opacity 0.1s ease-in-out;
+}
+
+.route-enter,
+.route-leave-to {
+  opacity: 0;
+}

@@ -1,13 +1,11 @@
 <template>
-  <div class="font-sans relative">
+  <div class="font-sans relative text-fg bg-contrast dark:bg-fg dark:text-contrast">
     <header class="w-full relative z-20">
       <AppNav />
     </header>
 
     <div class="relative z-10">
-      <transition name="route">
-        <nuxt />
-      </transition>
+      <nuxt />
     </div>
 
     <footer>
@@ -45,6 +43,9 @@ import AppNav from '@/components/AppNav.vue';
 export default {
   components: {
     AppNav,
+  },
+  htmlAttrs: {
+    className: 'mode-dark'
   },
   data() {
     return {
