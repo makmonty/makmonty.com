@@ -1,6 +1,5 @@
 <template>
   <div class="font-sans relative">
-    <AnimatedBackground class="absolute top-0 z-0 w-full h-full" />
     <header class="w-full relative z-20">
       <AppNav />
     </header>
@@ -42,12 +41,10 @@
 
 <script>
 import AppNav from '@/components/AppNav.vue';
-import AnimatedBackground from '@/components/AnimatedBackground.vue';
 
 export default {
   components: {
     AppNav,
-    AnimatedBackground
   },
   data() {
     return {

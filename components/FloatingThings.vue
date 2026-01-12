@@ -28,8 +28,8 @@ class FloatingThing extends ThreeBehavior {
     quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.floatRotation);
     this.matrix.makeRotationFromQuaternion(quaternion);
 
-    this.floatPosition = new THREE.Vector3(this.floatPosition.x, this.floatPosition.y - deltaTime, this.floatPosition.z);
-    this.matrix.setPosition(this.floatPosition);
+    // this.floatPosition = new THREE.Vector3(this.floatPosition.x, this.floatPosition.y - deltaTime, this.floatPosition.z);
+    // this.matrix.setPosition(this.floatPosition);
   }
 }
 
@@ -47,7 +47,7 @@ const cameraWidth = 30;
 // triangleGeometry.faces.push(new THREE.Face3(0, 2, 1))
 // triangleGeometry.computeFaceNormals()
 
-const icosahedronGeometry = new THREE.IcosahedronGeometry(0.5);
+const icosahedronGeometry = new THREE.IcosahedronGeometry(14);
 
 const material = new THREE.MeshLambertMaterial({ color: 0xFFFFFF });
 // const material = new THREE.MeshNormalMaterial()
@@ -60,7 +60,7 @@ let deltaTime: number;
 const objects: ThreeBehaviorObject[] = [];
 
 @Component({})
-export default class AnimatedBackground extends Vue {
+export default class FloatingThingsComponent extends Vue {
   get canvas() {
     return <HTMLElement> this.$refs.canvasContainer;
   }
@@ -80,24 +80,24 @@ export default class AnimatedBackground extends Vue {
     // camera = new THREE.PerspectiveCamera(75, cameraAspect, 0.1, 1000)
     camera = new THREE.OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
     this.setCameraSize();
-    camera.position.x = 5;
-    camera.position.y = 5;
-    camera.position.z = 5;
+    camera.position.x = 50;
+    camera.position.y = 50;
+    camera.position.z = 50;
     camera.lookAt(new THREE.Vector3(0, 0, 0));
     scene.add(camera);
 
-    const ambLight = new THREE.AmbientLight(0xFFFFFF, 0.7);
+    const ambLight = new THREE.AmbientLight(0xFFFFFF, 0.5);
     scene.add(ambLight);
 
-    const light1 = new THREE.DirectionalLight(0xFF0000, 0.3);
+    const light1 = new THREE.DirectionalLight(0xFF0000, 0.5);
     light1.position.x = 5;
     scene.add(light1);
 
-    const light2 = new THREE.DirectionalLight(0x00FF00, 0.3);
+    const light2 = new THREE.DirectionalLight(0x00FF00, 0.5);
     light2.position.y = 5;
     scene.add(light2);
 
-    const light3 = new THREE.DirectionalLight(0x0000FF, 0.3);
+    const light3 = new THREE.DirectionalLight(0x0000FF, 0.5);
     light3.position.z = 5;
     scene.add(light3);
 
