@@ -1,0 +1,93 @@
+@import "variables";
+@import "mixins";
+
+.intro-personal {
+  padding: $primary-padding*3 0;
+  background: $primary-color;
+
+  h1 {
+    font-size: 2rem;
+    margin: 0;
+  }
+
+  p {
+    margin-bottom: 0;
+    color: adjust-color($background-color, $alpha: -0.2);
+  }
+
+  .main-block {
+    display: flex;
+  }
+
+  .avatar {
+    float: left;
+    margin-right: $primary-padding;
+
+    $avatar-size: 100px;
+    width: $avatar-size;
+    height: $avatar-size;
+    background: $background-color;
+    padding: 5px;
+    border-radius: 1000px;
+
+    img {
+      @include crisp-edges();
+      width: $avatar-size;
+      height: $avatar-size;
+    }
+  }
+
+  .call-to-action {
+    margin-top: $primary-padding*2;
+  }
+}
+
+.i-do {
+
+  .disciplines {
+    // display: grid;
+    // grid-template-columns: auto auto;
+    // grid-template-rows: auto auto;
+    // grid-gap: $primary-padding*2;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+
+  h2 {
+    margin-bottom: $primary-padding;
+  }
+
+  .discipline {
+    width: 226px;
+    text-align: center;
+    padding: $primary-padding 0;
+    margin: $primary-padding;
+    // box-shadow: 0 0 10px 5px rgba(0,0,0, 0.05);
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+    }
+
+    .fas {
+      font-size: 2rem;
+      color: $primary-color;
+    }
+
+    h3 {
+      margin-bottom: 0;
+      margin-top: $primary-padding/2;
+    }
+
+    p {
+      margin-top: $primary-padding;
+      color: $grey;
+      font-size: 0.9rem;
+    }
+  }
+}
