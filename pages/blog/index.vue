@@ -21,7 +21,7 @@
 export default {
   computed: {
     blogPosts () {
-      return this.$store.state.blogPosts
+      return this.$store.state.content.blogPosts
     }
   }
 }
