@@ -14,28 +14,33 @@ const socialLinks = [
   {
     href: 'http://github.com/makmonty',
     title: 'Github',
-    icon: 'github'
+    icon: 'github',
+    showOnPrint: true,
   },
   {
     href: 'https://tkz.one/@makmonty',
     title: 'Mastodon',
     icon: 'mastodon',
-    rel: 'me'
+    rel: 'me',
+    showOnPrint: false,
   },
   {
     href: 'https://bsky.app/profile/makmonty.itch.io',
     title: 'Bluesky',
-    icon: BlueskyIcon
+    icon: BlueskyIcon,
+    showOnPrint: false,
   },
   {
     href: 'https://www.linkedin.com/in/angelbraseromoreno/',
     title: 'Linkedin',
-    icon: 'linkedin'
+    icon: 'linkedin',
+    showOnPrint: true,
   },
   {
     href: 'https://soundcloud.com/angel-brasero-moreno',
     title: 'Soundcloud',
-    icon: 'soundcloud'
+    icon: 'soundcloud',
+    showOnPrint: false,
   },
 ];
 ---
@@ -96,6 +101,36 @@ const socialLinks = [
         body {
           margin: 30px 15px;
         }
+        footer {
+          margin: 0;
+
+          h2 {
+            display: none;
+          }
+          .social-link {
+            display: none;
+            font-family: inherit;
+            font-size: 16px;
+
+            i {
+              font-size: inherit;
+              font-family: inherit;
+
+              &::before {
+                display: none;
+              }
+
+              span {
+                font-size: inherit;
+                font-family: inherit;
+              }
+            }
+
+            &.show-print {
+              display: inline-block;
+            }
+          }
+        }
       }
     </style>
   </head>
@@ -119,11 +154,12 @@ const socialLinks = [
                 href={link.href}
                 title={link.title}
                 rel={link.rel}
+                class:list={['social-link', link.showOnPrint ? 'show-print' : '']}
               >
               {link.icon.includes('<svg') ? (
-                  <Fragment set:html={BlueskyIcon} />
+                  <Fragment set:html={link.icon} />
                 ) : (
-                  <i class:list={[ 'lab', 'la-' + link.icon ]}><span>{link.title}</span></i>
+                <i class:list={['lab', 'la-' + link.icon ]}><span>{link.title}</span></i>
                 )}
               </a>
             ))}

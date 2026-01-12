@@ -1,7 +1,8 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
-const showContact = false
+const showContact = false;
+const yearsOfExperience = new Date().getFullYear() - 2010;
 
 const skills = [
   {
@@ -162,17 +163,25 @@ const contact = {
   @media print {
     body {
       background: white;
-      color: #666;
-      font-family: sans;
+      color: #444;
       font-size: 11px;
     }
 
     :global(footer) {
-      display: none;
+      position: fixed;
+      bottom: 32px;
+    }
+
+    article {
+      gap: 10px;
     }
 
     a {
       text-decoration: none;
+    }
+
+    ul, p {
+      margin: 8px 0;
     }
 
     h1, h2, h3, h4, h5, .title {
@@ -182,15 +191,16 @@ const contact = {
     }
 
     h1 {
-      font-size: 4em;
+      font-size: 2.4em;
     }
 
     h2 {
       font-size: 2em;
+      margin-top: -8px;
     }
 
     .title {
-      font-size: 2em;
+      display: none;
     }
 
     strong {
@@ -198,6 +208,8 @@ const contact = {
     }
 
     .job {
+      margin-bottom: 6px;
+
       h3, h4 {
         margin: 0;
       }
@@ -207,7 +219,6 @@ const contact = {
       }
 
       h4 {
-        margin-bottom: 6px;
       }
 
       p {
@@ -215,53 +226,26 @@ const contact = {
       }
     }
 
-    article {
-      display: grid;
-      grid-template-columns: 25%;
-      column-gap: 60px;
+    .about-me {
+      margin-bottom: 8px;
 
-      header {
-        grid-area: header;
-        grid-row: 1;
-        grid-column: 1 / span 2;
-        margin-bottom: 12px;
+      h2 {
+        display: none;
       }
 
-      .about-me {
-        grid-area: about-me;
-        grid-row: 2;
-        grid-column: 1;
+      p {
+        margin: 0;
       }
+    }
 
-      .skills {
-        grid-area: skills;
-        grid-row: 3;
-        grid-column: 1;
+    .contact {
+      margin-top: -8px;
+
+      h2 {
+        display: none;
       }
-
-      .contact {
-        grid-area: contact;
-        grid-row: 5;
-        grid-column: 1;
-      }
-
-      .work-experience {
-        grid-area: work-experience;
-        grid-row: 2 / span 5;
-        grid-column: 2;
-
-        ul {
-          display: flex;
-          flex-direction: column;
-          gap: 20px;
-
-        }
-      }
-
-      .education {
-        grid-area: education;
-        grid-row: 4;
-        grid-column: 1;
+      ul {
+        margin: 0;
       }
     }
   }
@@ -274,10 +258,20 @@ const contact = {
       <div class="title"><strong>Software Engineer</strong></div>
     </header>
 
+    {showContact && (
+      <section class="contact">
+        <h2>Contact me</h2>
+        <ul>
+          <li>{contact.email.user}@{contact.email.domain}</li>
+          <!-- <li><strong>Phone</strong>: {contact.phone.country}{contact.phone.region}{contact.phone.number}</li> -->
+        </ul>
+      </section>
+    )}
+
     <section class="about-me">
       <h2>About me</h2>
       <p>
-I'm a software engineer passionate about web technologies and creating video games, Clean Code, and Software Craftsmanship. I value principles like SOLID, TDD, and CI/CD to build reliable, maintainable systems. Outside of work, I enjoy playing musical instruments and working on personal coding projects.
+      I'm an engineer passionate about software craftsmanship. Over {yearsOfExperience} years of experience with web technologies. I value principles like SOLID, testing (TDD), and CI/CD to build reliable, maintainable systems. Outside of work, I enjoy playing musical instruments and working on pet projects.
       </p>
     </section>
 
@@ -291,15 +285,6 @@ I'm a software engineer passionate about web technologies and creating video gam
         ))}
       </ul>
     </section>
-    {showContact && (
-      <section class="contact">
-        <h2>Contact me</h2>
-        <ul>
-          <li><strong>Email</strong>: {contact.email.user}@{contact.email.domain}</li>
-          <li><strong>Phone</strong>: {contact.phone.country}{contact.phone.region}{contact.phone.number}</li>
-        </ul>
-      </section>
-    )}
 
     <section class="work-experience">
       <h2>Work Experience</h2>
