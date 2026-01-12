@@ -18,7 +18,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     return {
       menu: [
         {
@@ -30,7 +30,7 @@ export default {
           to: '/cv'
         }
       ]
-    }
+    };
   }
-}
+};
 </script>
