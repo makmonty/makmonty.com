@@ -8,8 +8,8 @@ const { type, disabled: disabled, href, accent } = Astro.props as {
 
 const className = [
   'button',
-  ...(disabled ? ['disabled'] : []),
-  ...(accent ? [accent] : ['default'])
+  ...(disabled ? [ 'disabled' ] : []),
+  ...(accent ? [ accent ] : [ 'default' ])
 ];
 ---
 {

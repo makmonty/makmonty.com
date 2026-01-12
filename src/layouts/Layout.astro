@@ -154,12 +154,12 @@ const socialLinks = [
                 href={link.href}
                 title={link.title}
                 rel={link.rel}
-                class:list={['social-link', link.showOnPrint ? 'show-print' : '']}
+                class:list={[ 'social-link', link.showOnPrint ? 'show-print' : '' ]}
               >
               {link.icon.includes('<svg') ? (
                   <Fragment set:html={link.icon} />
                 ) : (
-                <i class:list={['lab', 'la-' + link.icon ]}><span>{link.title}</span></i>
+                <i class:list={[ 'lab', 'la-' + link.icon ]}><span>{link.title}</span></i>
                 )}
               </a>
             ))}
