@@ -65,6 +65,16 @@ collections:
           multiple: true,
         }
       - {
+          label: "Links",
+          label_singular: "Link",
+          name: "links",
+          widget: "list",
+          required: false,
+          fields:
+            - { label: "URL", name: "url", widget: "string" }
+            - { label: "Label", name: "label", widget: "string" }
+        }
+      - {
           label: "Featured image",
           name: "featuredImage",
           widget: "image",

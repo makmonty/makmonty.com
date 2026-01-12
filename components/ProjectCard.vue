@@ -4,7 +4,7 @@
       <img class="h-full" :src="project.featuredImage" :alt="project.featuredImage ? project.name + ' Featured Image' : ''">
     </div>
     <div class="p-4">
-      <h6 class="text-lg">
+      <h6 class="text-lg text-dark dark:text-light duration-1000">
         {{ project.title }}
       </h6>
       <p />
