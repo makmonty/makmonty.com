@@ -1,18 +1,17 @@
 <template lang="pug">
-div
-  section#skills.main-block.skills
+.space-y-20
+  section
     h2 Skills
     ul
-      li <strong>Frontend</strong>: AngularJS, Angular 2+, VueJS,
-        |  Backbone, SASS, Bootstrap...
-      li <strong>Backend</strong>: NodeJS, ExpressJS, PHP, MongoDB, MySQL
+      li <strong>Frontend</strong>: AngularJS, Angular 2+, VueJS, TailwindCSS, Backbone, SASS, Bootstrap
+      li <strong>Backend</strong>: NestJS, ExpressJS, NodeJS, PHP, MongoDB, MySQL
       li <strong>Video games</strong>: Unity3D, WebGL
 
-  section#resume.main-block.resume
+  section
     h2 Work Experience
 
-    .resume-block
-      ul
+    div
+      ul.space-y-8
         li
           h4 <strong>Software Engineer</strong> at <a href="https://www.podgroup.com/">Pod Group</a>
             | <br/>2019 September - Current job
@@ -45,9 +44,10 @@ div
           p Full stack development in an agile, dynamic team. Web applications and services oriented to develop football statistics and models.
           p Core technologies: PHP, Ruby, HTML, CSS, Javascript.
 
+  section
     h2 Education
 
-    .resume-block
+    div
       ul
         li
           h4 <strong>Computer and Software Engineering</strong> at <a href="http://www.us.es/">Universidad de Sevilla</a>
