@@ -1,5 +1,11 @@
 ---
-const { type, disabled, href, color } = Astro.props as { type: string, disabled: boolean, href: string, color: string };
+const { type, disabled: disabled, href, color } = Astro.props as {
+  type: 'button' | 'submit' | 'reset' | undefined,
+  disabled: boolean,
+  href: string,
+  color: string
+};
+
 const className = [
   'button',
   'focus:outline-none',
@@ -14,7 +20,8 @@ const className = [
   'bg-' + color, // bg-primary bg-light bg-dark
   'hover:bg-gray-300',
   'transition',
-  'duration-100'
+  'duration-100',
+  ...('disabled' ? ['disabled'] : [])
 ];
 ---
 {
@@ -22,7 +29,6 @@ const className = [
     <a
       href={href}
       class:list={className}
-      disabled={disabled}
     >
       <slot />
     </a>
