@@ -1,15 +1,15 @@
 <script lang="ts" setup>
 const props = defineProps<{
   label?: string,
+  labelClass?: string,
   inline?: boolean,
 }>();
-const { label, inline } = toRefs(props);
-console.log(inline);
+const { label, labelClass, inline } = toRefs(props);
 </script>
 
 <template>
   <div class="form-group" :class="inline ? 'inline' : ''">
-    <label v-if="label">
+    <label v-if="label" :class="labelClass">
       <span>{{ label }}</span>
       <slot />
     </label>

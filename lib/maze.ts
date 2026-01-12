@@ -94,8 +94,6 @@ export class Maze {
 }
 
 export interface MazeGenerationOptions {
-  startingX?: number;
-  startingY?: number;
   seed?: string;
   width?: number;
   height?: number;
@@ -105,13 +103,13 @@ export class MazeGenerator {
   generate({
     width = 1,
     height = 1,
-    startingX = 0,
-    startingY = 0,
     seed
   }: MazeGenerationOptions = {}) {
     const maze = new Maze(width, height);
-    const path = [ maze.cells[startingX][startingY] ];
     const random = seedrandom(seed);
+    const startingX = Math.floor(random() * width);
+    const startingY = Math.floor(random() * height);
+    const path = [ maze.cells[startingX][startingY] ];
 
     while (path.length) {
       const cell = path[path.length - 1];

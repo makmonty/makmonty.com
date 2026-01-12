@@ -19,7 +19,7 @@ watch([ cols, rows, seed ], () => {
 </script>
 
 <template>
-  <table v-if="maze">
+  <table v-if="maze" class="maze">
     <tbody>
       <tr v-for="y in rows" :key="y">
         <MazeCell v-for="x in cols" :key="x" :cell="maze.cells[x-1][y-1]" :size="cellSize" />
@@ -27,9 +27,3 @@ watch([ cols, rows, seed ], () => {
     </tbody>
   </table>
 </template>
-
-<style scoped>
-table {
-  border: 1px solid black;
-}
-</style>
