@@ -1,7 +1,7 @@
 <template>
   <div class="border-b border-teal-500">
-    <nav class="flex p-6 container mx-auto">
-      <ul class="flex space-x-6">
+    <nav class="flex p-8 container mx-auto">
+      <ul class="flex space-x-8">
         <li v-for="item in menu" :key="item.to">
           <nuxt-link :to="item.to" class="hover:border-b-4">
             {{ item.name }}

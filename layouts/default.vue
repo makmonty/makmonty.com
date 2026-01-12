@@ -8,23 +8,17 @@
     </div>
 
     <footer class="border-t border-primary">
-      <div class="container mx-auto p-6">
+      <div class="container mx-auto p-12">
         <p>Find me at...</p>
-        <div class="social-icons">
-          <a href="http://github.com/makmonty" title="Github">
-            <i class="fab fa-github-alt" />
-          </a>
-          <a href="https://www.linkedin.com/in/angelbraseromoreno/" title="Linkedin">
-            <i class="fab fa-linkedin-in" />
-          </a>
-          <a href="https://soundcloud.com/angel-brasero-moreno" title="Soundcloud">
-            <i class="fab fa-soundcloud" />
-          </a>
-          <a href="http://twitter.com/makmonty" title="Twitter">
-            <i class="fab fa-twitter" />
-          </a>
-          <a href="https://www.instagram.com/makmonty_/" title="Instagram">
-            <i class="fab fa-instagram" />
+        <div class="space-x-4">
+          <a
+            v-for="link in socialLinks"
+            :key="link.title"
+            :href="link.href"
+            :title="link.title"
+            class="text-xl"
+          >
+            <i :class="link.icon" />
           </a>
         </div>
       </div>
@@ -48,6 +42,37 @@ import AppNav from '@/components/AppNav.vue'
 export default {
   components: {
     AppNav
+  },
+  data () {
+    return {
+      socialLinks: [
+        {
+          href: 'http://github.com/makmonty',
+          title: 'Github',
+          icon: 'fab fa-github-alt'
+        },
+        {
+          href: 'https://www.linkedin.com/in/angelbraseromoreno/',
+          title: 'Linkedin',
+          icon: 'fab fa-linkedin-in'
+        },
+        {
+          href: 'https://soundcloud.com/angel-brasero-moreno',
+          title: 'Soundcloud',
+          icon: 'fab fa-soundcloud'
+        },
+        {
+          href: 'http://twitter.com/makmonty',
+          title: 'Twitter',
+          icon: 'fab fa-twitter'
+        },
+        {
+          href: 'https://www.instagram.com/makmonty_/',
+          title: 'Instagram',
+          icon: 'fab fa-instagram'
+        }
+      ]
+    }
   }
 }
 </script>
