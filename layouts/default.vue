@@ -3,9 +3,10 @@
     <header class="w-full relative z-20">
       <AppNav />
     </header>
-    <div class="main-container">
+
+    <transition name="route">
       <nuxt />
-    </div>
+    </transition>
 
     <footer>
       <div class="container mx-auto p-8">
