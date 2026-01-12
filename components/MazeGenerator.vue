@@ -1,14 +1,25 @@
-<script setup>
-import {Maze} from '~~/lib/maze';
-
-const maze = new Maze(3, 3);
+<script lang="ts" setup>
+import { MazeGenerator } from '~/lib/maze';
+const props = defineProps<{
+  cols: number,
+  rows: number,
+}>();
+const maze = new MazeGenerator(props.cols, props.rows);
 maze.generate();
 </script>
 
 <template>
-  <div>
-    <table>
-      <tr v-for="rows in maze.cells"></tr>
-    </table>
-  </div>
+  <table>
+    <tbody>
+      <tr v-for="y in maze.cells[0].length">
+        <MazeCell v-for="x in maze.cells.length" :cell="maze.cells[x-1][y-1]" />
+      </tr>
+    </tbody>
+  </table>
 </template>
+
+<style scoped>
+table {
+  border: 1px solid black;
+}
+</style>
