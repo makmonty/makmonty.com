@@ -1,12 +1,11 @@
 ---
 import { type MarkdownInstance } from 'astro';
-import { getContent } from '@/lib/content';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
 import { type App, type Game, type WebExperiment } from '../types/content';
 
-const apps: Array<MarkdownInstance<App>> = await getContent(import.meta.glob('./apps/*.md'));
-const games: Array<MarkdownInstance<Game>> = await getContent(import.meta.glob('./games/*.md'));
+const apps: Array<MarkdownInstance<App>> = Object.values(import.meta.glob('./apps/*.md', { eager: true }));
+const games: Array<MarkdownInstance<Game>> = Object.values(import.meta.glob('./games/*.md', { eager: true }));
 const webExperiments: Array<WebExperiment> = [
   {
     title: 'Maze',
