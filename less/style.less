@@ -2,17 +2,13 @@
 @import 'variables.less';
 
 body {
-  background: @light-grey;
-  color: @dark-grey;
+  background: @dark-grey;
+  color: @light-grey;
   font-family: Montserrat, sans-serif;
 }
 
 a {
   color: @primary-color;
-
-  &:link {
-    color: @primary-color;
-  }
 
   &:hover {
     color: lighten(@primary-color, 30%);
@@ -21,16 +17,13 @@ a {
   &:active {
     color: @secondary-color;
   }
-
-  &:visited {
-    color: @primary-color;
-  }
 }
 
 .content {
-  background: @dark-grey;
-  color: @light-grey;
-  padding: 20px 0 40px 0;
+  background: @light-grey;
+  color: @dark-grey;
+  padding: 60px;
+  padding-bottom: 20px;
 }
 
 .navbar {
@@ -42,7 +35,33 @@ a {
 }
 
 footer {
-  padding: 40px 0;
+  padding: 60px 0;
+}
+
+footer, .navbar {
+
+    a {
+      color: @secondary-color;
+
+      &:hover {
+        color: lighten(@secondary-color, 30%);
+      }
+
+      &:active {
+        color: @primary-color;
+      }
+    }
+}
+
+.breadcrumb {
+  font-size: 1.4em;
+  border-radius: 0;
+  background-color: transparent;
+  margin-bottom: 0;
+}
+
+.main-h1 {
+  margin-top: 0;
 }
 
 .game {
