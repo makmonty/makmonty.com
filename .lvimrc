@@ -1,2 +1,5 @@
 ""let g:ctrlp_custom_ignore = '(node_modules|dist)'
 set wildignore+=*/node_modules/*,*/dist/*
+
+let g:ale_fixers = ['eslint']
+let g:ale_fix_on_save = 1

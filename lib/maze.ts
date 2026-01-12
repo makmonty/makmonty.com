@@ -1,4 +1,5 @@
-import {shuffle} from "./array";
+import seedrandom from 'seedrandom';
+import { shuffle } from './array';
 
 export enum Direction {
   LEFT = 'left',
@@ -8,10 +9,12 @@ export enum Direction {
 }
 
 export class MazeCell {
-  [Direction.UP]: boolean = false;
-  [Direction.DOWN]: boolean = false;
-  [Direction.RIGHT]: boolean = false;
-  [Direction.LEFT]: boolean = false;
+  [Direction.UP] = false;
+  [Direction.DOWN] = false;
+  [Direction.RIGHT] = false;
+  [Direction.LEFT] = false;
+
+  constructor(public x: number, public y: number) {}
 
   get visited() {
     return this[Direction.UP] || this[Direction.DOWN] || this[Direction.LEFT] || this[Direction.RIGHT];
@@ -26,29 +29,49 @@ const DirectionOposites = {
 };
 
 export class MazeGenerator {
-
   cells: MazeCell[][] = null;
 
   constructor(private width: number, private height: number) {
-    this.cells = Array.from(Array(this.width), () =>
-      Array.from(Array(this.height), () => new MazeCell())
+    this.cells = Array.from(Array(this.width), (_v, x) =>
+      Array.from(Array(this.height), (_v, y) => new MazeCell(x, y))
     );
   }
 
-  generate(x: number = 0, y: number = 0) {
+  generateRecursive(x = 0, y = 0) {
     const cell = this.cells[x][y];
     const directions = this.getAvailableDirections(x, y);
     shuffle(directions);
 
-    directions.forEach(direction => {
+    directions.forEach((direction) => {
       const neighbourCell = this.getNeighbourCell(x, y, direction);
       if (!neighbourCell.visited) {
         cell[direction] = true;
         neighbourCell[DirectionOposites[direction]] = true;
-        const [newX, newY] = this.getNeighbourCoordinates(x, y, direction)
-        this.generate(newX, newY);
+        this.generate(neighbourCell.x, neighbourCell.y);
       }
     });
+  }
+
+  generate(startingX = 0, startingY = 0) {
+    const path = [this.cells[startingX][startingY]];
+
+    while (path.length) {
+      const cell = path[path.length - 1];
+      const directions = this.getAvailableDirections(cell.x, cell.y)
+        .filter(direction => !this.getNeighbourCell(cell.x, cell.y, direction).visited);
+
+      if (!directions.length) {
+        path.pop();
+        continue;
+      }
+
+      const direction = shuffle(directions)[0];
+
+      cell[direction] = true;
+      const nextCell = this.getNeighbourCell(cell.x, cell.y, direction);
+      nextCell[DirectionOposites[direction]] = true;
+      path.push(nextCell);
+    }
   }
 
   getAvailableDirections(x: number, y: number) {
@@ -69,7 +92,7 @@ export class MazeGenerator {
     let newX = x;
     let newY = y;
 
-    switch(direction) {
+    switch (direction) {
       case Direction.LEFT:
         newX--;
         break;
@@ -85,5 +108,21 @@ export class MazeGenerator {
     }
 
     return [newX, newY];
+  }
+
+  toString() {
+    let output = ' ' + Array(this.width * 2 - 1).fill('_').join('') + '\n';
+
+    for (let y = 0; y < this.height; y++) {
+      output += '|';
+      for (let x = 0; x < this.width; x++) {
+        const cell = this.cells[x][y];
+        output += !cell.down ? '_' : ' ';
+        output += !cell.right ? '|' : ' ';
+      }
+      output += '\n';
+    }
+
+    return output;
   }
 }
