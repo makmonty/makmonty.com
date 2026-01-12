@@ -12,11 +12,11 @@ import { OrthographicCamera, Scene, WebGLRenderer } from 'three';
 class FloatingThing extends ThreeBehavior {
   angle = 90 * Math.PI / 180
   floatRotation = 0
-  floatPosition = new THREE.Vector3(
-    Math.random() * this.renderer.domElement.offsetWidth - this.renderer.domElement.offsetWidth / 2,
-    this.renderer.domElement.offsetHeight / 2,
-    0
-  )
+  // floatPosition = new THREE.Vector3(
+  //   Math.random() * this.renderer.domElement.offsetWidth - this.renderer.domElement.offsetWidth / 2,
+  //   this.renderer.domElement.offsetHeight / 2,
+  //   0
+  // )
 
   start() {
     this.object3d.matrixAutoUpdate = false;
@@ -59,6 +59,10 @@ let time: number;
 let deltaTime: number;
 const objects: ThreeBehaviorObject[] = [];
 
+let cameraTilt = 30;
+const cameraJaw = 45;
+const cameraDistance = 50;
+
 @Component({})
 export default class FloatingThingsComponent extends Vue {
   get canvas() {
@@ -80,10 +84,7 @@ export default class FloatingThingsComponent extends Vue {
     // camera = new THREE.PerspectiveCamera(75, cameraAspect, 0.1, 1000)
     camera = new THREE.OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
     this.setCameraSize();
-    camera.position.x = 50;
-    camera.position.y = 50;
-    camera.position.z = 50;
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    this.setCameraPosition();
     scene.add(camera);
 
     const ambLight = new THREE.AmbientLight(0xFFFFFF, 0.5);
@@ -107,6 +108,11 @@ export default class FloatingThingsComponent extends Vue {
 
     time = new Date().getTime() / 1000;
     this.animate();
+
+    window.addEventListener('mousemove', (event) => {
+      cameraTilt = 90 * (window.innerHeight - event.clientY) / window.innerHeight;
+      this.setCameraPosition();
+    });
   }
 
   setCanvasSize() {
@@ -120,6 +126,16 @@ export default class FloatingThingsComponent extends Vue {
     camera.top = cameraWidth / (cameraAspect * 2);
     camera.bottom = -cameraWidth / (cameraAspect * 2);
     camera.updateProjectionMatrix();
+  }
+
+  setCameraPosition() {
+    const tiltRad = cameraTilt * Math.PI / 180;
+    const jawRad = cameraJaw * Math.PI / 180;
+    camera.position.x = Math.cos(jawRad) * Math.cos(tiltRad) * cameraDistance;
+    camera.position.y = Math.sin(tiltRad) * cameraDistance;
+    camera.position.z = Math.sin(jawRad) * Math.cos(tiltRad) * cameraDistance;
+
+    camera.lookAt(new THREE.Vector3(0, 0, 0));
   }
 
   setupFrame() {
