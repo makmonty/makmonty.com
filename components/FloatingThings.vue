@@ -5,9 +5,19 @@
 <script lang="ts">
 import { Component, Vue } from 'nuxt-property-decorator';
 
-import * as THREE from 'three';
+import {
+  OrthographicCamera,
+  Scene,
+  WebGLRenderer,
+  Quaternion,
+  Vector3,
+  IcosahedronGeometry,
+  MeshLambertMaterial,
+  AmbientLight,
+  DirectionalLight,
+  Mesh
+} from 'three';
 import { ThreeBehavior, ThreeBehaviorObject } from '../three-engine/three-engine';
-import { OrthographicCamera, Scene, WebGLRenderer } from 'three';
 
 class FloatingThing extends ThreeBehavior {
   angle = (90 * Math.PI) / 180;
@@ -19,8 +29,8 @@ class FloatingThing extends ThreeBehavior {
 
   update() {
     this.floatRotation += this.angle * deltaTime;
-    const quaternion = new THREE.Quaternion();
-    quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.floatRotation);
+    const quaternion = new Quaternion();
+    quaternion.setFromAxisAngle(new Vector3(0, 1, 0), this.floatRotation);
     this.object3d.matrix.makeRotationFromQuaternion(quaternion);
   }
 }
@@ -31,9 +41,9 @@ function lerp(from: number, to: number, t: number) {
 
 const cameraWidth = 30;
 
-const icosahedronGeometry = new THREE.IcosahedronGeometry(14);
+const icosahedronGeometry = new IcosahedronGeometry(14);
 
-const material = new THREE.MeshLambertMaterial({ color: 0xFFFFFF });
+const material = new MeshLambertMaterial({ color: 0xFFFFFF });
 
 let scene: Scene;
 let renderer: WebGLRenderer;
@@ -63,29 +73,29 @@ export default class FloatingThingsComponent extends Vue {
       cameraTiltTo = 90 * (window.innerHeight - event.clientY) / window.innerHeight;
     });
 
-    scene = new THREE.Scene();
+    scene = new Scene();
 
-    renderer = new THREE.WebGLRenderer({ alpha: true, antialias: true });
+    renderer = new WebGLRenderer({ alpha: true, antialias: true });
     renderer.setClearColor(0xFFFFFF, 0);
     this.setCanvasSize();
 
-    camera = new THREE.OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
+    camera = new OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
     this.setCameraSize();
     this.setCameraPosition();
     scene.add(camera);
 
-    const ambLight = new THREE.AmbientLight(0xFFFFFF, 0.5);
+    const ambLight = new AmbientLight(0xFFFFFF, 0.5);
     scene.add(ambLight);
 
-    const light1 = new THREE.DirectionalLight(0xFF0000, 0.5);
+    const light1 = new DirectionalLight(0xFF0000, 0.5);
     light1.position.x = 5;
     scene.add(light1);
 
-    const light2 = new THREE.DirectionalLight(0x00FF00, 0.5);
+    const light2 = new DirectionalLight(0x00FF00, 0.5);
     light2.position.y = 5;
     scene.add(light2);
 
-    const light3 = new THREE.DirectionalLight(0x0000FF, 0.5);
+    const light3 = new DirectionalLight(0x0000FF, 0.5);
     light3.position.z = 5;
     scene.add(light3);
 
@@ -118,7 +128,7 @@ export default class FloatingThingsComponent extends Vue {
     camera.position.y = Math.sin(tiltRad) * cameraDistance;
     camera.position.z = Math.sin(jawRad) * Math.cos(tiltRad) * cameraDistance;
 
-    camera.lookAt(new THREE.Vector3(0, 0, 0));
+    camera.lookAt(new Vector3(0, 0, 0));
   }
 
   setupFrame() {
@@ -140,7 +150,7 @@ export default class FloatingThingsComponent extends Vue {
   }
 
   spawnObject() {
-    const mesh = new THREE.Mesh(icosahedronGeometry, material);
+    const mesh = new Mesh(icosahedronGeometry, material);
     const behaviorObject = new ThreeBehaviorObject(mesh, renderer, camera);
     const behavior = behaviorObject.addBehavior(FloatingThing);
 

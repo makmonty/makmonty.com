@@ -40,9 +40,6 @@
 
 <script>
 export default {
-  components: {
-    AppNav,
-  },
   htmlAttrs: {
     className: 'mode-dark'
   },

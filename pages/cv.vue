@@ -6,9 +6,6 @@
 
 <script>
 export default {
-  components: {
-    Resume
-  }
 };
 </script>
 </template>
