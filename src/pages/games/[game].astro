@@ -1,0 +1,54 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { getContentFromFiles } from '../../utils/content';
+
+export async function getStaticPaths() {
+  const games = await getContentFromFiles(() => import.meta.glob(`../../../assets/content/games/**/*.json`));
+
+  return games.map(game => ({params: {game: game.slug}}))
+  // return [
+  //   {params: {dog: 'clifford'}},
+  //   {params: {dog: 'rover'}},
+  //   {params: {dog: 'spot'}},
+  // ];
+}
+
+const games = await getContentFromFiles(() => import.meta.glob(`../../../assets/content/games/**/*.json`));
+const game = games.find(game => game.slug === Astro.params.game)
+---
+<Layout title={game.title}>
+  <article class="container mx-auto px-8 my-24">
+    {game.featuredImage &&
+      <div class="text-center">
+        <img class="inline-block rounded-lg w-64" src={game.featuredImage}>
+      </div>
+    }
+    <h1>{game.title}</h1>
+    <div class="flex space-x-10">
+      <!-- eslint-disable-next-line -->
+      <div v-html="$mdit.render(game.body)" class="flex-grow" />
+      <aside class="flex-shrink-0 mt-16">
+        <h4>Available for</h4>
+        <ul class="flex">
+          {game.platforms.map(platform => (
+            <li class="text-2xl space-x-4">
+              <i class={'lab la-' + platform} aria-label={platform} />
+            </li>
+          ))}
+        </ul>
+        {game.links?.length &&
+          <div class="mt-10">
+            <h4>Links</h4>
+            <ul>
+              {game.links.map(link => (
+                <li>
+                  <a href={link.url}>{link.label}</a>
+                </li>
+              ))}
+            </ul>
+          </div>
+        }
+      </aside>
+    </div>
+  </article>
+</Layout>

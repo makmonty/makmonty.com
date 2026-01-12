@@ -1,6 +1,7 @@
 ---
 const { type, disabled, href, color } = Astro.props;
 const className = [
+  'button',
   'focus:outline-none',
   'rounded-full',
   'hover:text-primary',
@@ -35,3 +36,9 @@ const className = [
     </button>
   )
 }
+
+<style>
+.button {
+  display: inline-block;
+}
+</style>

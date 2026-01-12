@@ -1,18 +1,10 @@
 ---
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
+import { getContentFromFiles } from '../utils/content'
 
-const getContentFromFiles = function(imports: ContentImport) {
-  return Promise.all(Object.entries(imports)
-    .map(([ key, imp ]) => {
-      const slug = key.split('/').pop()?.slice(0, -5);
-      return imp().then(item => ({
-        ...item,
-        slug
-      }));
-    }));
-};
 const games = await getContentFromFiles(() => import.meta.glob(`../../assets/content/games/**/*.json`));
+
 const webExperiments = [
   {
     title: 'Maze',

@@ -139,7 +139,9 @@ const studies = [
                   <br>{job.from} - {job.to ? job.to : 'Current job'}
                 </h4>
                   {job.description.map(paragraph => (
-                    <p>{paragraph}</p>
+                    <p>
+                      <Fragment set:html={paragraph} />
+                    </p>
                   ))}
               </li>
             ))}
