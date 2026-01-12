@@ -18,6 +18,12 @@ export class MazeCell {
   get visited() {
     return this[Direction.UP] || this[Direction.DOWN] || this[Direction.LEFT] || this[Direction.RIGHT];
   }
+
+  toString() {
+    let output = !this.down ? '_' : ' ';
+    output += !this.right ? '|' : ' ';
+    return output;
+  }
 }
 
 const DirectionOposites = {
@@ -78,9 +84,7 @@ export class Maze {
     for (let y = 0; y < this.height; y++) {
       output += '|';
       for (let x = 0; x < this.width; x++) {
-        const cell = this.cells[x][y];
-        output += !cell.down ? '_' : ' ';
-        output += !cell.right ? '|' : ' ';
+        output += this.cells[x][y].toString();
       }
       output += '\n';
     }

@@ -7,18 +7,18 @@ const seed = ref('');
 
 <template>
   <article class="container mx-auto">
-    <div>
-      Cols <FormInput v-model="cols" type="number" />
-    </div>
-    <div>
-      Rows <FormInput v-model="rows" type="number" />
-    </div>
-    <div>
-      Cell size <FormInput v-model="cellSize" type="number" />
-    </div>
-    <div>
-      Seed <FormInput v-model="seed" type="number" />
-    </div>
+    <FormGroup label="Cols" inline>
+      <FormInput v-model="cols" type="number" />
+    </FormGroup>
+    <FormGroup label="Rows" inline>
+      <FormInput v-model="rows" type="number" />
+    </FormGroup>
+    <FormGroup label="Cell size" inline>
+      <FormInput v-model="cellSize" type="number" />
+    </FormGroup>
+    <FormGroup label="Seed" inline>
+      <FormInput v-model="seed" type="number" />
+    </FormGroup>
 
     <MazeGenerator
       class="mx-auto"
