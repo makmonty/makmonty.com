@@ -37,9 +37,12 @@ export default {
     renderer.setClearColor(0xFFFFFF, 0)
     renderer.setSize(window.innerWidth, window.innerHeight)
 
-    camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000)
-    // camera.position.x = 5
-    // camera.position.y = 5
+    const cameraAspect = window.innerWidth / window.innerHeight
+    // camera = new THREE.PerspectiveCamera(75, cameraAspect, 0.1, 1000)
+    const cameraWidth = 30
+    camera = new THREE.OrthographicCamera(-cameraWidth / 2, cameraWidth / 2, cameraWidth / (cameraAspect * 2), -cameraWidth / (cameraAspect * 2), 0.1, 1000)
+    camera.position.x = 10
+    camera.position.y = 10
     camera.position.z = 10
     camera.lookAt(new THREE.Vector3(0, 0, 0))
     scene.add(camera)
@@ -78,28 +81,26 @@ export default {
 
       this.setupFrame()
 
-      const angle = 90 * Math.PI / 180
-
-      objects.forEach((object) => {
-        object.translateOnAxis(new THREE.Vector3(1, 0, 0), deltaTime)
-        object.rotateOnAxis(new THREE.Vector3(0, 1, 0), angle * deltaTime)
-        // object.rotateOnWorldAxis(new THREE.Vector3(0, 0, Math.sin(time)), angle * deltaTime)
-        // object.rotateOnWorldAxis(new THREE.Vector3(Math.cos(time), 0, 0), angle * deltaTime)
-        // object.rotateOnAxis(new THREE.Vector3(0.2, 1, 0), angle * deltaTime)
-        // object.rotateOnAxis(new THREE.Vector3(0, 0.2, 1), angle * deltaTime)
-        // object.rotateOnAxis(new THREE.Vector3(1, 0, 0.2), angle * deltaTime)
-      })
-
       renderer.render(scene, camera)
     },
 
     addObject () {
       const mesh = new THREE.Mesh(icosahedronGeometry, material)
-      // Set center
-      // mesh.translateY(-0.288675135)
-      // mesh.geometry.applyMatrix(new THREE.Matrix4().makeTranslation(mesh.position.x, mesh.position.y, mesh.position.z))
+      mesh.matrixAutoUpdate = false
 
       objects.push(mesh)
+      let rotation = 0
+      let position = new THREE.Vector3(0, 0, 0)
+      mesh.onBeforeRender = function (renderer, scene, camera, geometry, material, group) {
+        const angle = 90 * Math.PI / 180
+        rotation += angle * deltaTime
+        const quaternion = new THREE.Quaternion()
+        quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), rotation)
+        this.matrix.setRotationFromQuaternion(quaternion)
+
+        position = new THREE.Vector3(position.x + deltaTime, position.y, position.z)
+        this.matrix.setPosition(position)
+      }
       scene.add(mesh)
     }
   }
