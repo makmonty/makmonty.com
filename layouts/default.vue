@@ -18,7 +18,9 @@
             :href="link.href"
             :title="link.title"
           >
-            <unicon :name="link.icon" width="32" height="32" />
+            <client-only>
+              <unicon :name="link.icon" width="32" height="32" />
+            </client-only>
           </a>
         </div>
       </div>
