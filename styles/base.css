@@ -11,6 +11,10 @@ a {
   color: var(--secondary-color);
 }
 
+a:hover {
+  color: var(--secondary-active-color);
+}
+
 strong {
   color: var(--primary-color);
 }
