@@ -1,0 +1,2 @@
+""let g:ctrlp_custom_ignore = '(node_modules|dist)'
+set wildignore+=*/node_modules/*,*/dist/*
