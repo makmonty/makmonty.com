@@ -57,7 +57,7 @@ export default {
         className: ''
       },
       pixel: {
-        src: '/assets/images/yo-24x24.png',
+        src: '/images/yo-24x24.png',
         className: 'rendering-crisp-edges p-4 border-primary'
       }
     };
