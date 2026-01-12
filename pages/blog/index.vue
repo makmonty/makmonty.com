@@ -1,18 +1,15 @@
 <template>
   <section class="container mx-auto px-8 my-24">
-    <article v-for="post in publishedItems" :key="post.slug" class="post">
-      <img :src="post.featuredImage">
-      <h2>
-        <nuxt-link :to="'/blog/' + post.slug">
-          {{ post.title }}
-        </nuxt-link>
-      </h2>
-      <div class="post-date">
-        {{ post.date }}
-      </div>
-      <div class="post-description">
-        {{ post.description }}
-      </div>
+    <BlogPostCard
+      v-for="post in publishedItems"
+      :key="post.slug"
+      :post="post"
+    />
+
+    <article v-if="!publishedItems.length">
+      <p class="text-2xl text-center">
+        There are no blog posts yet. Check back later!
+      </p>
     </article>
   </section>
 </template>

@@ -1,3 +1,14 @@
+const fs = require('fs');
+const path = require('path');
+
+const generatePages = function(contentPath, baseRoute) {
+  return fs.readdirSync(contentPath).map((file) => {
+    return {
+      route: `${baseRoute}/${path.parse(file).name}`, // Return the slug
+      payload: require(`${contentPath}/${file}`)
+    };
+  });
+};
 
 export default {
   ssr: true,
@@ -62,7 +73,7 @@ export default {
   sitemap: {
     hostname: 'https://makmonty.com',
     exclude: [
-      '/blog'
+      '/blog/**',
     ]
   },
   colorMode: {
@@ -81,21 +92,9 @@ export default {
   // },
   generate: {
     routes() {
-      const fs = require('fs');
-      const path = require('path');
       return [
-        ...fs.readdirSync('./assets/content/blog').map((file) => {
-          return {
-            route: `/blog/${path.parse(file).name}`, // Return the slug
-            payload: require(`./assets/content/blog/${file}`)
-          };
-        }),
-        ...fs.readdirSync('./assets/content/games').map((file) => {
-          return {
-            route: `/games/${path.parse(file).name}`, // Return the slug
-            payload: require(`./assets/content/games/${file}`)
-          };
-        }),
+        ...generatePages('./assets/content/blog', '/blog'),
+        ...generatePages('./assets/content/games', '/games'),
       ];
     }
 
