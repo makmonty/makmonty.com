@@ -1,6 +1,6 @@
-import { defineNuxtConfig } from 'nuxt';
 import fs from 'fs';
 import path from 'path';
+import { defineNuxtConfig } from 'nuxt';
 
 interface RoutePayload {
   route: string;
@@ -20,7 +20,7 @@ const generatePages = function(
 // https://v3.nuxtjs.org/docs/directory-structure/nuxt.config
 export default defineNuxtConfig({
   target: 'static',
-  buildModule: ['@nuxtjs/tailwindcss'],
+  buildModule: [ '@nuxtjs/tailwindcss' ],
   build: {
     postcss: {
       postcssOptions: {
@@ -57,9 +57,7 @@ export default defineNuxtConfig({
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: 'Makmonty. My personal site. Web engineer' }
     ],
-    link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+    link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
   css: [
     '@/node_modules/line-awesome/dist/line-awesome/css/line-awesome.css',
@@ -68,15 +66,16 @@ export default defineNuxtConfig({
   colorMode: {
     classSuffix: ''
   },
-  //generate: {
-    //async routes() {
-      //return [
-        //...generatePages('./assets/content/blog', '/blog'),
-        //...generatePages('./assets/content/games', '/games'),
-      //];
-    //}
-  //},
+  // generate: {
+  // async routes() {
+  // return [
+  // ...generatePages('./assets/content/blog', '/blog'),
+  // ...generatePages('./assets/content/games', '/games'),
+  // ];
+  // }
+  // },
   routes: {
     '*': { static: true }
-  }
+  },
+  sourcemap: true,
 });
