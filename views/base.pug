@@ -1,22 +1,28 @@
 doctype html
 html
   head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    meta(name='theme-color', content='#ffffff')
+
     title= title
+
     link(rel='stylesheet', href='https://fonts.googleapis.com/css?family=Montserrat:400,700')
     link(rel='stylesheet', href='/assets/stylesheets/icomoon/style.css')
     link(rel='stylesheet', href='/assets/stylesheets/style.css')
+
+    link(rel='apple-touch-icon', sizes='180x180', href='/apple-touch-icon.png')
+    link(rel='icon', type='image/png', href='/favicon-32x32.png', sizes='32x32')
+    link(rel='icon', type='image/png', href='/favicon-16x16.png', sizes='16x16')
+    link(rel='manifest', href='/manifest.json')
+    link(rel='mask-icon', href='/safari-pinned-tab.svg', color='#5bbad5')
+
     block styles
 
   body
 
-    nav
-      ol.breadcrumb
-        li
-          a(href="/") makmonty
-        li.active= breadcrumb
-        
-    .main-container
-      block content
+    block body
+
 
     footer
       .container
@@ -30,7 +36,7 @@ html
 
       ga('create', 'UA-36413273-2', 'auto');
       ga('send', 'pageview');
-    
+
     //- script(src="//localhost:35729/livereload.js")
 
     block javascripts
