@@ -1,7 +1,7 @@
 <template>
   <BaseButton class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800 flex flex-no-wrap items-center space-x-4 overflow-hidden" color="light" @click="toggleTheme">
     <transition name="colormode" duration="1000">
-      <unicon :key="colorMode" :name="colorMode === 'light' ? 'moon' : 'sun'" width="18" height="18" />
+      <i :key="colorMode" class="fas" :class="colorMode === 'light' ? 'fa-moon' : 'fa-sun'" />
     </transition>
   </BaseButton>
 </template>
@@ -27,10 +27,10 @@ export default {
 }
 
 .colormode-leave {
-  margin-left: 100px;
+  margin-left: 0;
 }
 
 .colormode-leave-to {
-  margin-left: -33px;
+  margin-left: -30px;
 }
 </style>

@@ -42,7 +42,6 @@ export default {
         'text-' + (['primary', 'dark'].includes(this.color) ? 'light' : 'primary'), // text-primary text-light
         'border',
         'border-primary',
-        'text-center',
         'px-4',
         'py-2',
         'bg-' + this.color, // bg-primary bg-light bg-dark

@@ -33,11 +33,7 @@ export default {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    'plugins/base-components',
-    {
-      src: 'plugins/vue-unicons',
-      mode: 'client'
-    }
+    'plugins/base-components'
   ],
   /*
   ** Nuxt.js dev-modules
