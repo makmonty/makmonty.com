@@ -60,7 +60,7 @@ export default {
       jobs: [
         {
           title: 'Frontend Engineer',
-          company: 'Solera Inc.',
+          company: 'Qonto',
           url: 'https://www.qonto.com/',
           from: '2021 October',
           to: 'Current position',
