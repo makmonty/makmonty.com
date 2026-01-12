@@ -7,7 +7,7 @@ import { Component, Vue } from 'nuxt-property-decorator';
 
 import * as THREE from 'three';
 import { ThreeBehavior, ThreeBehaviorObject } from '@/three-engine/three-engine';
-import { Camera, OrthographicCamera, Renderer, Scene, WebGLRenderer } from 'three';
+import { OrthographicCamera, Scene, WebGLRenderer } from 'three';
 
 class FloatingThing extends ThreeBehavior {
   angle = 90 * Math.PI / 180

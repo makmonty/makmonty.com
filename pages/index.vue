@@ -47,7 +47,7 @@
 
 <script>
 export default {
-  data () {
+  data() {
     const avatares = {
       pod: {
         src: require('~/assets/images/angel-pod-512x512.jpg'),
@@ -57,7 +57,7 @@ export default {
         src: require('~/assets/images/yo-24x24.png'),
         className: 'rendering-crisp-edges p-4 border-primary'
       }
-    }
+    };
 
     return {
       avatar: avatares.pod,
@@ -83,12 +83,12 @@ export default {
           description: 'A, A#, B, C, C#...'
         }
       ]
-    }
+    };
   },
-  head () {
+  head() {
     return {
       script: [{ src: 'https://identity.netlify.com/v1/netlify-identity-widget.js' }]
-    }
+    };
   }
-}
+};
 </script>
