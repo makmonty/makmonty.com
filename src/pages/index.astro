@@ -9,7 +9,6 @@ import BlogPostItem from '@/components/BlogPostItem.astro';
 
 let blogPosts: Array<MarkdownInstance<BlogPost>> = [];
 try {
-  // blogPosts = await Promise.all(Object.values(import.meta.glob('./blog/*.md')).map((blogPostModule) => blogPostModule()))
   blogPosts = await getContent<MarkdownInstance<BlogPost>>(import.meta.glob('./blog/*.md'));
 } catch {
   console.log('No blog posts');
