@@ -7,8 +7,8 @@
       <nuxt />
     </div>
 
-    <footer>
-      <div class="main-block">
+    <footer class="border-t border-primary">
+      <div class="container mx-auto p-6">
         <p>Find me at...</p>
         <div class="social-icons">
           <a href="http://github.com/makmonty" title="Github">
@@ -51,10 +51,3 @@ export default {
   }
 }
 </script>
-
-<style lang="scss">
-$fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/fontawesome.scss";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/solid.scss";
-@import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
-</style>

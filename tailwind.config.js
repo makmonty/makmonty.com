@@ -1,7 +1,13 @@
+const { colors } = require('tailwindcss/defaultTheme')
+
 module.exports = {
-  theme: {},
-  variants: {},
-  plugins: [],
+  theme: {
+    extend: {
+      colors: {
+        primary: colors.teal['500']
+      }
+    }
+  },
   purge: {
     enabled: process.env.NODE_ENV === 'production',
     content: [

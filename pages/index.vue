@@ -1,36 +1,55 @@
-<template lang="pug">
-
-article
-  section.intro-personal.inverted
-    .main-block
-      .avatar
-        img(src="../assets/images/yo-24x24.png")
-      .me
-        h1.intro I'm Ángel Brasero
-        p.summary I'm a software engineer. Passionate about technology and software development.
-          | <br />I spend most of my time coding.
-        .call-to-action
-          nuxt-link.button(to="/cv") Check my CV
-  section.i-do.main-block
-    h2 In summary, I do...
-    .disciplines
-      .frontend-development.discipline
-        i.fas.fa-window-restore
-        h3 Frontend
-        p Angular, AngularJS, VueJS...
-      .backend-development.discipline
-        i.fas.fa-server
-        h3 Backend
-        p NodeJS, PHP, MySQL, MongoDB...
-      .game-design.discipline
-        i.fas.fa-gamepad
-        h3 Games
-        p Unity3D, WebGL,<br/>Game Design...
-      .soundtrack-composition.discipline
-        i.fas.fa-compact-disc
-        h3 Soundtracks
-        p A, A#, B, C, C#...
-
+<template>
+  <article>
+    <section class="container mx-auto p-6">
+      <div class="avatar">
+        <img src="../assets/images/yo-24x24.png">
+      </div>
+      <div class="me">
+        <h1 class="intro">
+          I'm Ángel Brasero
+        </h1>
+        <p class="summary">
+          I'm a software engineer. Passionate about technology and software development.<br>
+          I spend most of my time coding.
+        </p>
+        <div class="call-to-action">
+          <nuxt-link
+            v-slot="{ navigate }"
+            to="/cv"
+          >
+            <BaseButton @click="navigate">
+              Check my CV
+            </BaseButton>
+          </nuxt-link>
+        </div>
+      </div>
+    </section>
+    <section class="container mx-auto p-6">
+      <h2>In summary, I do...</h2>
+      <div class="disciplines">
+        <div class="frontend-development discipline">
+          <i class="fas fa-window-restore" />
+          <h3>Frontend</h3>
+          <p>Angular, AngularJS, VueJS...</p>
+        </div>
+        <div class="backend-development discipline">
+          <i class="fas fa-server" />
+          <h3>Backend</h3>
+          <p>NodeJS, PHP, MySQL, MongoDB...</p>
+        </div>
+        <div class="game-design discipline">
+          <i class="fas fa-gamepad" />
+          <h3>Games</h3>
+          <p>Unity3D, WebGL,<br>Game Design...</p>
+        </div>
+        <div class="soundtrack-composition discipline">
+          <i class="fas fa-compact-disc" />
+          <h3>Soundtracks</h3>
+          <p>A, A#, B, C, C#...</p>
+        </div>
+      </div>
+    </section>
+  </article>
 </template>
 
 <script>
