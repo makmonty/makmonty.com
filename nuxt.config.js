@@ -93,7 +93,7 @@ export default {
         }),
         ...fs.readdirSync('./assets/content/games').map((file) => {
           return {
-            route: `/game/${path.parse(file).name}`, // Return the slug
+            route: `/games/${path.parse(file).name}`, // Return the slug
             payload: require(`./assets/content/games/${file}`)
           };
         }),
