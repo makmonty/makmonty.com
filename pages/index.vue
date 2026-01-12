@@ -32,7 +32,7 @@
       <h2>
         In summary, I do...
       </h2>
-      <div class="flex text-center justify-around">
+      <div class="flex text-center justify-around flex-col lg:flex-row space-y-6 lg:space-y-0">
         <div v-for="discipline in disciplines" :key="discipline.name">
           <i :class="discipline.icon" class="text-2xl text-primary" />
           <h3 class="text-2xl my-1">
