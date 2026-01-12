@@ -53,7 +53,7 @@ export default {
   data() {
     const avatares = {
       pod: {
-        src: '/assets/images/angel-pod-512x512.jpg',
+        src: '/images/angel-pod-512x512.jpg',
         className: ''
       },
       pixel: {
