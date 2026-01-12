@@ -12,15 +12,11 @@ module.exports = {
         light: colors.white
       }
     },
-    darkSelector: '.dark-mode'
   },
   variants: {
     backgroundColor: ['hover', 'dark'],
     borderColor: ['hover', 'dark'],
     textColor: ['hover', 'dark']
-  },
-  experimental: {
-    darkModeVariant: true
   },
   darkMode: 'class',
   //purge: {

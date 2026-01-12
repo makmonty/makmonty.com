@@ -1,58 +1,37 @@
-
-export default {
-  props: {
-    type: {
-      type: String,
-      default: 'button'
-    },
-    disabled: {
-      type: Boolean,
-      default: false
-    },
-    href: {
-      type: String,
-      default: ''
-    },
-    color: {
-      type: String,
-      default: 'primary'
-    }
-  },
-  data() {
-    return {
-      className: [
-        'focus:outline-none',
-        'rounded-full',
-        'hover:text-primary',
-        'text-' + (['primary', 'dark'].includes(this.color) ? 'light' : 'primary'), // text-primary text-light
-        'border',
-        'border-primary',
-        'text-center',
-        'px-4',
-        'py-2',
-        'bg-' + this.color, // bg-primary bg-light bg-dark
-        'hover:bg-gray-300',
-        'transition',
-        'duration-100'
-      ]
-    };
-  },
-  methods: {
-    click(event) {
-      this.$emit('click', event);
-    }
-  }
-};
 ---
-<a v-if="href" :href="href" :class="className" :disabled="disabled" @click="click">
-  <slot />
-</a>
-<button
-  v-else
-  :type="type"
-  :disabled="disabled"
-  :class="className"
-  @click="click"
->
-  <slot />
-</button>
+const { type, disabled, href, color } = Astro.props;
+const className = [
+  'focus:outline-none',
+  'rounded-full',
+  'hover:text-primary',
+  'text-' + (['primary', 'dark'].includes(color) ? 'light' : 'primary'), // text-primary text-light
+  'border',
+  'border-primary',
+  'text-center',
+  'px-4',
+  'py-2',
+  'bg-' + color, // bg-primary bg-light bg-dark
+  'hover:bg-gray-300',
+  'transition',
+  'duration-100'
+];
+---
+{
+  href ? (
+    <a
+      href={href}
+      class:list={className}
+      disabled={disabled}
+    >
+      <slot />
+    </a>
+  ) : (
+    <button
+      type={type}
+      disabled={disabled}
+      class:list={className}
+    >
+      <slot />
+    </button>
+  )
+}
