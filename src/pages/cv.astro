@@ -4,7 +4,7 @@ import Layout from '../layouts/Layout.astro';
 const skills = [
   {
     name: 'Frontend',
-    description: 'React, Vue, Angular, Astro, Ember, Nuxt, CSS'
+    description: 'React, Vue, React Native, Angular, Astro, Expo, Ember, Nuxt, CSS'
   },
   {
     name: 'Backend',
@@ -15,6 +15,7 @@ const skills = [
     description: 'Unity3D, WebGL, ThreeJS'
   }
 ];
+
 const jobs = [
   {
     title: 'Lead Software Engineer',
@@ -23,12 +24,12 @@ const jobs = [
     from: '2024 January',
     to: 'Current position',
     description: [
-      'Development and improvement of the different clients (web, desktop and mobile) of the core application.',
+      'Development and improvement of the different clients (web, desktop and mobile) of the core application. Enforcing the usage of good practices like Clean Code, SOLID and TDD.',
       'Core technologies: ReactJS, Electron.'
     ]
   },
   {
-    title: 'Software Engineer',
+    title: 'Senior Frontend Engineer',
     company: 'Qonto',
     url: 'https://www.qonto.com/',
     from: '2021 October',
@@ -39,7 +40,7 @@ const jobs = [
     ]
   },
   {
-    title: 'Software Engineer',
+    title: 'Senior Frontend Engineer',
     company: 'Solera Inc.',
     url: 'https://www.solera.com/',
     from: '2021 January',
@@ -50,14 +51,14 @@ const jobs = [
     ]
   },
   {
-    title: 'Software Engineer',
+    title: 'Senior Software Engineer',
     company: 'Pod Group',
     url: 'https://www.podgroup.com/',
     from: '2019 September',
     to: '2020 December',
     description: [
       'Full stack design and implementation of new features in several projects.<br/>Involved in the implementation of agile methodologies to improve the quality and efficiency of the development.',
-      'Core technologies: Angular 2+, Typescript, NodeJS, ExpressJS, Restify.'
+      'Core technologies: Angular, Typescript, NodeJS, ExpressJS, Restify.'
     ]
   },
   {
@@ -68,7 +69,7 @@ const jobs = [
     to: '2019 July',
     description: [
       'Leading a back office app development in an agile team.',
-      'Core technologies: Angular 2+, Typescript, Material Design.'
+      'Core technologies: Angular, Typescript, Material Design.'
     ]
   },
   {
@@ -79,7 +80,7 @@ const jobs = [
     to: '2018 July',
     description: [
       'Development of a few frontend applications, all related to home and car insurance in Canada.',
-      'Core technologies: AngularJS, Angular 2+, Webpack, ES6, Backbone, Coffeescript, Bootstrap, LESS, SASS.'
+      'Core technologies: AngularJS, Angular, Webpack, ES6, Backbone, Coffeescript, Bootstrap, LESS, SASS.'
     ]
   },
   {
@@ -116,6 +117,7 @@ const jobs = [
     ]
   }
 ];
+
 const studies = [
   {
     title: 'Computer and Software Engineering',
@@ -124,55 +126,163 @@ const studies = [
   }
 ];
 ---
+<style>
+  h1 {
+    font-size: 3em;
+    margin-bottom: 0;
+  }
+
+  article {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  @media all{
+    body {
+      background: white;
+      color: #666;
+      font-family: sans;
+      font-size: 10px;
+    }
+
+    a {
+      text-decoration: none;
+    }
+
+    h1, h2, h3, h4, h5 {
+      font-family: "Roboto Slab";
+    }
+
+    strong {
+      color: black;
+    }
+
+    .job {
+      h3, h4 {
+        margin: 0;
+      }
+    }
+
+    ul {
+      padding: 0;
+      list-style: none;
+    }
+
+    article {
+      display: grid;
+      grid-template-columns: 40%;
+      grid-template-rows: 100px;
+
+      section {
+      }
+
+      header {
+        grid-area: header;
+        grid-column-start: 1;
+        grid-column-end: 3;
+        grid-row-start: 1;
+        grid-row-end: 2;
+      }
+
+      .about-me {
+        grid-area: about-me;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 2;
+        grid-row-end: 3;
+      }
+
+      .skills {
+        grid-area: skills;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 3;
+        grid-row-end: 4;
+      }
+
+      .work-experience {
+        grid-area: work-experience;
+        grid-column-start: 2;
+        grid-column-end: 3;
+        grid-row-start: 2;
+        grid-row-end: 7;
+      }
+
+      .education {
+        grid-area: education;
+        grid-column-start: 1;
+        grid-column-end: 2;
+        grid-row-start: 4;
+        grid-row-end: 5;
+      }
+    }
+  }
+</style>
+
 <Layout title="CV">
-  <article class="container mx-auto px-8 my-24">
-    <div class="space-y-20">
-      <section>
-        <h2>Skills</h2>
+  <article>
+    <header>
+      <h1>Ángel Brasero Moreno</h1>
+      <div><strong>Software Engineer</strong></div>
+    </header>
+
+    <section class="about-me">
+      <h2>About me</h2>
+      <p>
+Hi there! I’m a software engineer in love with music and video games.
+My career is focused on creativity, proactivity and adding value to the faced projects.
+Fearless of learning new technologies and absorb what each generation has to offer.
+      </p>
+    </section>
+
+    <section class="skills">
+      <h2>Skills</h2>
+      <ul>
+        {skills.map(skill => (
+          <li>
+            <strong>{skill.name}</strong>: {skill.description}
+          </li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="work-experience">
+      <h2>Work Experience</h2>
+
+      <div>
         <ul>
-          {skills.map(skill => (
-            <li>
-              <strong>{skill.name}</strong>: {skill.description}
+          {jobs.map(job => (
+            <li class="job">
+              <h3>
+                <strong>{job.title}</strong> at <a href={job.url}>{job.company}</a>
+              </h3>
+              <h4>
+                {job.from} - {job.to ? job.to : 'Current job'}
+              </h4>
+                {job.description.map(paragraph => (
+                  <p>
+                    <Fragment set:html={paragraph} />
+                  </p>
+                ))}
             </li>
           ))}
         </ul>
-      </section>
+      </div>
+    </section>
 
-      <section>
-        <h2>Work Experience</h2>
+    <section class="education">
+      <h2>Education</h2>
 
-        <div>
-          <ul class="space-y-8">
-            {jobs.map(job => (
-              <li>
-                <h4>
-                  <strong>{job.title}</strong> at <a href={job.url}>{job.company}</a>
-                  <br>{job.from} - {job.to ? job.to : 'Current job'}
-                </h4>
-                  {job.description.map(paragraph => (
-                    <p>
-                      <Fragment set:html={paragraph} />
-                    </p>
-                  ))}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      <section>
-        <h2>Education</h2>
-
-        <div>
-          <ul>
-            {studies.map(study => (
-              <li>
-                <h4><strong>{study.title}</strong> at <a href={study.url}>{study.institute}</a></h4>
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-    </div>
+      <div>
+        <ul>
+          {studies.map(study => (
+            <li>
+              <h4><strong>{study.title}</strong> at <a href={study.url}>{study.institute}</a></h4>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
   </article>
 </Layout>

@@ -1,5 +1,5 @@
 ---
-import BlueskyIcon from '../images/bluesky.svg?raw'
+import BlueskyIcon from '../images/bluesky.svg?raw';
 import AppNav from '../components/AppNav.astro';
 import 'line-awesome/dist/line-awesome/css/line-awesome.css';
 import '../../styles/style.css';
@@ -54,37 +54,49 @@ const socialLinks = [
     <title>{title}</title>
 
     <slot name="head" />
+
+    <style>
+      i span {
+        font-size: 0;
+      }
+
+      footer {
+        margin: 64px 0;
+      }
+
+      .main-layout {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 32px;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 16px;
+
+        a {
+          font-size: 2em;
+          text-decoration: none;
+        }
+
+        svg {
+          width: 1em;
+          height: auto;
+        }
+      }
+
+      @media print {
+        header {
+          display: none;
+        }
+        @page {
+            size: auto;   /* auto is the initial value */
+            margin: 0;  /* this affects the margin in the printer settings */
+        }
+      }
+    </style>
   </head>
-<style>
-i span {
-  font-size: 0;
-}
 
-footer {
-  margin: 64px 0;
-}
-
-.main-layout {
-  max-width: 800px;
-  margin: 0 auto;
-  padding: 0 32px;
-}
-
-.social-links {
-  display: flex;
-  gap: 16px;
-
-  a {
-    font-size: 2em;
-    text-decoration: none;
-  }
-
-  svg {
-    width: 1em;
-    height: auto;
-  }
-}
-</style>
   <body>
     <div class="main-layout">
       <header>
@@ -108,7 +120,7 @@ footer {
               {link.icon.includes('<svg') ? (
                   <Fragment set:html={BlueskyIcon} />
                 ) : (
-                  <i class:list={['lab', 'la-' + link.icon]}><span>{link.title}</span></i>
+                  <i class:list={[ 'lab', 'la-' + link.icon ]}><span>{link.title}</span></i>
                 )}
               </a>
             ))}
