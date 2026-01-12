@@ -3,7 +3,7 @@ const { width, height } = Astro.props;
 ---
 <div data-floating-thing-canvas class="floating-thing"></div>
 
-<style define:vars={{width, height}}>
+<style define:vars={{ width, height }}>
 .floating-thing {
   width: var(--width);
   height: var(--height);
@@ -39,6 +39,63 @@ class FloatingThing extends ThreeBehavior {
     quaternion.setFromAxisAngle(new Vector3(0, 1, 0), this.floatRotation);
     this.object3d.matrix.makeRotationFromQuaternion(quaternion);
   }
+}
+
+const cameraWidth = 30;
+
+const icosahedronGeometry = new IcosahedronGeometry(14);
+
+const material = new MeshLambertMaterial({ color: 0xFFFFFF });
+
+let canvas: HTMLElement;
+let scene: Scene;
+let renderer: WebGLRenderer;
+let camera: OrthographicCamera;
+let time: number;
+let deltaTime: number;
+const objects: ThreeBehaviorObject[] = [];
+
+let cameraTilt = 30;
+let cameraTiltTo = cameraTilt;
+const cameraJaw = 45;
+const cameraDistance = 50;
+
+
+function init() {
+  canvas = document.querySelector('[data-floating-thing-canvas]') as HTMLElement;
+  scene = new Scene();
+
+  renderer = new WebGLRenderer({ alpha: true, antialias: true });
+  console.log(canvas, renderer)
+  renderer.setClearColor(0xFFFFFF, 0);
+  setCanvasSize();
+
+  camera = new OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
+  setCameraSize();
+  setCameraPosition();
+  scene.add(camera);
+
+  const ambLight = new AmbientLight(0xFFFFFF, 0.25);
+  scene.add(ambLight);
+
+  const light1 = new DirectionalLight(0xFF0000, 2);
+  light1.position.x = 3;
+  scene.add(light1);
+
+  const light2 = new DirectionalLight(0x00FF00, 2);
+  light2.position.y = 3;
+  scene.add(light2);
+
+  const light3 = new DirectionalLight(0x0000FF, 2);
+  light3.position.z = 3;
+  scene.add(light3);
+
+  spawnObject();
+
+  canvas.appendChild(renderer.domElement);
+
+  time = new Date().getTime() / 1000;
+  animate();
 }
 
 function lerp(from: number, to: number, t: number) {
@@ -99,25 +156,6 @@ function spawnObject() {
   behavior.start();
 }
 
-const cameraWidth = 30;
-
-const icosahedronGeometry = new IcosahedronGeometry(14);
-
-const material = new MeshLambertMaterial({ color: 0xFFFFFF });
-
-let canvas: HTMLElement;
-let scene: Scene;
-let renderer: WebGLRenderer;
-let camera: OrthographicCamera;
-let time: number;
-let deltaTime: number;
-const objects: ThreeBehaviorObject[] = [];
-
-let cameraTilt = 30;
-let cameraTiltTo = cameraTilt;
-const cameraJaw = 45;
-const cameraDistance = 50;
-
 window.addEventListener('resize', () => {
   setCanvasSize();
   setCameraSize();
@@ -127,39 +165,5 @@ window.addEventListener('mousemove', (event) => {
   cameraTiltTo = 90 * (window.innerHeight - event.clientY) / window.innerHeight;
 });
 
-window.onload = () => {
-  canvas = document.querySelector('[data-floating-thing-canvas]') as HTMLElement;
-  scene = new Scene();
-
-  renderer = new WebGLRenderer({ alpha: true, antialias: true });
-  renderer.setClearColor(0xFFFFFF, 0);
-  setCanvasSize();
-
-  camera = new OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
-  setCameraSize();
-  setCameraPosition();
-  scene.add(camera);
-
-  const ambLight = new AmbientLight(0xFFFFFF, 0.25);
-  scene.add(ambLight);
-
-  const light1 = new DirectionalLight(0xFF0000, 2);
-  light1.position.x = 3;
-  scene.add(light1);
-
-  const light2 = new DirectionalLight(0x00FF00, 2);
-  light2.position.y = 3;
-  scene.add(light2);
-
-  const light3 = new DirectionalLight(0x0000FF, 2);
-  light3.position.z = 3;
-  scene.add(light3);
-
-  spawnObject();
-
-  canvas.appendChild(renderer.domElement);
-
-  time = new Date().getTime() / 1000;
-  animate();
-}
+init();
 </script>
