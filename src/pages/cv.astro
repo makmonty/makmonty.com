@@ -1,10 +1,12 @@
 ---
 import Layout from '../layouts/Layout.astro';
 
+const showContact = false
+
 const skills = [
   {
     name: 'Frontend',
-    description: 'React, Vue, React Native, Angular, Astro, Expo, Ember, Nuxt, CSS'
+    description: 'Javascript, Typescript, React, Vue, Ember, React Native, Expo, Angular, Astro, Nuxt, CSS'
   },
   {
     name: 'Backend',
@@ -25,7 +27,7 @@ const jobs = [
     to: 'Current position',
     description: [
       'Development and improvement of the different clients (web, desktop and mobile) of the core application. Enforcing good development practices like Clean Code, SOLID and TDD.',
-      'Core technologies: ReactJS, Electron.'
+      'Core technologies: React, React Native, Expo, Electron.'
     ]
   },
   {
@@ -36,7 +38,7 @@ const jobs = [
     to: '2023 December',
     description: [
       'Development of the frontend side of the core application of a banking business.',
-      'Core technologies: EmberJS.'
+      'Core technologies: Ember.'
     ]
   },
   {
@@ -81,7 +83,7 @@ const jobs = [
     to: '2018 July',
     description: [
       'Development of a few frontend applications, all related to home and car insurance in Canada.',
-      'Core technologies: Angular, Webpack, Backbone, PHP, Laravel, Coffeescript, LESS, SASS.'
+      'Core technologies: Angular, PHP, Webpack, Backbone, Laravel, Coffeescript, LESS, SASS.'
     ]
   },
   {
@@ -126,6 +128,19 @@ const studies = [
     url: 'http://www.us.es/'
   }
 ];
+
+// Obfuscated contact info
+const contact = {
+  email: {
+    user: 'angel',
+    domain: 'makmonty.com'
+  },
+  phone: {
+    country: '+34',
+    region: '651',
+    number: '193286'
+  }
+};
 ---
 <style>
   h1 {
@@ -224,9 +239,15 @@ const studies = [
         grid-column: 1;
       }
 
+      .contact {
+        grid-area: contact;
+        grid-row: 5;
+        grid-column: 1;
+      }
+
       .work-experience {
         grid-area: work-experience;
-        grid-row: 2 / span 4;
+        grid-row: 2 / span 5;
         grid-column: 2;
 
         ul {
@@ -270,6 +291,15 @@ I'm a software engineer passionate about web technologies and creating video gam
         ))}
       </ul>
     </section>
+    {showContact && (
+      <section class="contact">
+        <h2>Contact me</h2>
+        <ul>
+          <li><strong>Email</strong>: {contact.email.user}@{contact.email.domain}</li>
+          <li><strong>Phone</strong>: {contact.phone.country}{contact.phone.region}{contact.phone.number}</li>
+        </ul>
+      </section>
+    )}
 
     <section class="work-experience">
       <h2>Work Experience</h2>
