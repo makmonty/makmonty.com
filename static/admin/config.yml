@@ -39,6 +39,7 @@ collections:
               collection: "categories",
               valueField: "{{slug}}",
               searchFields: ["name"],
+              displayFields: ["name"],
             },
         }
   - name: "games"
