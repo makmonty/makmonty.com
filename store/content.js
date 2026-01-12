@@ -21,7 +21,7 @@ export const mutations = {
     state.blogPosts = list
   },
   setGames (state, list) {
-    state.blogPosts = list
+    state.games = list
   }
 }
 
