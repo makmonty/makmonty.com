@@ -31,7 +31,7 @@ export default {
   },
   data () {
     return {
-      className: ['rounded-full', 'border', 'border-primary', 'px-4', 'py-2']
+      className: ['rounded-full', 'text-primary', 'border', 'border-primary', 'px-4', 'py-2']
     }
   },
   methods: {

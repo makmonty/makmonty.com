@@ -4,7 +4,7 @@
 // @import "../node_modules/@fortawesome/fontawesome-free/scss/brands.scss";
 // // @import "../assets/stylesheets/icomoon/style";
 // // @import "layout/makmonty";
-// @import "mixins";
+@import "mixins";
 // @import "buttons";
 // @import "nav";
 // // @import "fonts";
@@ -21,4 +21,8 @@ $fa-font-path: "../node_modules/@fortawesome/fontawesome-free/webfonts";
 
 a {
   @apply text-primary;
+}
+
+.rendering-crisp-edges {
+  @include crisp-edges();
 }
