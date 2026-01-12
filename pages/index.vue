@@ -6,6 +6,7 @@
           :src="avatar.src"
           class="w-64 h-64 object-cover rounded-full"
           :class="avatar.className"
+          alt="My beautiful face"
         >
         <div class="flex flex-col justify-center space-y-6">
           <h1 class="text-4xl mb-0 leading-none">
