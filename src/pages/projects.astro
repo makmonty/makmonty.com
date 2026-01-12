@@ -2,8 +2,9 @@
 import { type MarkdownInstance } from 'astro';
 import Layout from '../layouts/Layout.astro';
 import ProjectCard from '../components/ProjectCard.astro';
-import { type Game, type WebExperiment } from '../types/content';
+import { type App, type Game, type WebExperiment } from '../types/content';
 
+const apps: Array<MarkdownInstance<App>> = await Astro.glob('./apps/*.md')
 const games: Array<MarkdownInstance<Game>> = await Astro.glob('./games/*.md');
 const webExperiments: Array<WebExperiment> = [
   // {
@@ -12,9 +13,23 @@ const webExperiments: Array<WebExperiment> = [
   //   featuredImage: '/cms/img/maze-promo.jpg',
   // }
 ];
+console.log({apps, games})
 ---
 <Layout title="Projects">
   <article>
+    {!!apps.length &&
+      <section>
+        <h2>Apps</h2>
+        <div class="project-list">
+          {apps.map(item => (
+            <a href={item.url}>
+              <ProjectCard project={item.frontmatter} />
+            </a>
+          ))}
+        </div>
+      </section>
+    }
+
     {!!webExperiments.length &&
       <section>
         <h2>Web experiments</h2>
