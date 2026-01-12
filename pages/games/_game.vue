@@ -1,9 +1,9 @@
 <template>
   <article class="container mx-auto px-8 my-24">
-    <h1>{{ game.title }}</h1>
-    <div class="game-date">
-      {{ game.date }}
+    <div v-if="game.featuredImage" class="text-center">
+      <img class="inline-block rounded-lg w-64" :src="game.featuredImage">
     </div>
+    <h1>{{ game.title }}</h1>
     <!-- eslint-disable-next-line -->
     <div v-html="$md.render(game.body)" />
   </article>
