@@ -1,11 +1,13 @@
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: makmonty/sveltia-cms-auth
+  branch: main
+  base_url: "https://sveltia-cms-auth.angel-brasero.workers.dev/"
 
 media_folder: public/images/cms
 public_folder: /images/cms
 publish_mode: editorial_workflow
-display_url: https://makmonty.com
+display_url: "https://makmonty.com"
 slug:
   encoding: "ascii"
   clean_accents: true
