@@ -23,9 +23,6 @@ import { mapState } from 'vuex'
 export default {
   computed: {
     ...mapState('games', ['items'])
-    // games () {
-    //   return this.$store.state.blog.items
-    // }
   }
 }
 </script>

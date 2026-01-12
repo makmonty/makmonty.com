@@ -31,8 +31,14 @@ collections:
       preview: false
     fields:
       - { label: "Title", name: "title", widget: "string" }
-      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Release Date", name: "date", widget: "date" }
       - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
       - { label: "Tags", name: "tags", widget: "list" }
       - { label: "Featured image", name: "featuredImage", widget: "image" }
+      - {
+          label: "Screenshots",
+          name: "screenshots",
+          widget: "list",
+          field: { label: "Screenshot", name: "screenshot", widget: "image" },
+        }
