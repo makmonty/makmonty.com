@@ -1,6 +1,9 @@
 <template>
   <article class="main-block">
-    <h2>{{ blogPost.title }}</h2>
+    <h1>{{ blogPost.title }}</h1>
+    <div class="post-date">
+      {{ post.date }}
+    </div>
     <div v-html="$md.render(blogPost.body)" />
   </article>
 </template>

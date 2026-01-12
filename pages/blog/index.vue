@@ -1,8 +1,15 @@
 <template>
-  <section class="main-block">
-    <article v-for="post in blogPosts" :key="post.slug">
-      <h2>{{ post.title }}</h2>
-      <div>
+  <section class="main-block post-list">
+    <article v-for="post in blogPosts" :key="post.slug" class="post">
+      <h1>
+        <nuxt-link :to="'/blog/' + post.slug">
+          {{ post.title }}
+        </nuxt-link>
+      </h1>
+      <div class="post-date">
+        {{ post.date }}
+      </div>
+      <div class="post-description">
         {{ post.description }}
       </div>
     </article>
