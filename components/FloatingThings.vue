@@ -43,6 +43,7 @@ let deltaTime: number;
 const objects: ThreeBehaviorObject[] = [];
 
 let cameraTilt = 30;
+let cameraTiltTo = cameraTilt;
 const cameraJaw = 45;
 const cameraDistance = 50;
 
@@ -59,8 +60,7 @@ export default class FloatingThingsComponent extends Vue {
     });
 
     window.addEventListener('mousemove', (event) => {
-      cameraTilt = lerp(cameraTilt, 90 * (window.innerHeight - event.clientY) / window.innerHeight, 0.1);
-      this.setCameraPosition();
+      cameraTiltTo = 90 * (window.innerHeight - event.clientY) / window.innerHeight;
     });
 
     scene = new THREE.Scene();
@@ -111,6 +111,7 @@ export default class FloatingThingsComponent extends Vue {
   }
 
   setCameraPosition() {
+    cameraTilt = lerp(cameraTilt, cameraTiltTo, 0.1);
     const tiltRad = cameraTilt * Math.PI / 180;
     const jawRad = cameraJaw * Math.PI / 180;
     camera.position.x = Math.cos(jawRad) * Math.cos(tiltRad) * cameraDistance;
@@ -132,6 +133,8 @@ export default class FloatingThingsComponent extends Vue {
     this.setupFrame();
 
     objects.forEach(obj => obj.runBehaviorsUpdate());
+
+    this.setCameraPosition();
 
     renderer.render(scene, camera);
   }
