@@ -46,7 +46,7 @@ export default {
       skills: [
         {
           name: 'Frontend',
-          description: 'AngularJS, Angular 2+, VueJS, NuxtJS, TailwindCSS, SASS, Bootstrap, Backbone'
+          description: 'AngularJS, Angular 2+, VueJS, NuxtJS, React, EmberJS, TailwindCSS, SASS, Bootstrap, Backbone'
         },
         {
           name: 'Backend',
@@ -59,11 +59,33 @@ export default {
       ],
       jobs: [
         {
+          title: 'Frontend Engineer',
+          company: 'Solera Inc.',
+          url: 'https://www.qonto.com/',
+          from: '2021 October',
+          to: 'Current position',
+          description: [
+            'Development of the frontend side of the core application of a banking business.',
+            'Core technologies: EmberJS.'
+          ]
+        },
+        {
+          title: 'Software Engineer',
+          company: 'Solera Inc.',
+          url: 'https://www.solera.com/',
+          from: '2021 January',
+          to: '2021 September',
+          description: [
+            'Leading the development of frontend applications',
+            'Core technologies: React.'
+          ]
+        },
+        {
           title: 'Software Engineer',
           company: 'Pod Group',
           url: 'https://www.podgroup.com/',
           from: '2019 September',
-          to: 'Current job',
+          to: '2020 December',
           description: [
             'Full stack design and implementation of new features in several projects.<br/>Involved in the implementation of agile methodologies to improve the quality and efficiency of the development.',
             'Core technologies: Angular 2+, Typescript, NodeJS, ExpressJS, Restify.'
@@ -76,7 +98,7 @@ export default {
           from: '2018 July',
           to: '2019 July',
           description: [
-            'Lead a back office app development in an agile team.',
+            'Leading a back office app development in an agile team.',
             'Core technologies: Angular 2+, Typescript, Material Design.'
           ]
         },
