@@ -1,4 +1,4 @@
-import { defineNuxtConfig } from 'nuxt3'
+import { defineNuxtConfig } from 'nuxt';
 import fs from 'fs';
 import path from 'path';
 
@@ -30,6 +30,11 @@ export default defineNuxtConfig({
         },
       },
     },
+    splitChunks: {
+      layouts: false,
+      pages: false,
+      commons: false
+    }
   },
   meta: {
     htmlAttrs: {
