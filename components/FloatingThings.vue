@@ -10,13 +10,8 @@ import { ThreeBehavior, ThreeBehaviorObject } from '@/three-engine/three-engine'
 import { OrthographicCamera, Scene, WebGLRenderer } from 'three';
 
 class FloatingThing extends ThreeBehavior {
-  angle = 90 * Math.PI / 180
-  floatRotation = 0
-  // floatPosition = new THREE.Vector3(
-  //   Math.random() * this.renderer.domElement.offsetWidth - this.renderer.domElement.offsetWidth / 2,
-  //   this.renderer.domElement.offsetHeight / 2,
-  //   0
-  // )
+  angle = (90 * Math.PI) / 180;
+  floatRotation = 0;
 
   start() {
     this.object3d.matrixAutoUpdate = false;
@@ -26,31 +21,19 @@ class FloatingThing extends ThreeBehavior {
     this.floatRotation += this.angle * deltaTime;
     const quaternion = new THREE.Quaternion();
     quaternion.setFromAxisAngle(new THREE.Vector3(0, 1, 0), this.floatRotation);
-    this.matrix.makeRotationFromQuaternion(quaternion);
-
-    // this.floatPosition = new THREE.Vector3(this.floatPosition.x, this.floatPosition.y - deltaTime, this.floatPosition.z);
-    // this.matrix.setPosition(this.floatPosition);
+    this.object3d.matrix.makeRotationFromQuaternion(quaternion);
   }
+}
+
+function lerp(from: number, to: number, t: number) {
+  return from * (1 - t) + to * t;
 }
 
 const cameraWidth = 30;
 
-// const vertices = [
-//   new THREE.Vector3(0.5, 0, 0),
-//   new THREE.Vector3(-0.5, 0, 0),
-//   new THREE.Vector3(0, 0.866025404, 0)
-// ]
-// const triangleGeometry = new THREE.Geometry()
-// // triangleGeometry.vertices = vertices
-// vertices.forEach(vertex => triangleGeometry.vertices.push(vertex))
-// triangleGeometry.faces.push(new THREE.Face3(0, 1, 2))
-// triangleGeometry.faces.push(new THREE.Face3(0, 2, 1))
-// triangleGeometry.computeFaceNormals()
-
 const icosahedronGeometry = new THREE.IcosahedronGeometry(14);
 
 const material = new THREE.MeshLambertMaterial({ color: 0xFFFFFF });
-// const material = new THREE.MeshNormalMaterial()
 
 let scene: Scene;
 let renderer: WebGLRenderer;
@@ -75,13 +58,17 @@ export default class FloatingThingsComponent extends Vue {
       this.setCameraSize();
     });
 
+    window.addEventListener('mousemove', (event) => {
+      cameraTilt = lerp(cameraTilt, 90 * (window.innerHeight - event.clientY) / window.innerHeight, 0.1);
+      this.setCameraPosition();
+    });
+
     scene = new THREE.Scene();
 
     renderer = new THREE.WebGLRenderer({ alpha: true });
     renderer.setClearColor(0xFFFFFF, 0);
     this.setCanvasSize();
 
-    // camera = new THREE.PerspectiveCamera(75, cameraAspect, 0.1, 1000)
     camera = new THREE.OrthographicCamera(1, 1, 1, 1, 0.1, 1000);
     this.setCameraSize();
     this.setCameraPosition();
@@ -108,11 +95,6 @@ export default class FloatingThingsComponent extends Vue {
 
     time = new Date().getTime() / 1000;
     this.animate();
-
-    window.addEventListener('mousemove', (event) => {
-      cameraTilt = 90 * (window.innerHeight - event.clientY) / window.innerHeight;
-      this.setCameraPosition();
-    });
   }
 
   setCanvasSize() {

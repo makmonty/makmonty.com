@@ -16,20 +16,18 @@
     //- li
     //-   a(href="http://blog.makmonty.com") Blog -->
     </ul>
-    <BaseButton class="w-12 h-12 border-none bg-opacity-0 hover:bg-opacity-100 ml-auto dark-hover:bg-gray-800" color="light" @click="toggleTheme">
-      <transition name="colormode" mode="in-out" duration="1000">
-        <i :key="colorMode" class="fas" :class="colorMode === 'light' ? 'fa-moon' : 'fa-sun'" />
-      </transition>
-    </BaseButton>
+    <ColorModeToggle />
   </nav>
 </template>
 
 <script>
 import FloatingThings from '@/components/FloatingThings';
+import ColorModeToggle from '@/components/ColorModeToggle';
 
 export default {
   components: {
-    FloatingThings
+    FloatingThings,
+    ColorModeToggle
   },
   data() {
     return {
@@ -44,16 +42,6 @@ export default {
         }
       ]
     };
-  },
-  computed: {
-    colorMode() {
-      return this.$colorMode.value;
-    }
-  },
-  methods: {
-    toggleTheme() {
-      this.$colorMode.value = this.$colorMode.value === 'light' ? 'dark' : 'light';
-    }
   }
 };
 </script>
