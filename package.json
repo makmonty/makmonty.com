@@ -7,6 +7,7 @@
     "start": "node .output/server/index.mjs"
   },
   "devDependencies": {
+    "@nuxt/test-utils-edge": "^3.0.0-rc.3-27545866.cd37a21",
     "@nuxtjs/color-mode": "^3.0.2",
     "@nuxtjs/tailwindcss": "^5.0.3",
     "eslint": "^8.10.0",
@@ -16,7 +17,8 @@
     "nuxt": "npm:nuxt3@latest",
     "sass": "^1.49.11",
     "sass-loader": "^12.6.0",
-    "tailwindcss": "latest"
+    "tailwindcss": "latest",
+    "vitest": "^0.12.6"
   },
   "packageManager": "yarn@3.2.0",
   "dependencies": {
