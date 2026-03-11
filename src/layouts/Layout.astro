@@ -24,12 +24,12 @@ const socialLinks = [
     rel: 'me',
     showOnPrint: false,
   },
-  {
-    href: 'https://bsky.app/profile/makmonty.itch.io',
-    title: 'Bluesky',
-    icon: BlueskyIcon,
-    showOnPrint: false,
-  },
+  //{
+  //  href: 'https://bsky.app/profile/makmonty.itch.io',
+  //  title: 'Bluesky',
+  //  icon: BlueskyIcon,
+  //  showOnPrint: false,
+  //},
   {
     href: 'https://www.linkedin.com/in/angelbraseromoreno/',
     title: 'Linkedin',
@@ -44,16 +44,17 @@ const socialLinks = [
   },
 ];
 ---
+
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
     <meta name="viewport" content="width=device-width" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
-    <link rel="manifest" href="/site.webmanifest">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
     <meta name="generator" content={Astro.generator} />
 
     <title>{title}</title>
@@ -80,6 +81,8 @@ const socialLinks = [
         gap: 16px;
 
         a {
+          width: 2rem;
+          height: 2rem;
           font-size: 2em;
           text-decoration: none;
         }
@@ -95,8 +98,8 @@ const socialLinks = [
           display: none;
         }
         @page {
-            size: 210mm 297mm; /* landscape */
-            margin: 0;  /* this affects the margin in the printer settings */
+          size: 210mm 297mm; /* landscape */
+          margin: 0; /* this affects the margin in the printer settings */
         }
         body {
           margin: 30px 15px;
@@ -149,20 +152,27 @@ const socialLinks = [
         <div>
           <h2>Find me at...</h2>
           <div class="social-links">
-            {socialLinks.map(link => (
-              <a
-                href={link.href}
-                title={link.title}
-                rel={link.rel}
-                class:list={[ 'social-link', link.showOnPrint ? 'show-print' : '' ]}
-              >
-              {link.icon.includes('<svg') ? (
-                  <Fragment set:html={link.icon} />
-                ) : (
-                <i class:list={[ 'lab', 'la-' + link.icon ]}><span>{link.title}</span></i>
-                )}
-              </a>
-            ))}
+            {
+              socialLinks.map((link) => (
+                <a
+                  href={link.href}
+                  title={link.title}
+                  rel={link.rel}
+                  class:list={[
+                    'social-link',
+                    link.showOnPrint ? 'show-print' : '',
+                  ]}
+                >
+                  {link.icon.includes('<svg') ? (
+                    <Fragment set:html={link.icon} />
+                  ) : (
+                    <i class:list={[ 'lab', 'la-' + link.icon ]}>
+                      <span>{link.title}</span>
+                    </i>
+                  )}
+                </a>
+              ))
+            }
           </div>
         </div>
       </footer>
