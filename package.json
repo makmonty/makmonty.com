@@ -10,31 +10,31 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/check": "^0.9.7",
-    "@astrojs/rss": "^4.0.17",
-    "@astrojs/sitemap": "^3.7.1",
-    "@astrojs/vue": "^6.0.0",
-    "astro": "^6.0.2",
+    "@astrojs/check": "^0.9.9",
+    "@astrojs/rss": "^4.0.18",
+    "@astrojs/sitemap": "^3.7.3",
+    "@astrojs/vue": "^6.0.1",
+    "astro": "^6.4.7",
     "line-awesome": "^1.3.0",
     "seedrandom": "^3.0.5",
-    "three": "^0.183.2",
-    "typescript": "^5.9.3",
-    "vue": "^3.5.30"
+    "three": "^0.184.0",
+    "typescript": "^6.0.3",
+    "vue": "^3.5.38"
   },
   "devDependencies": {
-    "@astrojs/ts-plugin": "^1.10.7",
+    "@astrojs/ts-plugin": "^1.10.9",
     "@types/seedrandom": "^3.0.8",
-    "@types/three": "^0.183.1",
-    "@typescript-eslint/eslint-plugin": "^8.57.0",
-    "@typescript-eslint/parser": "^8.57.0",
-    "eslint": "^10.0.3",
-    "eslint-plugin-astro": "^1.6.0",
+    "@types/three": "^0.184.1",
+    "@typescript-eslint/eslint-plugin": "^8.61.0",
+    "@typescript-eslint/parser": "^8.61.0",
+    "eslint": "^10.5.0",
+    "eslint-plugin-astro": "^1.7.0",
     "netlify-plugin-cache-yarn2": "^1.0.0",
-    "prettier": "^3.8.1",
+    "prettier": "^3.8.4",
     "prettier-plugin-astro": "^0.14.1",
-    "sass": "^1.98.0",
-    "typescript-eslint": "^8.57.0",
-    "vitest": "^4.0.18"
+    "sass": "^1.101.0",
+    "typescript-eslint": "^8.61.0",
+    "vitest": "^4.1.9"
   },
   "packageManager": "yarn@4.13.0"
 }
