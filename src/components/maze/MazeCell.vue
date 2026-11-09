@@ -21,7 +21,7 @@ const { size } = toRefs(props);
 
 <style scoped>
 .cell {
-  border: 1px solid black;
+  border: 1px solid rgb(200 245 66 / 0.55);
 }
 .up {
   border-top-width: 0;

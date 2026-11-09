@@ -2,6 +2,9 @@ export interface WebExperiment {
   title: string,
   slug: string,
   featuredImage: string,
+  date?: string,
+  description?: string,
+  tags?: Array<string>,
 }
 
 export interface App {

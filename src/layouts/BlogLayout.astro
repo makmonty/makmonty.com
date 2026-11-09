@@ -5,24 +5,55 @@ const { frontmatter: post } = Astro.props;
 ---
 <style is:global>
 h1 {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
 h2 {
-  padding-top: 2rem;
+  padding-top: 1.5rem;
 }
 </style>
 <Layout title={post.title}>
   <meta name="fediverse:creator" content="@makmonty@tkz.one" slot="head" />
-  <img src={post.featuredImage} alt={post.title} />
-  <article>
+  <img class="featured-image" src={post.featuredImage} alt={post.title} />
+  <article class="post-content">
     <h1>{post.title}</h1>
     <slot/>
   </article>
 </Layout>
 
 <style>
-img {
+.featured-image {
   width: 100%;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle-color);
+  box-shadow: var(--shadow-card);
+  margin-top: 56px;
+  box-sizing: border-box;
+}
+
+.post-content {
+  padding-bottom: 24px;
+  max-width: 720px;
+}
+
+.post-content h1 {
+  margin: 40px 0 24px;
+  font-size: 2.4rem;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+}
+
+.post-content :global(p), .post-content :global(li) {
+  color: var(--text-soft);
+}
+
+.post-content :global(img) {
+  border-radius: var(--radius-sm);
+}
+
+.post-content :global(pre) {
+  border: 1px solid var(--border-subtle-color);
+  border-radius: var(--radius-sm);
+  padding: 16px;
 }
 </style>

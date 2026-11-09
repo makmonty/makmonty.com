@@ -18,11 +18,18 @@ const emit = defineEmits<{
 
 <style scoped>
 input:is([type="text"],[type="number"],[type="email"]) {
-  border: 1px solid #aaa;
-  padding: 3px 9px;
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  padding: 8px 14px;
+  background: var(--bg-secondary-color);
+  color: var(--fg-color);
+  font: inherit;
+  font-size: 0.9rem;
+  transition: border-color var(--transition), box-shadow var(--transition);
 }
 
-input:is([type="text"],[type="number"],[type="email"]) {
-  border-radius: 10em;
+input:is([type="text"],[type="number"],[type="email"]):focus-visible {
+  outline: none;
+  border-color: var(--acid);
 }
 </style>

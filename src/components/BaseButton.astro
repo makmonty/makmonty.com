@@ -35,32 +35,44 @@ const className = [
 .button {
   display: inline-block;
   text-decoration: none;
-  border: 1px solid var(--fg-color);
-  color: var(--fg-color);
-  border-radius: 9999px;
-  padding: 10px 12px;
+  border: 1px solid var(--border-color);
+  background: transparent;
+  color: var(--text);
+  border-radius: var(--radius-sm);
+  padding: 12px 24px;
+  font-family: var(--font-mono);
+  font-size: 0.88rem;
+  font-weight: 500;
+  transition: background-color var(--transition), border-color var(--transition),
+    color var(--transition);
 }
 
-.primary {
-  background: var(--primary-color);
-  border-color: var(--primary-color);
+.button:hover {
+  background: var(--surface);
+  border-color: #3a3a42;
+  text-decoration: none;
 }
 
-.primary:hover {
-  background: var(--primary-active-color);
+.button:focus-visible {
+  outline: 2px solid var(--acid);
+  outline-offset: 3px;
 }
 
-.secondary {
-  background: var(--secondary-color);
-  border-color: var(--secondary-color);
-}
-
-.secondary:hover {
-  background: var(--secondary-active-color);
+.button.disabled {
+  opacity: 0.5;
+  pointer-events: none;
 }
 
 .primary, .secondary {
-  color: var(--bg-color);
-  border: none;
+  border-color: var(--acid);
+  background: var(--acid);
+  color: var(--void);
+  font-weight: 600;
+}
+
+.primary:hover, .secondary:hover {
+  background: var(--acid-dark);
+  border-color: var(--acid-dark);
+  color: var(--void);
 }
 </style>

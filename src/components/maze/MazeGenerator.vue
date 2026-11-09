@@ -33,7 +33,11 @@ watch([ cols, rows, seed ], () => {
 
 <style scoped>
 .maze {
-  background: white;
-  border-collapse: collapse;
+  background: rgb(255 255 255 / 0.03);
+  border: 1px solid var(--border-subtle-color);
+  border-radius: var(--radius-md);
+  border-collapse: separate;
+  border-spacing: 0;
+  overflow: hidden;
 }
 </style>

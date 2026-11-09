@@ -6,10 +6,43 @@ import BlogPostItem from '../../components/BlogPostItem.astro';
 const posts = await getContent(import.meta.glob('./*.md'));
 ---
 <Layout title="Blog">
-  <h1>My blog</h1>
-  <a href="/blog/rss.xml">RSS Feed</a>
+  <header class="page-header">
+    <h1>Blog</h1>
+    <p>Occasional notes on software development. <a class="rss-link" href="/blog/rss.xml">rss →</a></p>
+  </header>
 
   {posts.map(post => (
     <BlogPostItem post={post} />
   ))}
 </Layout>
+
+<style>
+.page-header {
+  margin: 48px 0 56px;
+}
+
+.page-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.page-header p {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.rss-link {
+  color: var(--muted);
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.rss-link:hover {
+  color: var(--acid);
+}
+</style>

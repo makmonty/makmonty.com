@@ -1,23 +1,85 @@
 ---
 const { post } = Astro.props;
+const postedOn = new Date(post.frontmatter.pubDate).toLocaleDateString('en-US', {
+  year: 'numeric',
+  month: 'long',
+  day: 'numeric',
+});
 ---
-<article>
-  <h3>{post.frontmatter.title}</h3>
+<article class="post-card">
+  <h3>
+    <a href={post.url}>{post.frontmatter.title}</a>
+  </h3>
   <p>{post.frontmatter.description}</p>
   <footer>
-    <a class="read-more" href={post.url}>Read more</a>
-    <span class="posted-on">Posted on <span class="posted-on-date">{new Date(post.frontmatter.pubDate).toUTCString()}</span></span>
+    <a class="read-more" href={post.url}>Read more →</a>
+    <time class="posted-on" datetime={new Date(post.frontmatter.pubDate).toISOString()}>{postedOn}</time>
   </footer>
 </article>
 
 <style>
-.posted-on {
-  display: inline-block;
-  margin-left: 16px;
-  font-size: 0.8em;
+.post-card {
+  position: relative;
+  background: var(--bg-secondary-color);
+  border: 1px solid var(--border-subtle-color);
+  border-radius: var(--radius-md);
+  padding: 28px 32px;
+  margin-bottom: 16px;
+  transition: border-color var(--transition), background-color var(--transition);
 }
 
-.posted-on-date {
-  font-style: italic;
+.post-card:hover {
+  border-color: var(--border-color);
+  background: #1a1a1e;
+}
+
+h3 {
+  margin: 0 0 10px;
+  font-size: 1.3rem;
+}
+
+h3 a {
+  color: var(--text);
+  text-decoration: none;
+  transition: color var(--transition);
+}
+
+h3 a::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+h3 a:hover {
+  color: var(--acid);
+}
+
+p {
+  margin: 0 0 20px;
+  color: var(--text-soft);
+}
+
+footer {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.read-more {
+  position: relative;
+  z-index: 1;
+  font-family: var(--font-mono);
+  font-weight: 500;
+  font-size: 0.82rem;
+  text-decoration: none;
+  color: var(--acid);
+}
+
+.posted-on {
+  font-family: var(--font-mono);
+  font-size: 0.78em;
+  color: var(--fg-secondary-color);
 }
 </style>

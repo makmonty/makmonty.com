@@ -66,25 +66,74 @@ const socialLinks = [
         font-size: 0;
       }
 
-      footer {
-        margin: 64px 0;
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        background: var(--void);
+        border-bottom: 1px solid var(--border-subtle-color);
       }
 
-      .main-layout {
-        max-width: 800px;
+      .header-inner {
+        max-width: 1024px;
         margin: 0 auto;
         padding: 0 32px;
       }
 
+      .site-footer {
+        margin-top: 140px;
+        border-top: 1px solid var(--border-subtle-color);
+      }
+
+      .footer-inner {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 40px 32px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        flex-wrap: wrap;
+      }
+
+      .site-footer h2 {
+        font-family: var(--font-mono);
+        font-size: 0.78rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.16em;
+        color: var(--fg-secondary-color);
+        margin: 0;
+      }
+
+      .main-layout {
+        max-width: 1024px;
+        margin: 0 auto;
+        padding: 32px 32px 0;
+      }
+
       .social-links {
         display: flex;
-        gap: 16px;
+        gap: 6px;
 
         a {
-          width: 2rem;
-          height: 2rem;
-          font-size: 2em;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 2.4rem;
+          height: 2.4rem;
+          font-size: 1.25em;
           text-decoration: none;
+          color: var(--fg-secondary-color);
+          border: 1px solid transparent;
+          border-radius: var(--radius-sm);
+          transition: color var(--transition), border-color var(--transition),
+            background-color var(--transition), transform var(--transition);
+        }
+
+        a:hover {
+          color: var(--acid);
+          border-color: var(--border-color);
         }
 
         svg {
@@ -106,6 +155,19 @@ const socialLinks = [
         }
         footer {
           margin: 0;
+
+          &.site-footer {
+            border-top: none;
+          }
+
+          .footer-inner {
+            padding: 0;
+            display: block;
+          }
+
+          .social-links a {
+            color: #444;
+          }
 
           h2 {
             display: none;
@@ -139,44 +201,44 @@ const socialLinks = [
   </head>
 
   <body>
-    <div class="main-layout">
-      <header>
+    <header class="site-header">
+      <div class="header-inner">
         <AppNav />
-      </header>
+      </div>
+    </header>
 
-      <section>
-        <slot />
-      </section>
+    <main class="main-layout">
+      <slot />
+    </main>
 
-      <footer>
-        <div>
-          <h2>Find me at...</h2>
-          <div class="social-links">
-            {
-              socialLinks.map((link) => (
-                <a
-                  href={link.href}
-                  title={link.title}
-                  rel={link.rel}
-                  class:list={[
-                    'social-link',
-                    link.showOnPrint ? 'show-print' : '',
-                  ]}
-                >
-                  {link.icon.includes('<svg') ? (
-                    <Fragment set:html={link.icon} />
-                  ) : (
-                    <i class:list={[ 'lab', 'la-' + link.icon ]}>
-                      <span>{link.title}</span>
-                    </i>
-                  )}
-                </a>
-              ))
-            }
-          </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <h2>Find me at...</h2>
+        <div class="social-links">
+          {
+            socialLinks.map((link) => (
+              <a
+                href={link.href}
+                title={link.title}
+                rel={link.rel}
+                class:list={[
+                  'social-link',
+                  link.showOnPrint ? 'show-print' : '',
+                ]}
+              >
+                {link.icon.includes('<svg') ? (
+                  <Fragment set:html={link.icon} />
+                ) : (
+                  <i class:list={[ 'lab', 'la-' + link.icon ]}>
+                    <span>{link.title}</span>
+                  </i>
+                )}
+              </a>
+            ))
+          }
         </div>
-      </footer>
-    </div>
+      </div>
+    </footer>
     <script is:inline>
       if (window.netlifyIdentity) {
         window.netlifyIdentity.on('init', (user) => {

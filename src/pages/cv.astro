@@ -126,20 +126,108 @@ const contact = {
 };
 ---
 <style>
+  header {
+    margin: 64px 0 32px;
+  }
+
   h1 {
-    font-size: 3em;
+    font-size: clamp(2.4rem, 6vw, 3.6rem);
+    font-weight: 800;
+    letter-spacing: -0.035em;
     margin-bottom: 0;
+  }
+
+  .title {
+    margin-top: 10px;
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
   }
 
   article {
     display: flex;
     flex-direction: column;
-    gap: 24px;
+    gap: 56px;
+  }
+
+  section h2 {
+    margin: 0 0 24px;
+    font-family: var(--font-mono);
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.18em;
+    color: var(--fg-secondary-color);
   }
 
   ul {
     padding: 0;
+    margin: 0;
     list-style: none;
+  }
+
+  .about-me p {
+    margin: 0;
+    color: var(--text-soft);
+    font-size: 1.15rem;
+    max-width: 62ch;
+  }
+
+  .skills li {
+    margin-bottom: 12px;
+    color: var(--text-soft);
+  }
+
+  .skills strong {
+    display: inline-block;
+    min-width: 130px;
+    font-weight: 600;
+  }
+
+  .job {
+    position: relative;
+    padding-left: 28px;
+    padding-bottom: 32px;
+    border-left: 1px solid var(--border-color);
+  }
+
+  .job:last-child {
+    padding-bottom: 0;
+  }
+
+  .job::before {
+    content: '';
+    position: absolute;
+    left: -4px;
+    top: 9px;
+    width: 7px;
+    height: 7px;
+    background: var(--acid);
+  }
+
+  .job h3 {
+    margin: 0;
+    font-size: 1.1rem;
+  }
+
+  .job h4 {
+    margin: 4px 0 10px;
+    font-size: 0.78rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: var(--fg-secondary-color);
+  }
+
+  .job p {
+    margin: 0 0 8px;
+    color: var(--text-soft);
+  }
+
+  .education h3 {
+    margin: 0;
+    font-weight: 400;
   }
 
   @media print {
@@ -160,14 +248,19 @@ const contact = {
 
     a {
       text-decoration: none;
+      color: black;
     }
 
     ul, p {
       margin: 8px 0;
     }
 
+    .about-me p, .job p, .job h4, .skills li, section h2 {
+      color: #444;
+    }
+
     h1, h2, h3, h4, h5, .title {
-      font-family: "Roboto Slab";
+      font-family: "Inter", sans-serif;
       color: black;
       margin: 0;
     }
@@ -191,6 +284,12 @@ const contact = {
 
     .job {
       margin-bottom: 6px;
+      padding-left: 0;
+      border-left: none;
+
+      &::before {
+        display: none;
+      }
 
       h3, h4 {
         margin: 0;
@@ -262,7 +361,7 @@ const contact = {
       <ul>
         {skills.map(skill => (
           <li>
-            <strong>{skill.name}</strong>: {skill.description}
+            <strong>{skill.name}:</strong> {skill.description}
           </li>
         ))}
       </ul>

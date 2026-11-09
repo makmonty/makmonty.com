@@ -1,70 +1,223 @@
 ---
 import { type MarkdownInstance } from 'astro';
 import Layout from '../layouts/Layout.astro';
-import ProjectCard from '../components/ProjectCard.astro';
-import { type App, type Game, type WebExperiment } from '../types/content';
+import { type App, type Game } from '../types/content';
 
-const apps: Array<MarkdownInstance<App>> = Object.values(import.meta.glob('./apps/*.md', { eager: true }));
-const games: Array<MarkdownInstance<Game>> = Object.values(import.meta.glob('./games/*.md', { eager: true }));
-const webExperiments: Array<WebExperiment> = [
+type ProjectEntry = {
+  title: string;
+  url: string | undefined;
+  date?: string;
+  description?: string;
+  tags?: Array<string>;
+  featuredImage: string;
+};
+
+const byDateDesc = (a: ProjectEntry, b: ProjectEntry) =>
+  new Date(b.date ?? 0).getTime() - new Date(a.date ?? 0).getTime();
+
+const apps: Array<ProjectEntry> = (Object.values(import.meta.glob('./apps/*.md', { eager: true })) as Array<MarkdownInstance<App>>)
+  .map(item => ({ ...item.frontmatter, url: item.url }))
+  .sort(byDateDesc);
+
+const games: Array<ProjectEntry> = (Object.values(import.meta.glob('./games/*.md', { eager: true })) as Array<MarkdownInstance<Game>>)
+  .map(item => ({ ...item.frontmatter, url: item.url }))
+  .sort(byDateDesc);
+
+const webExperiments: Array<ProjectEntry> = [
   {
     title: 'Maze',
     slug: 'maze',
+    description: 'A procedural maze generator with seedable randomness, built with Vue.',
+    tags: [ 'vue', 'generative' ],
     featuredImage: '/cms/img/maze-promo.jpg',
   }
-];
+].map(item => ({ ...item, url: `/${item.slug}` }));
+
+const groups: Array<{ label: string; items: Array<ProjectEntry> }> = [
+  { label: 'Apps', items: apps },
+  { label: 'Web experiments', items: webExperiments },
+  { label: 'Games', items: games },
+].filter(group => group.items.length > 0);
 ---
 <Layout title="Projects">
+  <header class="page-header">
+    <h1>Projects</h1>
+    <p>Things I've built — apps, web experiments and games.</p>
+  </header>
+
   <article>
-    {!!apps.length &&
+    {groups.map((group, groupIndex) => (
       <section>
-        <h2>Apps</h2>
-        <div class="project-list">
-          {apps.map(item => (
-            <a href={item.url}>
-              <ProjectCard project={item.frontmatter} />
-            </a>
+        <h2 class="section-title">
+          <span class="section-index">{String(groupIndex + 1).padStart(2, '0')}</span>
+          {group.label}
+        </h2>
+        <ul class="project-list">
+          {group.items.map(item => (
+            <li>
+              <a class="project-row" href={item.url}>
+                {item.date &&
+                  <span class="project-year">{new Date(item.date).getFullYear()}</span>
+                }
+                <span class="project-info">
+                  <span class="project-title">{item.title}</span>
+                  {item.description &&
+                    <span class="project-description">{item.description}</span>
+                  }
+                  {!!item.tags?.length &&
+                    <span class="project-tags">
+                      {item.tags.map(tag => <span class="tag">{tag.replace(/,+$/, '')}</span>)}
+                    </span>
+                  }
+                </span>
+                <img class="project-thumb" src={item.featuredImage} alt="" loading="lazy" />
+                <span class="project-arrow" aria-hidden="true">→</span>
+              </a>
+            </li>
           ))}
-        </div>
+        </ul>
       </section>
-    }
-
-    {!!webExperiments.length &&
-      <section>
-        <h2>Web experiments</h2>
-        <div class="project-list">
-          {webExperiments.map(item => (
-            <a href={`/${item.slug}`}>
-              <ProjectCard project={item} />
-            </a>
-          ))}
-        </div>
-      </section>
-    }
-
-    {!!games.length &&
-      <section>
-        <h2>Games</h2>
-        <div class="project-list">
-          {games.map(item => (
-            <a href={item.url}>
-              <ProjectCard project={item.frontmatter} />
-            </a>
-          ))}
-        </div>
-      </section>
-    }
+    ))}
   </article>
 </Layout>
 
 <style>
-.project-list {
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
+.page-header {
+  margin: 48px 0 72px;
 }
 
-a {
+.page-header h1 {
+  margin: 0 0 12px;
+  font-size: clamp(2.6rem, 7vw, 4.5rem);
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+}
+
+.page-header p {
+  margin: 0;
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+section {
+  margin-bottom: 72px;
+}
+
+.section-title {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  margin: 0 0 8px;
+  padding-top: 20px;
+  border-top: 1px solid var(--border-subtle-color);
+  font-size: 1.5rem;
+}
+
+.section-index {
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--acid);
+}
+
+.project-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.project-row {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--border-subtle-color);
   text-decoration: none;
+}
+
+.project-year {
+  flex-shrink: 0;
+  width: 56px;
+  font-family: var(--font-mono);
+  font-size: 0.85rem;
+  color: var(--muted);
+}
+
+.project-info {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.project-title {
+  font-size: 1.35rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: var(--text);
+  transition: color var(--transition);
+}
+
+.project-row:hover .project-title {
+  color: var(--acid);
+}
+
+.project-description {
+  color: var(--text-soft);
+  font-size: 0.95rem;
+  max-width: 56ch;
+}
+
+.project-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 16px;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  color: var(--muted);
+}
+
+.tag::before {
+  content: '#';
+  color: var(--acid);
+}
+
+.project-thumb {
+  flex-shrink: 0;
+  width: 120px;
+  height: 75px;
+  object-fit: cover;
+  border-radius: var(--radius-sm);
+  border: 1px solid var(--border-subtle-color);
+}
+
+.project-arrow {
+  flex-shrink: 0;
+  font-family: var(--font-mono);
+  color: var(--muted);
+  transition: color var(--transition), transform var(--transition);
+}
+
+.project-row:hover .project-arrow {
+  color: var(--acid);
+  transform: translateX(4px);
+}
+
+@media (max-width: 640px) {
+  .project-row {
+    gap: 16px;
+  }
+
+  .project-year {
+    display: none;
+  }
+
+  .project-thumb {
+    width: 84px;
+    height: 56px;
+  }
 }
 </style>
